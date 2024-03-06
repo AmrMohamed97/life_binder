@@ -8,8 +8,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:note_app/features/models/notes_model/notes_model.dart';
- import 'package:note_app/features/personal_page/presentation/manager/personal_page_state.dart';
+import 'package:note_app/features/edit_note/data/model/notes_model.dart';
+  import 'package:note_app/features/personal_page/presentation/manager/personal_page_state.dart';
 import 'package:note_app/features/personal_page/presentation/pages/personal_page_view.dart';
 
 class PersonalPageCubit extends Cubit<PersonalPageState>{

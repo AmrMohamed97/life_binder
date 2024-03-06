@@ -49,8 +49,10 @@ class PersonalPageView extends StatelessWidget {
                     ),
                   ),
                   body: CustomScrollView(
+                    physics: const BouncingScrollPhysics(),
                     slivers: [
                       SliverAppBar(
+
                         automaticallyImplyLeading: false,
                         actions: [
                           IconButton(
@@ -136,6 +138,7 @@ class PersonalPageView extends StatelessWidget {
                             ),
                           ),
                           centerTitle: false,
+                          stretchModes:const  [StretchMode.fadeTitle,StretchMode.blurBackground,StretchMode.zoomBackground],
                           background: GestureDetector(
                             onTap: () {
                               Navigator.push(

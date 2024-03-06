@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/utiles/responsive/size_config.dart';
+import 'package:note_app/features/edit_note/data/model/notes_model.dart';
 import 'package:note_app/features/edit_note/presentation/pages/edit_note.dart';
 import 'package:note_app/core/widgets/note_view.dart';
-import 'package:note_app/features/models/notes_model/notes_model.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit.dart';
+ import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({super.key, required this.notes });
