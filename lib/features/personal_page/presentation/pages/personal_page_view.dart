@@ -126,7 +126,7 @@ class PersonalPageView extends StatelessWidget {
                                                 cubit.personalImage),
                                           ),
                                   ),
-                                   Text(
+                                  cubit.userName==null?const Text(' '):Text(
                                     '${cubit.userName}',
                                     style: const TextStyle(
                                         color: Colors.black, fontSize: 18),
