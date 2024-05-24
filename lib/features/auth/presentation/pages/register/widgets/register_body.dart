@@ -9,7 +9,7 @@ import 'package:note_app/core/widgets/custom_general_button.dart';
 import 'package:note_app/core/widgets/custom_text_field.dart';
 import 'package:note_app/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:note_app/features/auth/presentation/manager/auth_state.dart';
- import 'package:note_app/features/routes/pages_keys.dart';
+import 'package:note_app/features/routes/pages_keys.dart';
 
 class RegisterBody extends StatelessWidget {
   RegisterBody({super.key});
@@ -18,43 +18,43 @@ class RegisterBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig sizeConfig = SizeConfig(context);
-    return BlocConsumer<AuthCubit,AuthState>(
-      listener: (context,state)async{
-        if(state is RegisterSuccessState){
-          BlocProvider.of<AuthCubit>(context).isLoading=false;
+    return BlocConsumer<RegisterCubit, AuthState>(
+      listener: (context, state) async {
+        if (state is RegisterSuccessState) {
+          BlocProvider.of<RegisterCubit>(context).isLoading = false;
           Navigator.pushNamed(context, PagesKeys.personalPageView);
-          await BlocProvider.of<AuthCubit>(context).addUser();
-        }else if(state is RegisterErrorState){
-          BlocProvider.of<AuthCubit>(context).isLoading=false;
+          await BlocProvider.of<RegisterCubit>(context).addUser();
+        } else if (state is RegisterErrorState) {
+          BlocProvider.of<RegisterCubit>(context).isLoading = false;
         }
       },
-      builder: (context,state){
-        var cubit=BlocProvider.of<AuthCubit>(context);
+      builder: (context, state) {
+        var cubit = BlocProvider.of<RegisterCubit>(context);
         return ModalProgressHUD(
           inAsyncCall: cubit.isLoading,
           child: Form(
               key: formKey,
               child: Padding(
-                padding: EdgeInsets.all(sizeConfig.defaultSize*1.3),
+                padding: EdgeInsets.all(sizeConfig.defaultSize * 1.3),
                 child: ListView(
                   padding: EdgeInsets.zero,
                   children: [
                     verticalHeight(sizeConfig.height100),
                     Image.asset(
                       GeneratedImages.logoImg,
-                      width: sizeConfig.defaultSize*10,
-                      height: sizeConfig.defaultSize*10,
+                      width: sizeConfig.defaultSize * 10,
+                      height: sizeConfig.defaultSize * 10,
                     ),
                     verticalHeight(sizeConfig.height60),
                     CustomTextField(
-                      onFieldSubmitted: (val){
+                      onFieldSubmitted: (val) {
                         FocusScope.of(context).requestFocus(FocusNode());
                       },
                       onSaved: (val) {
                         cubit.userName = val;
                       },
-                      validator: (data){
-                        if(data!.isEmpty){
+                      validator: (data) {
+                        if (data!.isEmpty) {
                           return 'this field is required';
                         }
                         return null;
@@ -65,14 +65,14 @@ class RegisterBody extends StatelessWidget {
                     ),
                     verticalHeight(sizeConfig.height20),
                     CustomTextField(
-                      onFieldSubmitted: (val){
+                      onFieldSubmitted: (val) {
                         FocusScope.of(context).requestFocus(FocusNode());
                       },
                       onSaved: (val) {
                         cubit.email = val;
                       },
-                      validator: (data){
-                        if(data!.isEmpty){
+                      validator: (data) {
+                        if (data!.isEmpty) {
                           return 'this field is required';
                         }
                         return null;
@@ -83,14 +83,14 @@ class RegisterBody extends StatelessWidget {
                     ),
                     verticalHeight(sizeConfig.height20),
                     CustomTextField(
-                      onFieldSubmitted: (val){
+                      onFieldSubmitted: (val) {
                         FocusScope.of(context).requestFocus(FocusNode());
                       },
                       onSaved: (val) {
                         cubit.password = val;
                       },
-                      validator: (data){
-                        if(data!.isEmpty){
+                      validator: (data) {
+                        if (data!.isEmpty) {
                           return 'this field is required';
                         }
                         return null;
@@ -112,7 +112,7 @@ class RegisterBody extends StatelessWidget {
                         CupertinoButton(
                           minSize: 0,
                           padding: EdgeInsets.zero,
-                          onPressed: (){
+                          onPressed: () {
                             Navigator.pushNamed(context, PagesKeys.loginView);
                           },
                           child: const Text(
@@ -123,12 +123,12 @@ class RegisterBody extends StatelessWidget {
                           ),
                         )
                       ],
-                    ) ,
+                    ),
                     verticalHeight(sizeConfig.height20),
                     CustomGeneralButton(
                       label: 'Register',
-                      onTap: ()async{
-                        if(formKey.currentState!.validate()){
+                      onTap: () async {
+                        if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
                           await cubit.register(context);
                         }

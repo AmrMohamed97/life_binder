@@ -10,6 +10,7 @@ import 'package:note_app/core/widgets/custom_general_button.dart';
 import 'package:note_app/core/widgets/custom_text_field.dart';
 import 'package:note_app/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:note_app/features/auth/presentation/manager/auth_state.dart';
+import 'package:note_app/features/auth/presentation/manager/login_cubit.dart';
 import 'package:note_app/features/routes/pages_keys.dart';
 
 class LoginBody extends StatelessWidget {
@@ -18,17 +19,17 @@ class LoginBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig sizeConfig = SizeConfig(context);
-    return BlocConsumer<AuthCubit, AuthState>(
+    return BlocConsumer<LoginCubit, AuthState>(
       listener: (context, state) {
         if (state is SignInSuccessState) {
-          BlocProvider.of<AuthCubit>(context).isLoading = false;
+          BlocProvider.of<LoginCubit>(context).isLoading = false;
           Navigator.pushReplacementNamed(context, PagesKeys.personalPageView);
         } else if (state is SignInErrorState) {
-          BlocProvider.of<AuthCubit>(context).isLoading = false;
+          BlocProvider.of<LoginCubit>(context).isLoading = false;
         }
       },
       builder: (context, state) {
-        var cubit = BlocProvider.of<AuthCubit>(context);
+        var cubit = BlocProvider.of<LoginCubit>(context);
         return ModalProgressHUD(
           inAsyncCall: cubit.isLoading,
           child: Form(
@@ -47,27 +48,7 @@ class LoginBody extends StatelessWidget {
                     verticalHeight(sizeConfig.height60),
                     GestureDetector(
                       onTap: () {
-                        cubit.changeLoadingState(state: true);
-                        cubit.signInWithGoogle().then((value) {
-                          cubit.changeLoadingState(state: false);
-                          Navigator.pushReplacementNamed(
-                              context, PagesKeys.personalPageView);
-                          cubit.addGoogleUser(
-                              userName: value.user?.displayName,
-                              email: value.user?.email);
-                        }).catchError((error) {
-                          cubit.changeLoadingState(state: false);
-                          print(
-                              '=============================================');
-                          print(error.code.toString());
-                          print(
-                              '=============================================');
-                          AwesomeDialog(
-                            context: context,
-                            title: 'error',
-                            body: Text(error.code.toString()),
-                          ).show();
-                        });
+                        signInWithGoogle(cubit, context);
                       },
                       child: Container(
                         height: sizeConfig.height50,
@@ -170,5 +151,25 @@ class LoginBody extends StatelessWidget {
         );
       },
     );
+  }
+
+  void signInWithGoogle(LoginCubit cubit, BuildContext context) {
+    cubit.changeLoadingState(state: true);
+    cubit.signInWithGoogle().then((value) {
+      cubit.changeLoadingState(state: false);
+      Navigator.pushReplacementNamed(context, PagesKeys.personalPageView);
+      cubit.addGoogleUser(
+          userName: value.user?.displayName, email: value.user?.email);
+    }).catchError((error) {
+      cubit.changeLoadingState(state: false);
+      print('=============================================');
+      print(error.code.toString());
+      print('=============================================');
+      AwesomeDialog(
+        context: context,
+        title: 'error',
+        body: Text(error.code.toString()),
+      ).show();
+    });
   }
 }
