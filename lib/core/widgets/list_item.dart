@@ -4,39 +4,41 @@ import 'package:note_app/core/utiles/responsive/size_config.dart';
 import 'package:note_app/features/edit_note/data/model/notes_model.dart';
 import 'package:note_app/features/edit_note/presentation/pages/edit_note.dart';
 import 'package:note_app/core/widgets/note_view.dart';
- import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit.dart';
+import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit.dart';
 
 class ListItem extends StatelessWidget {
-  const ListItem({super.key, required this.notes });
+  const ListItem({super.key, required this.notes});
   final NotesModel notes;
   @override
   Widget build(BuildContext context) {
-    SizeConfig sizeConfig=SizeConfig(context);
-    return  Dismissible(
-          key:UniqueKey() ,
-          onDismissed: (direction)async{
-            await BlocProvider.of<PersonalPageCubit>(context).deleteListItem(id: notes.id, imageName: notes.imageName);
-          },
-          child: InkWell(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return NoteView(
-                      title:notes.title,
-                      imageUrl:notes.imageUrl,
-                      note:notes.notes,
-                    );
-                  }
-              ),
+    SizeConfig sizeConfig = SizeConfig(context);
+    return Dismissible(
+      key: UniqueKey(),
+      onDismissed: (direction) async {
+        await BlocProvider.of<PersonalPageCubit>(context)
+            .deleteListItem(id: notes.id, imageName: notes.imageName);
+      },
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) {
+              return NoteView(
+                title: notes.title,
+                imageUrl: notes.imageUrl,
+                note: notes.notes,
               );
-            },
-            child: Card(
-              child: cardBody(sizeConfig,context),
-            ),
-          ),
-        );
+            }),
+          );
+        },
+        child: Card(
+          child: cardBody(sizeConfig, context),
+        ),
+      ),
+    );
   }
-  Row cardBody(SizeConfig sizeConfig,context) {
+
+  Row cardBody(SizeConfig sizeConfig, context) {
     return Row(
       children: [
         Flexible(
@@ -53,9 +55,7 @@ class ListItem extends StatelessWidget {
           child: ListTile(
             title: Text(
               notes.title,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold
-              ),
+              style: const TextStyle(fontWeight: FontWeight.bold),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -65,10 +65,12 @@ class ListItem extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
             trailing: IconButton(
-              onPressed: (){
-                Navigator.pushReplacement(context , MaterialPageRoute(
-                  builder:(context)=>EditNotes(noteModel: notes) ,
-                ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EditNotes(noteModel: notes),
+                  ),
                 );
               },
               icon: const Icon(Icons.edit),

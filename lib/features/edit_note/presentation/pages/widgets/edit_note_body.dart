@@ -12,7 +12,7 @@ import 'package:note_app/features/add_note/presentation/pages/widgets/show_botto
 import 'package:note_app/features/edit_note/data/model/notes_model.dart';
 import 'package:note_app/features/edit_note/presentation/manager/edit_note_cubit.dart';
 import 'package:note_app/features/edit_note/presentation/manager/edit_note_state.dart';
- import 'package:note_app/features/routes/pages_keys.dart';
+import 'package:note_app/features/routes/pages_keys.dart';
 
 class EditNotesBody extends StatelessWidget {
   EditNotesBody({super.key, required this.noteModel});
@@ -86,27 +86,31 @@ class EditNotesBody extends StatelessWidget {
                   verticalHeight(sizeConfig.defaultSize),
                   CustomTextField(
                     controller: cubit.noteController,
-                    validator: (value){
-                      if(value!.isEmpty){
+                    validator: (value) {
+                      if (value!.isEmpty) {
                         return 'This Field is required';
                       }
                       return null;
                     },
-                    onSaved: (val){
-                      cubit.note=val;
+                    onSaved: (val) {
+                      cubit.note = val;
                     },
                     textInputType: TextInputType.multiline,
-                    maxLines: 5 ,
+                    maxLines: 5,
                     prefixIcon: Padding(
                       padding: EdgeInsetsDirectional.only(
-                          start:sizeConfig.defaultSize*1.2, top: 0, end: 0, bottom: sizeConfig.defaultSize*9),
-                      child:const FaIcon(FontAwesomeIcons.message),),
+                          start: sizeConfig.defaultSize * 1.2,
+                          top: 0,
+                          end: 0,
+                          bottom: sizeConfig.defaultSize * 9),
+                      child: const FaIcon(FontAwesomeIcons.message),
+                    ),
                     hintText: 'Note',
                     maxLength: 200,
                     maxLengthEnforcement: MaxLengthEnforcement.enforced,
                   ),
                   verticalHeight(sizeConfig.defaultSize),
-                   if (cubit.file != null)
+                  if (cubit.file != null)
                     Expanded(
                       child: Column(
                         children: [
@@ -119,7 +123,8 @@ class EditNotesBody extends StatelessWidget {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                FocusScope.of(context).requestFocus(FocusNode());
+                                FocusScope.of(context)
+                                    .requestFocus(FocusNode());
                                 showModalBottomSheet(
                                   context: context,
                                   builder: (context) {
@@ -129,7 +134,8 @@ class EditNotesBody extends StatelessWidget {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(sizeConfig.defaultSize),
+                                  borderRadius: BorderRadius.circular(
+                                      sizeConfig.defaultSize),
                                 ),
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
                                 child: Image.file(
@@ -156,7 +162,8 @@ class EditNotesBody extends StatelessWidget {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                FocusScope.of(context).requestFocus(FocusNode());
+                                FocusScope.of(context)
+                                    .requestFocus(FocusNode());
                                 showModalBottomSheet(
                                   context: context,
                                   builder: (context) {
@@ -166,7 +173,8 @@ class EditNotesBody extends StatelessWidget {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(sizeConfig.defaultSize),
+                                  borderRadius: BorderRadius.circular(
+                                      sizeConfig.defaultSize),
                                 ),
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
                                 child: Image.network(
@@ -183,14 +191,14 @@ class EditNotesBody extends StatelessWidget {
                   CustomGeneralButton(
                     verticalPadding: sizeConfig.height10,
                     horizontalPadding: sizeConfig.width1,
-                    height: sizeConfig.height50*1.13,
+                    height: sizeConfig.height50 * 1.13,
                     label: 'Edit Note',
                     color: AppColors.blue,
                     onTap: () async {
-                      FocusScope.of(context).requestFocus(FocusNode());
+                      // FocusScope.of(context).requestFocus(FocusNode());
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
-                        cubit.updateData(
+                        await cubit.updateData(
                             id: noteModel.id, imageName: noteModel.imageName);
                       }
                     },

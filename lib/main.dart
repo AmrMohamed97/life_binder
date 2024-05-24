@@ -17,34 +17,33 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  if(FirebaseAuth.instance.currentUser==null){
-    isLogin=false;
-  }
-  else{
-    isLogin=true;
+  if (FirebaseAuth.instance.currentUser == null) {
+    isLogin = false;
+  } else {
+    isLogin = true;
   }
   Bloc.observer = MyObserver();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   const MyApp({super.key});
+  const MyApp({super.key});
 
-   @override
+  @override
   Widget build(BuildContext context) {
-     return MultiBlocProvider(
-       providers: [
-         BlocProvider(create: (context)=>AddNoteCubit()),
-          BlocProvider(create: (context)=>EditNoteCubit()),
-         BlocProvider(create: (context)=>AuthCubit()),
-         BlocProvider(create:(context)=>PersonalPageCubit()),
-       ],
-       child: MaterialApp(
-         debugShowCheckedModeBanner: false,
-         routes:AppPages.routes ,
-         initialRoute: isLogin?PagesKeys.personalPageView:PagesKeys.loginView,
-       ),
-     );
-
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => AddNoteCubit()),
+        BlocProvider(create: (context) => EditNoteCubit()),
+        BlocProvider(create: (context) => RegisterCubit()),
+        BlocProvider(create: (context) => PersonalPageCubit()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: AppPages.routes,
+        initialRoute:
+            isLogin ? PagesKeys.personalPageView : PagesKeys.loginView,
+      ),
+    );
   }
 }

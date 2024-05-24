@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/features/auth/presentation/manager/auth_cubit.dart';
- import 'package:note_app/features/auth/presentation/pages/register/widgets/register_body.dart';
+import 'package:note_app/features/auth/presentation/pages/register/widgets/register_body.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
@@ -9,9 +9,9 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context)=>AuthCubit(),
+      create: (context) => RegisterCubit(),
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
         },
         child: Scaffold(
