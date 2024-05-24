@@ -7,7 +7,7 @@ import 'package:note_app/core/utiles/functions/functions.dart';
 import 'package:note_app/core/utiles/responsive/size_config.dart';
 import 'package:note_app/core/widgets/custom_general_button.dart';
 import 'package:note_app/core/widgets/custom_text_field.dart';
-import 'package:note_app/features/auth/presentation/manager/auth_cubit.dart';
+import 'package:note_app/features/auth/presentation/manager/register_cubit.dart';
 import 'package:note_app/features/auth/presentation/manager/auth_state.dart';
 import 'package:note_app/features/routes/pages_keys.dart';
 
