@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/features/auth/presentation/manager/auth_cubit.dart';
+import 'package:note_app/features/auth/presentation/manager/register_cubit.dart';
 import 'package:note_app/features/auth/presentation/pages/register/widgets/register_body.dart';
 
 class RegisterView extends StatelessWidget {
