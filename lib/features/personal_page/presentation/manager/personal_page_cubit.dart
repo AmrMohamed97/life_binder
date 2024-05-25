@@ -249,20 +249,20 @@ class PersonalPageCubit extends Cubit<PersonalPageState> {
     }
   }
 
-  Future<void> deleteListItem(
-      {required String id, required String imageName}) async {
-    emit(DeleteItemLoadingState());
-    try {
-      Reference imageRefer = FirebaseStorage.instance.ref('images/$imageName');
-      imageRefer.delete();
-      DocumentReference doc =
-          FirebaseFirestore.instance.collection('notes').doc(id);
-      doc.delete();
-      emit(DeleteItemSuccessState());
-    } on Exception catch (error) {
-      emit(DeleteItemErrorState(error: error));
-    }
-  }
+  // Future<void> deleteListItem(
+  //     {required String id, required String imageName}) async {
+  //   emit(DeleteItemLoadingState());
+  //   try {
+  //     Reference imageRefer = FirebaseStorage.instance.ref('images/$imageName');
+  //     imageRefer.delete();
+  //     DocumentReference doc =
+  //         FirebaseFirestore.instance.collection('notes').doc(id);
+  //     doc.delete();
+  //     emit(DeleteItemSuccessState());
+  //   } on Exception catch (error) {
+  //     emit(DeleteItemErrorState(error: error));
+  //   }
+  // }
 
   TextEditingController searchController = TextEditingController();
   void assignControllerValue(value) {

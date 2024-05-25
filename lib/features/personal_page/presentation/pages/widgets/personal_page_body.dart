@@ -1,5 +1,5 @@
  import 'package:flutter/material.dart';
-  import 'package:note_app/core/widgets/list_item.dart';
+  import 'package:note_app/features/personal_page/presentation/pages/widgets/list_item.dart';
 import 'package:note_app/core/widgets/no_data_widget.dart';
 import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit.dart';
 import 'package:note_app/features/personal_page/presentation/manager/personal_page_state.dart';
