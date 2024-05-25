@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        navigatorKey: navigatorKey,
         routes: AppPages.routes,
         initialRoute:
             isLogin ? PagesKeys.personalPageView : PagesKeys.loginView,
