@@ -22,14 +22,7 @@ class GetBackgroundImageErrorState extends PersonalPageState{}
 class GetUserNameSuccessState extends PersonalPageState{}
 class GetUserNameSuccessWithoutData extends PersonalPageState{}
 class GetUserNameErrorState extends PersonalPageState{}
-//------------------------------------------------------------------------------
-class SearchLoadingState extends PersonalPageState{}
-class SearchSuccessState extends PersonalPageState{}
-class SearchSuccessWithoutDataState extends PersonalPageState{}
-class SearchErrorState extends PersonalPageState{
-  SearchErrorState({required this.error});
-  final dynamic error;
-}
+ 
 class DeleteItemLoadingState extends PersonalPageState{}
 class DeleteItemSuccessState extends PersonalPageState{}
 class DeleteItemErrorState extends PersonalPageState{
@@ -41,5 +34,4 @@ class GetUserNotesSuccessState extends PersonalPageState{}
 class GetUserNotesErrorState extends PersonalPageState{}
 class GetUserNotesSuccessWithNoDataState extends PersonalPageState{}
 
-class AssignControllerValueState extends PersonalPageState{}
-
+ 

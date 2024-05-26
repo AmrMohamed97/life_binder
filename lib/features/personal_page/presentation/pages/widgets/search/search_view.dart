@@ -1,7 +1,10 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/widgets/custom_text_field.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit.dart';
+import 'package:note_app/features/personal_page/presentation/manager/personal_page_state.dart';
+import 'package:note_app/features/personal_page/presentation/pages/widgets/search/manager/search_cubit.dart';
+import 'package:note_app/features/personal_page/presentation/pages/widgets/search/manager/search_state.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/search/search_view_body.dart';
 
 class SearchView extends StatelessWidget {
@@ -9,25 +12,44 @@ class SearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: (){
-        FocusScope.of(context).requestFocus(FocusNode());
-      },
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: CustomTextField(
-            controller: BlocProvider.of<PersonalPageCubit>(context).searchController,
-            textInputType: TextInputType.text,
-            maxLines: 1,
-            prefixIcon: const Icon(Icons.search),
-            onChanged: (value){
-              BlocProvider.of<PersonalPageCubit>(context).assignControllerValue(value);
-              BlocProvider.of<PersonalPageCubit>(context).searchData(searchItem: value);
+    return BlocProvider(
+      create: (context) => SearchCubit(),
+      child: BlocConsumer<SearchCubit, SearchStates>(
+        listener: (context, state) {
+          // if (state is DeleteItemErrorState) {
+          // AwesomeDialog(
+          //   context: context,
+          //   title: 'error',
+          //   body: Text(state.error.code.toString()),
+          // );
+        // }
+        },
+        builder: (context, state) {
+          return GestureDetector(
+            onTap: () {
+              FocusScope.of(context).requestFocus(FocusNode());
             },
-          ),
-          ),
-        body: const SearchViewBody(),
+            child: Scaffold(
+              resizeToAvoidBottomInset: false,
+              appBar: AppBar(
+                title: CustomTextField(
+                  controller:
+                      BlocProvider.of<SearchCubit>(context).searchController,
+                  textInputType: TextInputType.text,
+                  maxLines: 1,
+                  prefixIcon: const Icon(Icons.search),
+                  onChanged: (value) {
+                    BlocProvider.of<SearchCubit>(context)
+                        .assignControllerValue(value);
+                    BlocProvider.of<SearchCubit>(context)
+                        .searchData(searchItem: value);
+                  },
+                ),
+              ),
+              body:   SearchViewBody(state: state),
+            ),
+          );
+        },
       ),
     );
   }
