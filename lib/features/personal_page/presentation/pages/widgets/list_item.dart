@@ -6,7 +6,7 @@ import 'package:note_app/features/edit_note/data/model/notes_model.dart';
 import 'package:note_app/features/personal_page/presentation/manager/delete_list_item_cubit/delete_list_item_cubit.dart';
 import 'package:note_app/features/personal_page/presentation/manager/delete_list_item_cubit/delete_list_item_state.dart';
  import 'package:note_app/features/personal_page/presentation/pages/widgets/list_item_card_body.dart';
-
+//amr mohamed
 class ListItem extends StatelessWidget {
   const ListItem({super.key, required this.notes});
   final NotesModel notes;
