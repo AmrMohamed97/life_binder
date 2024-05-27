@@ -23,12 +23,7 @@ class GetUserNameSuccessState extends PersonalPageState{}
 class GetUserNameSuccessWithoutData extends PersonalPageState{}
 class GetUserNameErrorState extends PersonalPageState{}
  
-class DeleteItemLoadingState extends PersonalPageState{}
-class DeleteItemSuccessState extends PersonalPageState{}
-class DeleteItemErrorState extends PersonalPageState{
-  DeleteItemErrorState({required this.error});
-  final dynamic error;
-}
+
 class GetUserNotesLoadingState extends PersonalPageState{}
 class GetUserNotesSuccessState extends PersonalPageState{}
 class GetUserNotesErrorState extends PersonalPageState{}

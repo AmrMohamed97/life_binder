@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/features/add_note/presentation/manager/add_note_cubit.dart';
 import 'package:note_app/features/auth/presentation/manager/auth_cubit.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit.dart';
+import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_cubit.dart';
 import 'package:note_app/features/routes/app_pages.dart';
 import 'package:note_app/features/routes/pages_keys.dart';
 import 'package:note_app/firebase_options.dart';

@@ -1,10 +1,11 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/features/edit_note/data/model/notes_model.dart';
  import 'package:note_app/core/widgets/note_view.dart';
-import 'package:note_app/features/personal_page/presentation/manager/delete_list_item_cubit.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_state.dart';
-import 'package:note_app/features/personal_page/presentation/pages/widgets/list_item_card_body.dart';
+import 'package:note_app/features/personal_page/presentation/manager/delete_list_item_cubit/delete_list_item_cubit.dart';
+import 'package:note_app/features/personal_page/presentation/manager/delete_list_item_cubit/delete_list_item_state.dart';
+ import 'package:note_app/features/personal_page/presentation/pages/widgets/list_item_card_body.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({super.key, required this.notes});
@@ -13,7 +14,16 @@ class ListItem extends StatelessWidget {
   Widget build(BuildContext context) {
      return BlocProvider(
       create: (context) => DeleteListItemCubit(),
-      child: BlocBuilder<DeleteListItemCubit, PersonalPageState>(
+      child: BlocConsumer<DeleteListItemCubit, DeleteListItemStates>(
+        listener: (context, state) {
+          if (state is DeleteItemErrorState) {
+            AwesomeDialog(
+              context: context,
+              title: 'error',
+              body: Text(state.error.code.toString()),
+            );
+          }
+        },
         builder: (context, state) {
           return Dismissible(
             key: UniqueKey(),

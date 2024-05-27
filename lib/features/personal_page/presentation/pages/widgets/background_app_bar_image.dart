@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit.dart';
+import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_cubit.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/change_image_page.dart';
 
 class BackgroundAppBarImage extends StatelessWidget {
