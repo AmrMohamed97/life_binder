@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_cubit.dart';
-import 'package:note_app/features/personal_page/presentation/pages/widgets/change_image_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/features/personal_page/presentation/manager/background_image_cubit/background_image_cubit.dart';
+import 'package:note_app/features/personal_page/presentation/manager/background_image_cubit/background_image_state.dart';
+ import 'package:note_app/features/personal_page/presentation/pages/widgets/change_image_page.dart';
 
 class BackgroundAppBarImage extends StatelessWidget {
   const BackgroundAppBarImage({
     super.key,
-    required this.cubit,
-  });
-
-  final PersonalPageCubit cubit;
-
+   });
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return BlocProvider(create: (context)=>BackgroundImageCubit(),
+    child: BlocBuilder<BackgroundImageCubit,BackgroundImageState>(
+      builder: (context,state){
+        var cubit = BlocProvider.of<BackgroundImageCubit>(context);
+        return GestureDetector(
       onTap: () {
         Navigator.push(
             context,
@@ -32,5 +34,9 @@ class BackgroundAppBarImage extends StatelessWidget {
               width: double.infinity,
             ),
     );
+      },
+    ),
+    );
+    
   }
 }

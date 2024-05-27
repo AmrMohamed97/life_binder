@@ -1,0 +1,7 @@
+abstract class BackgroundImageState {}
+
+class BackgroundImageIinitialState extends BackgroundImageState {}
+class GetBackgroundImageLoadingState extends BackgroundImageState{}
+class GetBackgroundImageSuccessState extends BackgroundImageState{}
+class GetBackgroundImageSuccessWithoutData extends BackgroundImageState{}
+class GetBackgroundImageErrorState extends BackgroundImageState{}

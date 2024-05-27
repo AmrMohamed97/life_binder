@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/features/personal_page/presentation/manager/personal_image_cubit/personal_image_cubit.dart';
+import 'package:note_app/features/personal_page/presentation/manager/personal_image_cubit/personal_image_state.dart';
+import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/get_user_name_cubit.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/change_image_page.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_image.dart';
+import 'package:note_app/features/personal_page/presentation/pages/widgets/user_name_widget.dart';
 
 class CustomAppBarFlexableSpaceDetail extends StatelessWidget {
-  const CustomAppBarFlexableSpaceDetail({super.key, required this.cubit,});
+  const CustomAppBarFlexableSpaceDetail({
+    super.key,
+   });
 
-  final PersonalPageCubit cubit;
-  @override
+   @override
   Widget build(BuildContext context) {
-    return Row(
+    return BlocProvider(create: (context)=>PersonalImageCubit(),
+    child: BlocBuilder<PersonalImageCubit,PersonalImageState>(
+      builder: (context, state) {
+        var cubit=  BlocProvider.of<PersonalImageCubit>(context);
+        return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -30,17 +39,13 @@ class CustomAppBarFlexableSpaceDetail extends StatelessWidget {
           },
           child: PersonalImage(cubit: cubit),
         ),
-        cubit.userName == null ? const Text(' ') : userName(cubit),
+        const UserNameWidget(),
       ],
     );
+      }
+    ),
+    );
+    
   }
 }
 
-Text userName(cubit) {
-  return Text(
-    '${cubit.userName}',
-    style: const TextStyle(color: Colors.black, fontSize: 18),
-    maxLines: 1,
-    overflow: TextOverflow.ellipsis,
-  );
-}

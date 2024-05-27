@@ -2,7 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/widgets/custom_text_field.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_state.dart';
+import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/get_user_name_state.dart';
 import 'package:note_app/features/search/manager/search_cubit.dart';
 import 'package:note_app/features/search/manager/search_state.dart';
 import 'package:note_app/features/search/search_view_body.dart';

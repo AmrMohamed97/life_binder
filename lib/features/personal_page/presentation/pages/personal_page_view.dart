@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
  import 'package:note_app/core/constants/colors/app_colors.dart';
   import 'package:note_app/core/routes/pages_keys.dart';
+import 'package:note_app/features/personal_page/presentation/pages/widgets/custom_personal_app_bar.dart';
  import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_page_body.dart';
 
 class PersonalPageView extends StatelessWidget {
@@ -30,11 +31,11 @@ class PersonalPageView extends StatelessWidget {
                       color: AppColors.white,
                     ),
                   ),
-                  body: CustomScrollView(
-      physics: const BouncingScrollPhysics(),
+                  body: const CustomScrollView(
+      physics:   BouncingScrollPhysics(),
       slivers: [
-        // CustomPersonalAppBar(),
-        const PersonalPageBody(),
+        CustomPersonalAppBar(),
+          PersonalPageBody(),
       ],
     ),
                 );
