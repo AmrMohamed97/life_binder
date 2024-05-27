@@ -10,7 +10,7 @@ class BackgroundAppBarImage extends StatelessWidget {
    });
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context)=>BackgroundImageCubit(),
+    return BlocProvider(create: (context)=>BackgroundImageCubit()..getBackgroundImage(),
     child: BlocBuilder<BackgroundImageCubit,BackgroundImageState>(
       builder: (context,state){
         var cubit = BlocProvider.of<BackgroundImageCubit>(context);

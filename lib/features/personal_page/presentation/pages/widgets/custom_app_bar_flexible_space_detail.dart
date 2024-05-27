@@ -14,7 +14,7 @@ class CustomAppBarFlexableSpaceDetail extends StatelessWidget {
 
    @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context)=>PersonalImageCubit(),
+    return BlocProvider(create: (context)=>PersonalImageCubit()..getPersonalImage(),
     child: BlocBuilder<PersonalImageCubit,PersonalImageState>(
       builder: (context, state) {
         var cubit=  BlocProvider.of<PersonalImageCubit>(context);

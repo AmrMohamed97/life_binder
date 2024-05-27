@@ -10,18 +10,20 @@ class UserNameWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetUserNameCubit, GetUserNameState>(
-        builder: (context, state) {
-          var cubit = BlocProvider.of<GetUserNameCubit>(context);
-          return cubit.userName == null
-        ? const Text(' ')
-        :   Text(
-            '${cubit.userName}',
-            style: const TextStyle(color: Colors.black, fontSize: 18),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          );
-        });
-    
+    return BlocProvider(
+      create: (context) => GetUserNameCubit()..getUserName(),
+      child: BlocBuilder<GetUserNameCubit, GetUserNameState>(
+          builder: (context, state) {
+        var cubit = BlocProvider.of<GetUserNameCubit>(context);
+        return cubit.userName == null
+            ? const Text(' ')
+            : Text(
+                '${cubit.userName}',
+                style: const TextStyle(color: Colors.black, fontSize: 18),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              );
+      }),
+    );
   }
 }

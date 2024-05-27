@@ -10,7 +10,7 @@ class PersonalPageBody extends StatelessWidget {
     super.key,});
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context)=>NoteOperationCubit(),
+    return BlocProvider(create: (context)=>NoteOperationCubit()..getUserNotes(),
     child: BlocBuilder<NoteOperationCubit ,  NoteOperationState>(
       builder: (context, state) {
         var cubit = BlocProvider.of<NoteOperationCubit>(context);
