@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
 import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_cubit.dart';
-import 'package:note_app/features/personal_page/presentation/pages/widgets/background_app_bar_image.dart';
+ import 'package:note_app/features/personal_page/presentation/pages/widgets/background_app_bar_image.dart';
  import 'package:note_app/features/personal_page/presentation/pages/widgets/custom_app_bar_flexible_space_detail.dart';
  import 'package:note_app/features/personal_page/presentation/pages/widgets/sign_out.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
@@ -40,7 +40,7 @@ class CustomPersonalAppBar extends StatelessWidget {
       flexibleSpace: FlexibleSpaceBar(
         title: SafeArea(
           child: IntrinsicHeight(
-            child: CustomAppBarFlexableSpaceDetail(cubit: cubit),
+            child: CustomAppBarFlexableSpaceDetail(cubit: cubit,),
           ),
         ),
         centerTitle: false,

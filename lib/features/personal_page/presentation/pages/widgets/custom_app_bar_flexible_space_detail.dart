@@ -4,7 +4,7 @@ import 'package:note_app/features/personal_page/presentation/pages/widgets/chang
 import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_image.dart';
 
 class CustomAppBarFlexableSpaceDetail extends StatelessWidget {
-  const CustomAppBarFlexableSpaceDetail({super.key, required this.cubit});
+  const CustomAppBarFlexableSpaceDetail({super.key, required this.cubit,});
 
   final PersonalPageCubit cubit;
   @override

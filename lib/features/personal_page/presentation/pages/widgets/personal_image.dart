@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_cubit.dart';
-
+ 
 class PersonalImage extends StatelessWidget {
-  const PersonalImage({super.key, required this.cubit});
+  const PersonalImage({super.key,
+   required this.cubit,
+   });
 
   final PersonalPageCubit cubit;
 
