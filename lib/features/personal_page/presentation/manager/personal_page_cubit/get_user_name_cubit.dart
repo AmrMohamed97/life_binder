@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/get_user_name_state.dart';
+ import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/get_user_name_state.dart';
 
 class GetUserNameCubit extends Cubit<GetUserNameState> {
   GetUserNameCubit() : super(PersonalPageInitialState());

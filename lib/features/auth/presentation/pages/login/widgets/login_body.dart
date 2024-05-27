@@ -3,13 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
+import 'package:note_app/core/constants/constances.dart';
 import 'package:note_app/core/constants/generated_images/generated_images.dart';
 import 'package:note_app/core/utiles/functions/functions.dart';
 import 'package:note_app/core/utiles/responsive/size_config.dart';
 import 'package:note_app/core/widgets/custom_general_button.dart';
 import 'package:note_app/core/widgets/custom_text_field.dart';
-import 'package:note_app/features/auth/presentation/manager/auth_cubit.dart';
-import 'package:note_app/features/auth/presentation/manager/auth_state.dart';
+ import 'package:note_app/features/auth/presentation/manager/auth_state.dart';
 import 'package:note_app/features/auth/presentation/manager/login_cubit.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
 
@@ -157,15 +157,12 @@ class LoginBody extends StatelessWidget {
     cubit.changeLoadingState(state: true);
     cubit.signInWithGoogle().then((value) {
       cubit.changeLoadingState(state: false);
-      Navigator.pushReplacementNamed(context, PagesKeys.personalPageView);
+      navigatorKey.currentState!.pushReplacementNamed( PagesKeys.personalPageView);
       cubit.addGoogleUser(
           userName: value.user?.displayName, email: value.user?.email);
     }).catchError((error) {
       cubit.changeLoadingState(state: false);
-      print('=============================================');
-      print(error.code.toString());
-      print('=============================================');
-      AwesomeDialog(
+        AwesomeDialog(
         context: context,
         title: 'error',
         body: Text(error.code.toString()),

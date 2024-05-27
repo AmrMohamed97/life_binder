@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/get_user_name_cubit.dart';
- import 'package:note_app/features/personal_page/presentation/pages/widgets/background_app_bar_image.dart';
+  import 'package:note_app/features/personal_page/presentation/pages/widgets/background_app_bar_image.dart';
  import 'package:note_app/features/personal_page/presentation/pages/widgets/custom_app_bar_flexible_space_detail.dart';
  import 'package:note_app/features/personal_page/presentation/pages/widgets/sign_out.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
@@ -33,14 +32,12 @@ class CustomPersonalAppBar extends StatelessWidget {
       stretch: true,
       stretchTriggerOffset: 100,
       expandedHeight: MediaQuery.sizeOf(context).height * .23344652,
-      flexibleSpace: FlexibleSpaceBar(
+      flexibleSpace:const  FlexibleSpaceBar(
         title: SafeArea(
-          child: IntrinsicHeight(
-            child: CustomAppBarFlexableSpaceDetail(),
-          ),
+          child: CustomAppBarFlexableSpaceDetail(),
         ),
         centerTitle: false,
-        stretchModes: const [
+        stretchModes:   [
           StretchMode.fadeTitle,
           StretchMode.blurBackground,
           StretchMode.zoomBackground
