@@ -12,7 +12,7 @@ import 'package:note_app/core/widgets/custom_text_field.dart';
 import 'package:note_app/features/add_note/presentation/manager/add_note_cubit.dart';
 import 'package:note_app/features/add_note/presentation/manager/add_note_state.dart';
 import 'package:note_app/features/add_note/presentation/pages/widgets/show_bottom_sheet.dart';
-import 'package:note_app/features/routes/pages_keys.dart';
+import 'package:note_app/core/routes/pages_keys.dart';
 
 class AddNotesBody extends StatelessWidget {
     AddNotesBody({super.key});

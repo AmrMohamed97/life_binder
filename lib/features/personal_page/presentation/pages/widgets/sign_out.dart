@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
 import 'package:note_app/core/constants/constances.dart';
- import 'package:note_app/features/routes/pages_keys.dart';
+ import 'package:note_app/core/routes/pages_keys.dart';
 
 class SignOut extends StatelessWidget {
   const SignOut({

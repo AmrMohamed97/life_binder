@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:note_app/features/add_note/presentation/pages/add_notes.dart';
 import 'package:note_app/features/auth/presentation/pages/login/login_view.dart';
 import 'package:note_app/features/auth/presentation/pages/register/register_view.dart';
- import 'package:note_app/features/personal_page/presentation/pages/widgets/search/search_view.dart';
+ import 'package:note_app/features/search/search_view.dart';
 import 'package:note_app/features/personal_page/presentation/pages/personal_page_view.dart';
-import 'package:note_app/features/routes/pages_keys.dart';
+import 'package:note_app/core/routes/pages_keys.dart';
 import 'package:note_app/core/widgets/no_data_widget.dart';
 
 class AppPages{

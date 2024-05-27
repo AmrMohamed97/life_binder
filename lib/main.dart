@@ -6,8 +6,8 @@ import 'package:note_app/features/add_note/presentation/manager/add_note_cubit.d
 import 'package:note_app/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_cubit.dart';
 import 'package:note_app/features/personal_page/presentation/manager/personal_page_change_image_cubit/personal_page_change_image_cubit.dart';
-import 'package:note_app/features/routes/app_pages.dart';
-import 'package:note_app/features/routes/pages_keys.dart';
+import 'package:note_app/core/routes/app_pages.dart';
+import 'package:note_app/core/routes/pages_keys.dart';
 import 'package:note_app/firebase_options.dart';
 import 'core/constants/constances.dart';
 import 'core/utiles/my_observer/my_observer.dart';

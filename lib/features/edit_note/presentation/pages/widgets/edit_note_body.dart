@@ -12,7 +12,7 @@ import 'package:note_app/features/add_note/presentation/pages/widgets/show_botto
 import 'package:note_app/features/edit_note/data/model/notes_model.dart';
 import 'package:note_app/features/edit_note/presentation/manager/edit_note_cubit.dart';
 import 'package:note_app/features/edit_note/presentation/manager/edit_note_state.dart';
-import 'package:note_app/features/routes/pages_keys.dart';
+import 'package:note_app/core/routes/pages_keys.dart';
 
 class EditNotesBody extends StatelessWidget {
   EditNotesBody({super.key, required this.noteModel});

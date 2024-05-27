@@ -11,7 +11,7 @@ import 'package:note_app/core/widgets/custom_text_field.dart';
 import 'package:note_app/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:note_app/features/auth/presentation/manager/auth_state.dart';
 import 'package:note_app/features/auth/presentation/manager/login_cubit.dart';
-import 'package:note_app/features/routes/pages_keys.dart';
+import 'package:note_app/core/routes/pages_keys.dart';
 
 class LoginBody extends StatelessWidget {
   LoginBody({super.key});

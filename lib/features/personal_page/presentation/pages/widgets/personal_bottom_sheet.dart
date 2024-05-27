@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
- import 'package:note_app/core/utiles/functions/functions.dart';
-import 'package:note_app/core/utiles/responsive/size_config.dart';
+ import 'package:note_app/core/utiles/responsive/size_config.dart';
+import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_bottom_sheet_form.dart';
  
 class PersonalBottomSheet extends StatelessWidget {
   const PersonalBottomSheet({
@@ -17,71 +17,9 @@ class PersonalBottomSheet extends StatelessWidget {
     return   Container(
           height: sizeConfig.height200 + sizeConfig.height50,
           padding: EdgeInsets.all(sizeConfig.defaultSize * 2),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Please Choose Image',
-                style: TextStyle(
-                  fontSize: sizeConfig.defaultSize * 3,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              InkWell(
-                onTap: () async {
-                  await cubit.getPersonalOrBackgroundImage(context,
-                      folder: folder);
-                },
-                child: Card(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: sizeConfig.defaultSize * 2,
-                        horizontal: sizeConfig.defaultSize * 3),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.image,
-                          size: 30,
-                        ),
-                        horizontalHeight(sizeConfig.width20),
-                        const Text(
-                          'From Gallery',
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              InkWell(
-                onTap: () async {
-                  await cubit.picPersonalOrBackgroundImage(
-                    context,
-                    folder: folder,
-                  );
-                },
-                child: Card(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: sizeConfig.defaultSize * 2,
-                        horizontal: sizeConfig.defaultSize * 3),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.camera,
-                          size: 30,
-                        ),
-                        horizontalHeight(sizeConfig.width20),
-                        const Text(
-                          'From Camera',
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          child: PersonalBottomSheetForm(sizeConfig: sizeConfig, cubit: cubit, folder: folder),
         );
      
   }
 }
+

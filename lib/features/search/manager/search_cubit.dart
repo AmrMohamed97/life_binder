@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/features/edit_note/data/model/notes_model.dart';
- import 'package:note_app/features/personal_page/presentation/pages/widgets/search/manager/search_state.dart';
+ import 'package:note_app/features/search/manager/search_state.dart';
 
 class SearchCubit extends Cubit<SearchStates> {
   SearchCubit() : super(InitialSearchState());
