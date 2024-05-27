@@ -13,152 +13,152 @@ import 'package:note_app/features/personal_page/presentation/pages/personal_page
 
 class PersonalPageCubit extends Cubit<PersonalPageState> {
   PersonalPageCubit() : super(PersonalPageInitialState());
-  bool isLoading = false;
-  File? personalFile;
-  String? personalImageUrl;
-  Reference? storageRefer;
-  String fileName = 'personalImage';
+  // bool isLoading = false;
+  // File? personalFile;
+  // String? personalImageUrl;
+  // Reference? storageRefer;
+  // String fileName = 'personalImage';
   String personalImage = '';
   String backgroundImage = '';
   String? userName;
   CollectionReference personalCollection =
       FirebaseFirestore.instance.collection('personal');
-  void changeLoadingState({required bool load}) {
-    isLoading = load;
-    emit(ChangeLoadState());
-  }
+  // void changeLoadingState({required bool load}) {
+  //   isLoading = load;
+  //   emit(ChangeLoadState());
+  // }
 
-  Future<void> getPersonalOrBackgroundImage(context, {required folder}) async {
-    try {
-      final returnedImage =
-          await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (returnedImage == null) return;
-      personalFile = File(returnedImage.path);
-      storageRefer = FirebaseStorage.instance
-          .ref('$folder/$folder${FirebaseAuth.instance.currentUser!.uid}');
-      changeLoadingState(load: true);
-      await storageRefer?.putFile(personalFile!);
-      personalImageUrl = await storageRefer?.getDownloadURL();
-      await personalCollection
-          .doc('$folder${FirebaseAuth.instance.currentUser!.uid}')
-          .set({
-        'imageURL': personalImageUrl,
-        'fileName': fileName,
-        'userUid': FirebaseAuth.instance.currentUser!.uid,
-      });
-      changeLoadingState(load: false);
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(
-          'your image uploaded success',
-          style: TextStyle(
-            color: AppColors.white,
-          ),
-        ),
-        duration: Duration(
-          seconds: 3,
-        ),
-        backgroundColor: AppColors.lightGreen,
-      ));
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const PersonalPageView(),
-          ));
-      emit(AddPersonalOrBackgroundImageSuccess());
-    } catch (e) {
-      changeLoadingState(load: false);
-      AwesomeDialog(
-        context: context,
-        title: 'error',
-        body: Text(e.toString()),
-      ).show();
-      emit(AddPersonalOrBackgroundImageError());
-    }
-  }
+  // Future<void> getPersonalOrBackgroundImage(context, {required folder}) async {
+  //   try {
+  //     final returnedImage =
+  //         await ImagePicker().pickImage(source: ImageSource.gallery);
+  //     if (returnedImage == null) return;
+  //     personalFile = File(returnedImage.path);
+  //     storageRefer = FirebaseStorage.instance
+  //         .ref('$folder/$folder${FirebaseAuth.instance.currentUser!.uid}');
+  //     changeLoadingState(load: true);
+  //     await storageRefer?.putFile(personalFile!);
+  //     personalImageUrl = await storageRefer?.getDownloadURL();
+  //     await personalCollection
+  //         .doc('$folder${FirebaseAuth.instance.currentUser!.uid}')
+  //         .set({
+  //       'imageURL': personalImageUrl,
+  //       'fileName': fileName,
+  //       'userUid': FirebaseAuth.instance.currentUser!.uid,
+  //     });
+  //     changeLoadingState(load: false);
+  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+  //       content: Text(
+  //         'your image uploaded success',
+  //         style: TextStyle(
+  //           color: AppColors.white,
+  //         ),
+  //       ),
+  //       duration: Duration(
+  //         seconds: 3,
+  //       ),
+  //       backgroundColor: AppColors.lightGreen,
+  //     ));
+  //     Navigator.pushReplacement(
+  //         context,
+  //         MaterialPageRoute(
+  //           builder: (context) => const PersonalPageView(),
+  //         ));
+  //     emit(AddPersonalOrBackgroundImageSuccess());
+  //   } catch (e) {
+  //     changeLoadingState(load: false);
+  //     AwesomeDialog(
+  //       context: context,
+  //       title: 'error',
+  //       body: Text(e.toString()),
+  //     ).show();
+  //     emit(AddPersonalOrBackgroundImageError());
+  //   }
+  // }
 
-  Future<void> picPersonalOrBackgroundImage(context, {required folder}) async {
-    try {
-      final returnedImage =
-          await ImagePicker().pickImage(source: ImageSource.camera);
-      if (returnedImage == null) return;
-      changeLoadingState(load: true);
-      personalFile = File(returnedImage.path);
-      storageRefer = FirebaseStorage.instance
-          .ref('$folder/$folder${FirebaseAuth.instance.currentUser!.uid}');
-      await storageRefer?.putFile(personalFile!);
-      personalImageUrl = await storageRefer?.getDownloadURL();
-      await personalCollection
-          .doc('$folder${FirebaseAuth.instance.currentUser!.uid}')
-          .set({
-        'imageURL': personalImageUrl,
-        'fileName': fileName,
-        'userUid': FirebaseAuth.instance.currentUser!.uid,
-      });
-      changeLoadingState(load: false);
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(
-          'your image uploaded success',
-          style: TextStyle(
-            color: AppColors.white,
-          ),
-        ),
-        duration: Duration(
-          seconds: 3,
-        ),
-        backgroundColor: AppColors.lightGreen,
-      ));
-      emit(AddPersonalOrBackgroundImageSuccess());
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const PersonalPageView(),
-          ));
-    } catch (e) {
-      changeLoadingState(load: false);
-      AwesomeDialog(
-        context: context,
-        title: 'error',
-        body: Text(e.toString()),
-      ).show();
-      emit(AddPersonalOrBackgroundImageError());
-    }
-  }
+  // Future<void> picPersonalOrBackgroundImage(context, {required folder}) async {
+  //   try {
+  //     final returnedImage =
+  //         await ImagePicker().pickImage(source: ImageSource.camera);
+  //     if (returnedImage == null) return;
+  //     changeLoadingState(load: true);
+  //     personalFile = File(returnedImage.path);
+  //     storageRefer = FirebaseStorage.instance
+  //         .ref('$folder/$folder${FirebaseAuth.instance.currentUser!.uid}');
+  //     await storageRefer?.putFile(personalFile!);
+  //     personalImageUrl = await storageRefer?.getDownloadURL();
+  //     await personalCollection
+  //         .doc('$folder${FirebaseAuth.instance.currentUser!.uid}')
+  //         .set({
+  //       'imageURL': personalImageUrl,
+  //       'fileName': fileName,
+  //       'userUid': FirebaseAuth.instance.currentUser!.uid,
+  //     });
+  //     changeLoadingState(load: false);
+  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+  //       content: Text(
+  //         'your image uploaded success',
+  //         style: TextStyle(
+  //           color: AppColors.white,
+  //         ),
+  //       ),
+  //       duration: Duration(
+  //         seconds: 3,
+  //       ),
+  //       backgroundColor: AppColors.lightGreen,
+  //     ));
+  //     emit(AddPersonalOrBackgroundImageSuccess());
+  //     Navigator.pushReplacement(
+  //         context,
+  //         MaterialPageRoute(
+  //           builder: (context) => const PersonalPageView(),
+  //         ));
+  //   } catch (e) {
+  //     changeLoadingState(load: false);
+  //     AwesomeDialog(
+  //       context: context,
+  //       title: 'error',
+  //       body: Text(e.toString()),
+  //     ).show();
+  //     emit(AddPersonalOrBackgroundImageError());
+  //   }
+  // }
 
-  Future<void> deletePersonalOrBackGroundImage(context,
-      {required folder}) async {
-    emit(ImageDeleteLoading());
-    try {
-      changeLoadingState(load: true);
-      await personalCollection
-          .doc('$folder${FirebaseAuth.instance.currentUser!.uid}')
-          .delete();
-      await FirebaseStorage.instance
-          .ref('$folder/$folder${FirebaseAuth.instance.currentUser!.uid}')
-          .delete();
-      changeLoadingState(load: false);
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(
-          'image deleted success',
-          style: TextStyle(
-            color: AppColors.white,
-          ),
-        ),
-        duration: Duration(
-          seconds: 3,
-        ),
-        backgroundColor: AppColors.lightGreen,
-      ));
-      emit(ImageDeletedSuccess());
-    } on Exception catch (e) {
-      changeLoadingState(load: false);
-      AwesomeDialog(
-        context: context,
-        title: 'error',
-        body: Text(e.toString()),
-      ).show();
-      emit(ImageDeletedError());
-    }
-  }
+  // Future<void> deletePersonalOrBackGroundImage(context,
+  //     {required folder}) async {
+  //   emit(ImageDeleteLoading());
+  //   try {
+  //     changeLoadingState(load: true);
+  //     await personalCollection
+  //         .doc('$folder${FirebaseAuth.instance.currentUser!.uid}')
+  //         .delete();
+  //     await FirebaseStorage.instance
+  //         .ref('$folder/$folder${FirebaseAuth.instance.currentUser!.uid}')
+  //         .delete();
+  //     changeLoadingState(load: false);
+  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+  //       content: Text(
+  //         'image deleted success',
+  //         style: TextStyle(
+  //           color: AppColors.white,
+  //         ),
+  //       ),
+  //       duration: Duration(
+  //         seconds: 3,
+  //       ),
+  //       backgroundColor: AppColors.lightGreen,
+  //     ));
+  //     emit(ImageDeletedSuccess());
+  //   } on Exception catch (e) {
+  //     changeLoadingState(load: false);
+  //     AwesomeDialog(
+  //       context: context,
+  //       title: 'error',
+  //       body: Text(e.toString()),
+  //     ).show();
+  //     emit(ImageDeletedError());
+  //   }
+  // }
   //----------------------------------------------------------------------------
 
   Future<void> getPersonalImage() async {
