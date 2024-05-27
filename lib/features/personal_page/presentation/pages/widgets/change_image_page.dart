@@ -4,7 +4,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
 import 'package:note_app/core/utiles/responsive/size_config.dart';
 import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_cubit.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_state.dart';
+import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_state.dart';
 import 'package:note_app/features/personal_page/presentation/pages/personal_page_view.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_bottom_sheet.dart';
 

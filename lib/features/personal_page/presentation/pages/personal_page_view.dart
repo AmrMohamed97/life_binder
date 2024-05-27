@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
 import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_cubit.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_state.dart';
+import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_state.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_page_body.dart';
 import 'package:note_app/features/routes/pages_keys.dart';
 

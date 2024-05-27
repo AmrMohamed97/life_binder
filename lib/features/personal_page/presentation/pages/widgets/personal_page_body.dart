@@ -2,7 +2,7 @@
   import 'package:note_app/features/personal_page/presentation/pages/widgets/list_item.dart';
 import 'package:note_app/core/widgets/no_data_widget.dart';
 import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_cubit.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_state.dart';
+import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_state.dart';
  import 'package:note_app/features/personal_page/presentation/pages/widgets/custom_personal_app_bar.dart';
  
 class BersonalPageBody extends StatelessWidget {

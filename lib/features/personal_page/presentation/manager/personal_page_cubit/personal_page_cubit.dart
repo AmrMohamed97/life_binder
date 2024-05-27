@@ -8,7 +8,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:note_app/features/edit_note/data/model/notes_model.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_state.dart';
+import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/personal_page_state.dart';
 import 'package:note_app/features/personal_page/presentation/pages/personal_page_view.dart';
 
 class PersonalPageCubit extends Cubit<PersonalPageState> {
@@ -159,6 +159,7 @@ class PersonalPageCubit extends Cubit<PersonalPageState> {
       emit(ImageDeletedError());
     }
   }
+  //----------------------------------------------------------------------------
 
   Future<void> getPersonalImage() async {
     emit(GetPersonalImageLoadingState());
@@ -168,18 +169,13 @@ class PersonalPageCubit extends Cubit<PersonalPageState> {
         .then((value) {
       if (value.exists) {
         personalImage = value['imageURL'];
-        // print("===============================================================");
-        // print('personalImage: $personalImage');
-        emit(GetPersonalImageSuccessState());
+         emit(GetPersonalImageSuccessState());
       } else {
         personalImage = '';
-        // print("============================ empty ===================================");
-        emit(GetPersonalImageSuccessWithoutData());
+         emit(GetPersonalImageSuccessWithoutData());
       }
     }).catchError((error) {
-      // print("===============================================================");
-      // print(error);
-      emit(GetPersonalImageErrorState());
+       emit(GetPersonalImageErrorState());
     });
   }
 
@@ -191,18 +187,13 @@ class PersonalPageCubit extends Cubit<PersonalPageState> {
         .then((value) {
       if (value.exists) {
         backgroundImage = value['imageURL'];
-        // print("===============================================================");
-        // print('personalImage: $backgroundImage');
         emit(GetBackgroundImageSuccessState());
       } else {
         backgroundImage = '';
-        // print("============================ empty ===================================");
-        emit(GetBackgroundImageSuccessWithoutData());
+         emit(GetBackgroundImageSuccessWithoutData());
       }
     }).catchError((error) {
-      // print("===============================================================");
-      // print(error);
-      emit(GetBackgroundImageErrorState());
+       emit(GetBackgroundImageErrorState());
     });
   }
 
@@ -249,69 +240,4 @@ class PersonalPageCubit extends Cubit<PersonalPageState> {
     }
   }
 
-  // Future<void> deleteListItem(
-  //     {required String id, required String imageName}) async {
-  //   emit(DeleteItemLoadingState());
-  //   try {
-  //     Reference imageRefer = FirebaseStorage.instance.ref('images/$imageName');
-  //     imageRefer.delete();
-  //     DocumentReference doc =
-  //         FirebaseFirestore.instance.collection('notes').doc(id);
-  //     doc.delete();
-  //     emit(DeleteItemSuccessState());
-  //   } on Exception catch (error) {
-  //     emit(DeleteItemErrorState(error: error));
-  //   }
-  // }
-
-  // TextEditingController searchController = TextEditingController();
-  // void assignControllerValue(value) {
-  //   searchController.text = value;
-  //   emit(AssignControllerValueState());
-  // }
-
-  // List<NotesModel> searchNote = [];
-  // Future<void> searchData({required searchItem}) async {
-  //   emit(SearchLoadingState());
-  //   try {
-  //     FirebaseFirestore.instance
-  //         .collection('notes')
-  //         .where('userUid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-  //         .orderBy('title')
-  //         .startAt(['$searchItem'])
-  //         .endAt(['$searchItem' '\uf8ff'])
-  //         .snapshots()
-  //         .listen((event) {
-  //           if (event.docs.isNotEmpty) {
-  //             searchNote = [];
-  //             for (var element in event.docs) {
-  //               searchNote.add(NotesModel.fromJson(element));
-  //             }
-  //             emit(SearchSuccessState());
-  //           } else {
-  //             searchNote = [];
-  //             emit(SearchSuccessWithoutDataState());
-  //           }
-  //         });
-  //   } catch (error) {
-  //     print('$error..........................................................');
-  //     emit(SearchErrorState(error: error));
-  //   }
-  // }
-  //-------------------------------------------------------------------------------------
-// Future<void> searchData({required searchItem})async{
-//   emit(SearchLoadingState());
-//   try {
-//     searchNote=[];
-//
-//     if (searchItem.isNotEmpty) {
-//       searchNote=notes.where((element) => element.title.contains(searchItem)).toList();
-//       searchNote.sort((a,b)=>a.title.compareTo(b.title));
-//       emit(SearchSuccessState());
-//     }
-//   } on Exception catch (e) {
-//     print('$e...........................................');
-//   }
-//
-// }
 }
