@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/features/add_note/presentation/manager/add_note_cubit.dart';
  import 'package:note_app/features/auth/presentation/manager/register_cubit.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_cubit/get_user_name_cubit.dart';
- import 'package:note_app/core/routes/app_pages.dart';
+  import 'package:note_app/core/routes/app_pages.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
+import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_cubit.dart';
 import 'package:note_app/firebase_options.dart';
 import 'core/constants/constances.dart';
 import 'core/utiles/my_observer/my_observer.dart';
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => AddNoteCubit()),
         BlocProvider(create: (context) => EditNoteCubit()),
         BlocProvider(create: (context) => RegisterCubit()),
-        BlocProvider(create: (context) => GetUserNameCubit()),
+        BlocProvider(create: (context) => PersonInfoCubit()),
         // BlocProvider(create: (context) => PersonalPageImageCubit()),
       ],
       child: MaterialApp(
