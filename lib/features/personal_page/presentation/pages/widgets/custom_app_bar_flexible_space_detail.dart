@@ -12,7 +12,7 @@ class CustomAppBarFlexableSpaceDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           GestureDetector(
