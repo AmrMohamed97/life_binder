@@ -1,4 +1,5 @@
- import 'package:flutter/material.dart';
+ import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/features/personal_page/presentation/manager/note_operation_cubit/note_operation_cubit.dart';
 import 'package:note_app/features/personal_page/presentation/manager/note_operation_cubit/note_operation_state.dart';
@@ -11,7 +12,16 @@ class PersonalPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(create: (context)=>NoteOperationCubit()..getUserNotes(),
-    child: BlocBuilder<NoteOperationCubit ,  NoteOperationState>(
+    child: BlocConsumer<NoteOperationCubit ,  NoteOperationState>(
+      listener: (context, state) {
+         if (state is DeleteItemErrorState) {
+           AwesomeDialog(
+             context: context,
+             title: 'error',
+             body: Text(state.error.code.toString()),
+           );
+         }
+      },
       builder: (context, state) {
         var cubit = BlocProvider.of<NoteOperationCubit>(context);
         return cubit.notes.isEmpty

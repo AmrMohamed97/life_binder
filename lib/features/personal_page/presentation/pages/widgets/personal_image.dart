@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_image_cubit/personal_image_cubit.dart';
- 
+import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_cubit.dart';
+
 class PersonalImage extends StatelessWidget {
   const PersonalImage({
     super.key,
     required this.cubit,
   });
 
-  final PersonalImageCubit cubit;
+  final PersonInfoCubit cubit;
 
   @override
   Widget build(BuildContext context) {
