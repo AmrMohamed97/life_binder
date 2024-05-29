@@ -1,4 +1,4 @@
-import 'package:flutter/animation.dart';
+ import 'package:flutter/material.dart';
 
 class AppColors{
   AppColors._();
@@ -10,4 +10,5 @@ class AppColors{
   static const Color  blue=Color(0xFF4267B2);
   static const Color  red=Color(0xFFdb3236);
   static const Color  offWhite=Color(0xFFcccccc);
+  static   Color?  appColor= Colors.blueGrey[50];
  }

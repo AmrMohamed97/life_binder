@@ -3,7 +3,8 @@ import 'package:note_app/features/personal_page/presentation/manager/person_info
 
 class UserNameWidget extends StatelessWidget {
   const UserNameWidget({
-    super.key, required this.cubit,
+    super.key,
+    required this.cubit,
   });
   final PersonInfoCubit cubit;
   @override
