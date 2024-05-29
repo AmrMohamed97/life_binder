@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
 import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_cubit.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/background_app_bar_image.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/custom_app_bar_flexible_space_detail.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
+import 'package:note_app/features/search/view/search_view.dart';
 
 class CustomPersonalAppBar extends StatelessWidget {
   const CustomPersonalAppBar({
@@ -22,7 +24,14 @@ class CustomPersonalAppBar extends StatelessWidget {
       actions: [
         IconButton(
           onPressed: () {
-            Navigator.pushNamed(context, PagesKeys.searchView);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SearchView(
+                      personCubit: cubit,
+                      ),
+                      ),
+            );
           },
           icon: const Icon(
             Icons.search,
