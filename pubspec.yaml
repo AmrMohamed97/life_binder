@@ -41,8 +41,10 @@ dependencies:
   flutter_svg: ^2.0.10+1
   font_awesome_flutter: ^10.7.0
   google_sign_in: ^6.2.1
+  image: ^4.2.0
   image_picker: ^1.0.7
   modal_progress_hud_nsn: ^0.5.1
+  pinch_zoom: ^2.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
