@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:note_app/core/constants/colors/app_colors.dart';
-import 'package:note_app/core/utiles/responsive/size_config.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_change_image_cubit/personal_page_change_image_cubit.dart';
+ import 'package:note_app/features/personal_page/presentation/manager/personal_page_change_image_cubit/personal_page_change_image_cubit.dart';
 import 'package:note_app/features/personal_page/presentation/manager/personal_page_change_image_cubit/personal_page_change_image_state.dart';
 import 'package:note_app/features/personal_page/presentation/pages/personal_page_view.dart';
-import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_bottom_sheet.dart';
-
+ import 'package:note_app/features/personal_page/presentation/pages/widgets/change_image_page_body.dart';
+import 'package:note_app/features/personal_page/presentation/pages/widgets/custom_change_image_app_bar.dart';
+  
 class ChangeImagePage extends StatelessWidget {
   const ChangeImagePage({
     super.key,
@@ -18,8 +17,7 @@ class ChangeImagePage extends StatelessWidget {
   final String image, folder, personalImage;
   @override
   Widget build(BuildContext context) {
-    SizeConfig sizeConfig = SizeConfig(context);
-    return BlocProvider(
+     return BlocProvider(
       create: (context) => PersonalPageChangeImageCubit(),
       child: BlocConsumer<PersonalPageChangeImageCubit,
           PersonalPageChangeImageStates>(
@@ -37,73 +35,11 @@ class ChangeImagePage extends StatelessWidget {
           return ModalProgressHUD(
             inAsyncCall: cubit.isLoading,
             child: Scaffold(
-              extendBodyBehindAppBar: true,
-              resizeToAvoidBottomInset: false,
-              appBar: AppBar(
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                leading: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(Icons.arrow_back,
-                        color: AppColors.gray,
-                        size: sizeConfig.defaultSize * 3.5)),
-                actions: [
-                  if (personalImage.isNotEmpty)
-                    Padding(
-                      padding: EdgeInsetsDirectional.only(
-                          top: sizeConfig.defaultSize),
-                      child: IconButton(
-                          onPressed: () async {
-                            await BlocProvider.of<PersonalPageChangeImageCubit>(
-                                    context)
-                                .deletePersonalOrBackGroundImage(context,
-                                    folder: folder);
-                          },
-                          icon: Icon(
-                            Icons.delete,
-                            size: sizeConfig.defaultSize * 4,
-                            color: Colors.red,
-                          )),
-                    ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.only(
-                        end: sizeConfig.defaultSize * 1.5,
-                        top: sizeConfig.defaultSize),
-                    child: IconButton(
-                        onPressed: () {
-                          showModalBottomSheet(
-                              context: context,
-                              builder: (context) {
-                                return PersonalBottomSheet(
-                                  cubit: cubit,
-                                  folder: folder,
-                                );
-                              });
-                        },
-                        icon: Icon(
-                          Icons.camera_alt,
-                          size: sizeConfig.defaultSize * 4,
-                          color: AppColors.gray,
-                        )),
-                  ),
-                ],
-              ),
-              body: personalImage
-                      .isEmpty //-------------------------------------------
-                  ? Image.asset(
-                      image,
-                      fit: BoxFit.fill,
-                      width: double.infinity,
-                      height: double.infinity,
-                    )
-                  : Image.network(
-                      personalImage,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                      height: double.infinity,
-                    ),
+               appBar: CustomChangeImageAppBar( personalImage: personalImage, folder: folder, cubit: cubit),
+              body: ChangeImagePageBody(
+                image:image ,
+               folder:  folder,
+                personalImage:personalImage ,),
             ),
           );
         },
@@ -111,3 +47,4 @@ class ChangeImagePage extends StatelessWidget {
     );
   }
 }
+
