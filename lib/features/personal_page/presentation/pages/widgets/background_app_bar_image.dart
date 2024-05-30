@@ -34,7 +34,7 @@ class BackgroundAppBarImage extends StatelessWidget {
                       const Positioned(
                         bottom: 20,
                         left: 20,
-                        child: const CircleAvatar(
+                        child:  CircleAvatar(
                             radius: 14,
                             child: Icon(
                               Icons.camera_alt_rounded,
