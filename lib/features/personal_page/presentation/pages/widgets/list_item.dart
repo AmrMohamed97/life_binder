@@ -30,7 +30,7 @@ class ListItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                PersonalNoteHeader(cubit: cubit),
+                PersonalNoteHeader(cubit: cubit,note: notes,),
                 const SizedBox(
                   height: 15,
                 ),

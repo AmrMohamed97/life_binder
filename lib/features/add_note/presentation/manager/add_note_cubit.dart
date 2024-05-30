@@ -67,6 +67,7 @@ class AddNoteCubit extends Cubit<AddNoteState>{
         'imageURL': imageUrl,
         'imageName': fileName,
         'userUid':FirebaseAuth.instance.currentUser!.uid,
+        'date':DateTime.now(),
       });
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(

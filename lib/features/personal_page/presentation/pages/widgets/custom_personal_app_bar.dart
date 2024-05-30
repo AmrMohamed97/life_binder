@@ -27,10 +27,10 @@ class CustomPersonalAppBar extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => SearchView(
-                      personCubit: cubit,
-                      ),
-                      ),
+                builder: (context) => SearchView(
+                  personCubit: cubit,
+                ),
+              ),
             );
           },
           icon: const Icon(
@@ -40,7 +40,7 @@ class CustomPersonalAppBar extends StatelessWidget {
           ),
         ),
       ],
-      floating: true,
+      floating: false,
       pinned: true,
       primary: true,
       snap: false,

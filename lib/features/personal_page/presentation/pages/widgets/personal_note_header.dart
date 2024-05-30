@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:jiffy/jiffy.dart';
+import 'package:note_app/features/edit_note/data/model/notes_model.dart';
 import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_cubit.dart';
 
 class PersonalNoteHeader extends StatelessWidget {
   const PersonalNoteHeader({
     super.key,
     required this.cubit,
+    required this.note,
   });
 
   final PersonInfoCubit cubit;
+  final NotesModel note;
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +34,10 @@ class PersonalNoteHeader extends StatelessWidget {
                 fontSize: 15,
               ),
             ),
-            const Text(
-              'since 8 day',
-              style: TextStyle(
+            Text(
+              //  Jiffy(note.date,'dd-MM-yyyy').fromNow() ,
+              Jiffy.parse(note.date).endOf(Unit.month).yMMMMEEEEd,
+              style: const TextStyle(
                 color: Colors.grey,
                 fontSize: 12,
               ),
