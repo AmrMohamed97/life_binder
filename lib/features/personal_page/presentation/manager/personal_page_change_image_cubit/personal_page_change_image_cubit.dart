@@ -5,9 +5,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
+import 'package:note_app/core/utiles/functions/custom_snack_bar.dart';
 import 'package:note_app/features/personal_page/presentation/manager/personal_page_change_image_cubit/personal_page_change_image_state.dart';
 import 'package:note_app/features/personal_page/presentation/pages/personal_page_view.dart';
 
@@ -26,6 +28,8 @@ class PersonalPageChangeImageCubit
     isLoading = load;
     emit(ChangeLoadState());
   }
+
+   
 
   Future<void> getPersonalOrBackgroundImage(context, {required folder}) async {
     try {
@@ -46,25 +50,7 @@ class PersonalPageChangeImageCubit
         'userUid': FirebaseAuth.instance.currentUser!.uid,
       });
       changeLoadingState(load: false);
-      /////////////////////////////////////////////////////////////////////////////////////////
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(
-          'your image uploaded success',
-          style: TextStyle(
-            color: AppColors.white,
-          ),
-        ),
-        duration: Duration(
-          seconds: 3,
-        ),
-        backgroundColor: AppColors.lightGreen,
-      ));
-      /////////////////////////////////////////////////////////////////////////////////////////
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const PersonalPageView(),
-          ));
+      
       emit(AddPersonalOrBackgroundImageSuccess());
     } catch (e) {
       changeLoadingState(load: false);
