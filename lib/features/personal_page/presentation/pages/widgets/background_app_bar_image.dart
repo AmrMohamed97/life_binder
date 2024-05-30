@@ -28,13 +28,15 @@ class BackgroundAppBarImage extends StatelessWidget {
             child: cubit.backgroundImage.isEmpty
                 ? Stack(
                     children: [
-                      Image.asset(
-                        'assets/images/4.png',
+                      Center(
+                        child: Image.asset(
+                          'assets/images/4.png',
+                        ),
                       ),
                       const Positioned(
                         bottom: 20,
                         left: 20,
-                        child:  CircleAvatar(
+                        child: CircleAvatar(
                             radius: 14,
                             child: Icon(
                               Icons.camera_alt_rounded,

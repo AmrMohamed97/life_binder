@@ -10,12 +10,12 @@ class NoteOperationCubit extends Cubit<NoteOperationState> {
 
   List<NotesModel> notes = [];
   //-----get notes
-   Future<void> getUserNotes() async {
+  Future<void> getUserNotes() async {
     emit(GetUserNotesLoadingState());
     try {
       FirebaseFirestore.instance
           .collection('notes')
-          .where('userUid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+          .where('userUid', isEqualTo: FirebaseAuth.instance.currentUser!.uid) 
           .snapshots()
           .listen((event) {
         if (event.docs.isNotEmpty) {
@@ -33,6 +33,7 @@ class NoteOperationCubit extends Cubit<NoteOperationState> {
       emit(GetUserNotesErrorState());
     }
   }
+
 //--------delete note
   Future<void> deleteListItem(
       {required String id, required String imageName}) async {
@@ -49,4 +50,3 @@ class NoteOperationCubit extends Cubit<NoteOperationState> {
     }
   }
 }
-
