@@ -10,6 +10,7 @@ class LoginLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           const Flexible(child: SizedBox(height: 100,)),
           Image.asset(
