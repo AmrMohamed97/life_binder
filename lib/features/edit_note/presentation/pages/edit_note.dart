@@ -6,20 +6,28 @@ import 'package:note_app/features/edit_note/presentation/manager/edit_note_cubit
 import 'package:note_app/features/edit_note/presentation/pages/widgets/edit_note_body.dart';
 
 class EditNotes extends StatelessWidget {
-   const EditNotes({super.key,required this.noteModel});
+  const EditNotes({super.key, required this.noteModel});
   final NotesModel noteModel;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:(context)=> EditNoteCubit(),
+      create: (context) => EditNoteCubit(),
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
         },
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            automaticallyImplyLeading: false,
+             leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.arrow_back,
+                color: AppColors.white,
+              ),
+            ),
             backgroundColor: AppColors.blue,
             title: const Text(
               'Edit Note',
@@ -29,7 +37,7 @@ class EditNotes extends StatelessWidget {
             ),
             centerTitle: true,
           ),
-          body: EditNotesBody(noteModel:noteModel),
+          body: EditNotesBody(noteModel: noteModel),
         ),
       ),
     );

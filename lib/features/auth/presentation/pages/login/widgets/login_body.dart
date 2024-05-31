@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
-import 'package:note_app/core/constants/constances.dart';
 import 'package:note_app/core/constants/generated_images/generated_images.dart';
 import 'package:note_app/core/utiles/functions/functions.dart';
 import 'package:note_app/core/utiles/responsive/size_config.dart';

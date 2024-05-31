@@ -27,7 +27,7 @@ class PersonalNoteImage extends StatelessWidget {
         aspectRatio: 2 / 1.15,
         child: Image.network(
           notes.imageUrl,
-          fit: BoxFit.fill,
+          fit: BoxFit.cover,
         ),
       ),
     );

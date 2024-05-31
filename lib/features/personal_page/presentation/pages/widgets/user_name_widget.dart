@@ -11,11 +11,15 @@ class UserNameWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return cubit.userName == null
         ? const Text(' ')
-        : Text(
-            '${cubit.userName}',
-            style: const TextStyle(color: Colors.black, fontSize: 18),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+        : FittedBox(
+            alignment: Alignment.centerLeft,
+            fit: BoxFit.scaleDown,
+            child: Text(
+              '${cubit.userName}',
+              style: const TextStyle(color: Colors.black, fontSize: 18),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           );
   }
 }
