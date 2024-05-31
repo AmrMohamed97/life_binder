@@ -34,13 +34,13 @@ class _AddNoteBodyFormState extends State<AddNoteBodyForm> {
           top: 14,
           bottom: 14,
         ),
-        child: Column(
-          children: [
+        child: CustomScrollView(
+          slivers: [
             AddNoteFields(widget: widget),
             if (widget.cubit.file == null)
               ClickToAddNullPicture(widget: widget),
             if (widget.cubit.file != null)
-              Expanded(
+              SliverToBoxAdapter(
                 child: Column(
                   children: [
                     const Text(

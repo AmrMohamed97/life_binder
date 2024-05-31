@@ -14,50 +14,52 @@ class AddNoteFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CustomTextField(
-          controller: widget.titleController,
-          validator: (value){
-            if(value!.isEmpty){
-              return 'This Field is required';
-            }
-            return null;
-          },
-          onSaved: (val){
-            widget.cubit.title=val;
-          },
-          textInputType: TextInputType.text,
-          maxLines:1 ,
-          prefixIcon: const Icon(Icons.note),
-          hintText: 'Title Note',
-          maxLength: 30,
-          maxLengthEnforcement: MaxLengthEnforcement.enforced,
-        ),
-        const SizedBox(height: 10,),
-        CustomTextField(
-          controller: widget.noteController,
-          validator: (value){
-            if(value!.isEmpty){
-              return 'This Field is required';
-            }
-            return null;
-          },
-          onSaved: (val){
-            widget.cubit.note=val;
-          },
-          textInputType: TextInputType.multiline,
-          maxLines: 5 ,
-          prefixIcon:const  Padding(
-            padding:   EdgeInsetsDirectional.only(
-                start:12, top: 0, end: 0, bottom: 8),
-            child:  FaIcon(FontAwesomeIcons.message),),
-          hintText: 'Note',
-          maxLength: 200,
-          maxLengthEnforcement: MaxLengthEnforcement.enforced,
-        ),
-        const  SizedBox(height: 10,),
-      ],
+    return SliverToBoxAdapter(
+      child: Column(
+        children: [
+          CustomTextField(
+            controller: widget.titleController,
+            validator: (value){
+              if(value!.isEmpty){
+                return 'This Field is required';
+              }
+              return null;
+            },
+            onSaved: (val){
+              widget.cubit.title=val;
+            },
+            textInputType: TextInputType.text,
+            maxLines:1 ,
+            prefixIcon: const Icon(Icons.note),
+            hintText: 'Title Note',
+            maxLength: 30,
+            maxLengthEnforcement: MaxLengthEnforcement.enforced,
+          ),
+          const SizedBox(height: 10,),
+          CustomTextField(
+            controller: widget.noteController,
+            validator: (value){
+              if(value!.isEmpty){
+                return 'This Field is required';
+              }
+              return null;
+            },
+            onSaved: (val){
+              widget.cubit.note=val;
+            },
+            textInputType: TextInputType.multiline,
+            maxLines: 5 ,
+            prefixIcon:const  Padding(
+              padding:   EdgeInsetsDirectional.only(
+                  start:12, top: 0, end: 0, bottom: 8),
+              child:  FaIcon(FontAwesomeIcons.message),),
+            hintText: 'Note',
+            maxLength: 200,
+            maxLengthEnforcement: MaxLengthEnforcement.enforced,
+          ),
+          const  SizedBox(height: 10,),
+        ],
+      ),
     );
   }
 }

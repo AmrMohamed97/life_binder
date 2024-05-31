@@ -12,7 +12,7 @@ class ClickToAddNullPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return SliverToBoxAdapter(
       child: Column(
         children: [
           const Text(

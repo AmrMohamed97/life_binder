@@ -12,24 +12,22 @@ class ClickToAddToExistPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: (){
-          FocusScope.of(context).requestFocus(FocusNode());
-          showModalBottomSheet(
-            context: context,
-            builder: (context){
-              return ShowBottomSheet(cubit: widget.cubit,);
-            },
-          );
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-          ),
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            child: Image.file(widget.cubit.file!,fit: BoxFit.fill,width: double.infinity,)),
-      ),
+    return GestureDetector(
+      onTap: (){
+        FocusScope.of(context).requestFocus(FocusNode());
+        showModalBottomSheet(
+          context: context,
+          builder: (context){
+            return ShowBottomSheet(cubit: widget.cubit,);
+          },
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+        ),
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          child: Image.file(widget.cubit.file!,fit: BoxFit.fill,width: double.infinity,)),
     );
   }
 }
