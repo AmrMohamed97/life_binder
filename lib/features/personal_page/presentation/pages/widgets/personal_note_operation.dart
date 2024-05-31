@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/core/constants/constances.dart';
 import 'package:note_app/core/utiles/functions/custom_show_modal_popup.dart';
 import 'package:note_app/features/edit_note/data/model/notes_model.dart';
 import 'package:note_app/features/edit_note/presentation/pages/edit_note.dart';
@@ -54,6 +55,7 @@ class PersosnalNoteOperation extends StatelessWidget {
                     await BlocProvider.of<NoteOperationCubit>(context)
                         .deleteListItem(
                             id: notes.id, imageName: notes.imageName);
+                    navigatorKey.currentState?.pop();
                   },
                   context: context);
             },

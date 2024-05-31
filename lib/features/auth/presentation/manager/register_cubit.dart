@@ -45,7 +45,7 @@ class RegisterCubit extends Cubit<AuthState> {
       }
       emit(RegisterErrorState());
     } catch (error) {
-      print('$error......................................');
+      // print('$error......................................');
       AwesomeDialog(
         context: context,
         title: 'error',

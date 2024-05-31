@@ -17,10 +17,10 @@ class NotesModel {
       required this.id});
   factory NotesModel.fromJson(json) {
     return NotesModel(
-      notes: json['note'],
-      title: json['title'],
-      imageUrl: json['imageURL'],
-      imageName: json['imageName'],
+      notes: json['note']??'',
+      title: json['title']??'',
+      imageUrl: json['imageURL']??'',
+      imageName: json['imageName']??'',
       userUid: json['userUid'],
       date: DateFormat('yyyy/MM/dd').format(json['date'].toDate()).toString(),
       id: json.id,

@@ -37,7 +37,7 @@ class SearchCubit extends Cubit<SearchStates> {
             }
           });
     } catch (error) {
-      print('$error..........................................................');
+      debugPrint('$error..........................................................');
       emit(SearchErrorState(error: error));
     }
   }

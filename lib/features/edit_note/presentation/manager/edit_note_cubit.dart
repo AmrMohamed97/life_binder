@@ -19,16 +19,16 @@ class EditNoteCubit extends Cubit<EditNoteState> {
   Reference? storageRefer;
   CollectionReference notesCollection =
       FirebaseFirestore.instance.collection('notes');
-  final titleController = TextEditingController();
-  final noteController = TextEditingController();
-  void initialFormFields({required String fieldTitle, required fieldNote}) {
-    if (titleController.text.isEmpty) {
-      titleController.text = fieldTitle;
-    }
-    if (noteController.text.isEmpty) {
-      noteController.text = fieldNote;
-    }
-  }
+  // final titleController = TextEditingController();
+  // final noteController = TextEditingController();
+  // void initialFormFields({required String fieldTitle, required fieldNote}) {
+  //   if (titleController.text.isEmpty) {
+  //     titleController.text = fieldTitle;
+  //   }
+  //   if (noteController.text.isEmpty) {
+  //     noteController.text = fieldNote;
+  //   }
+  // }
 
   Future<void> getImageFromGallery(context) async {
     try {
@@ -75,8 +75,10 @@ class EditNoteCubit extends Cubit<EditNoteState> {
   Future<void> uploadNote(context) async {
     emit(EditUploadLoading());
     try {
-      await storageRefer?.putFile(file!);
-      imageUrl = await storageRefer?.getDownloadURL();
+      if (file != null) {
+        await storageRefer?.putFile(file!);
+        imageUrl = await storageRefer?.getDownloadURL();
+      }
       await notesCollection.add({
         'title': title,
         'note': note,
@@ -130,9 +132,9 @@ class EditNoteCubit extends Cubit<EditNoteState> {
             'note': note,
           });
         } on Exception catch (e) {
-          print('======================================');
-          print(e.toString());
-          print('======================================');
+          debugPrint('======================================');
+          debugPrint(e.toString());
+          debugPrint('======================================');
         }
         emit(EditDataSuccessState());
       }

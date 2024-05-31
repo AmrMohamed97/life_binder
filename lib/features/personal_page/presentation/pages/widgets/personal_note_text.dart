@@ -14,6 +14,7 @@ class PersonalNoteText extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        if(notes.title.isNotEmpty)
         Text(
           notes.title,
           style: const TextStyle(fontWeight: FontWeight.bold),

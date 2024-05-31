@@ -32,12 +32,7 @@ void showBackDialog(
           onPressed: () => Navigator.of(context).pop(),
         ),
         CupertinoDialogAction(
-          onPressed: () async {
-            var pressaction;
-            if (onPressed != null) pressaction = onPressed;
-            pressaction();
-            Navigator.of(context).pop();
-          },
+          onPressed:  onPressed,
           child: const Text(
             'Confirm',
             style: TextStyle(

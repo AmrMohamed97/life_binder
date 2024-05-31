@@ -38,6 +38,7 @@ class ListItem extends StatelessWidget {
               ],
             ),
           ),
+          if(notes.imageUrl.isNotEmpty)
           PersonalNoteImage(notes: notes),
           Divider(
             height: 3,
@@ -47,6 +48,13 @@ class ListItem extends StatelessWidget {
             endIndent: 14,
           ),
           PersosnalNoteOperation(notes: notes),
+          Divider(
+            height: 3,
+            color: Colors.grey[350],
+            thickness: 1,
+            // indent: 12,
+            // endIndent: 14,
+          ),
         ],
       ),
     );

@@ -1,10 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
-import 'package:note_app/core/utiles/functions/sign_out.dart';
-import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_cubit.dart';
+ import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_cubit.dart';
 import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_state.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/custom_drawer.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/custom_personal_app_bar.dart';

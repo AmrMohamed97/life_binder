@@ -24,19 +24,28 @@ class AddNoteButton extends StatelessWidget {
       color: AppColors.blue,
       onTap: ()async{
         FocusScope.of(context).requestFocus(FocusNode());
-        if (formKey.currentState!.validate()) {
+        // if (formKey.currentState!.validate()) {
           formKey.currentState!.save();
-          if (widget.cubit.file != null) {
-            widget.cubit.uploadNote(context);
-          }
-          else{
-            AwesomeDialog(
-              context: context,
-              title: 'error',
-              body: const Text('must add Image'),
-            ).show();
-          }
+          // if (widget.cubit.file != null) {
+        if(widget.cubit.file == null && widget.cubit.title!.isEmpty && widget.cubit.note!.isEmpty){
+          AwesomeDialog(
+                  context: context,
+                  title: 'error',
+                  body: const Text('must add note or image'),
+                ).show();
+        }else{
+          widget.cubit.uploadNote(context);
         }
+
+          // }
+          // else{
+          //   AwesomeDialog(
+          //     context: context,
+          //     title: 'error',
+          //     body: const Text('must add Image'),
+          //   ).show();
+          // }
+        // }
       },
     );
   }

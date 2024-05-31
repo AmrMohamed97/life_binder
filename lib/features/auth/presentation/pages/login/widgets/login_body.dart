@@ -153,13 +153,13 @@ class LoginBody extends StatelessWidget {
     );
   }
 
-  void signInWithGoogle(LoginCubit cubit, BuildContext context) {
+  void signInWithGoogle(LoginCubit cubit, BuildContext context) async {
     cubit.changeLoadingState(state: true);
-    cubit.signInWithGoogle().then((value) {
+    await cubit.signInWithGoogle().then((value) async{
       cubit.changeLoadingState(state: false);
-      navigatorKey.currentState!.pushReplacementNamed( PagesKeys.personalPageView);
-      cubit.addGoogleUser(
+       await  cubit.addGoogleUser(
           userName: value.user?.displayName, email: value.user?.email);
+        Navigator.of(context).pushReplacementNamed( PagesKeys.personalPageView);
     }).catchError((error) {
       cubit.changeLoadingState(state: false);
         AwesomeDialog(

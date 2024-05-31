@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,25 +15,38 @@ import 'package:note_app/features/edit_note/presentation/manager/edit_note_cubit
 import 'package:note_app/features/edit_note/presentation/manager/edit_note_state.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
 
-class EditNotesBody extends StatelessWidget {
-  EditNotesBody({super.key, required this.noteModel});
+class EditNotesBody extends StatefulWidget {
+  const EditNotesBody({super.key, required this.noteModel});
   final NotesModel noteModel;
+
+  @override
+  State<EditNotesBody> createState() => _EditNotesBodyState();
+}
+
+class _EditNotesBodyState extends State<EditNotesBody> {
   final formKey = GlobalKey<FormState>();
+  final titleController = TextEditingController();
+  final noteController = TextEditingController();
+   @override
+  void initState() {
+         titleController.text=widget.noteModel.title;
+         noteController.text= widget.noteModel.notes;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig sizeConfig = SizeConfig(context);
-    var cubit = BlocProvider.of<EditNoteCubit>(context);
-    cubit.initialFormFields(
-        fieldTitle: noteModel.title, fieldNote: noteModel.notes);
+
     return BlocConsumer<EditNoteCubit, EditNoteState>(
       listener: (context, state) {
+        var cubit =BlocProvider.of<EditNoteCubit>(context);
         if (state is EditDataLoadingState) {
           cubit.isLoading = true;
         } else if (state is EditDataSuccessState) {
           cubit.file = null;
-          cubit.titleController.clear();
-          cubit.noteController.clear();
+           titleController.clear();
+           noteController.clear();
           cubit.isLoading = false;
           Navigator.pushReplacementNamed(context, PagesKeys.personalPageView);
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -52,6 +66,7 @@ class EditNotesBody extends StatelessWidget {
         }
       },
       builder: (context, state) {
+        var cubit=BlocProvider.of<EditNoteCubit>(context);
         return ModalProgressHUD(
           inAsyncCall: cubit.isLoading,
           child: Form(
@@ -66,7 +81,7 @@ class EditNotesBody extends StatelessWidget {
               child: Column(
                 children: [
                   CustomTextField(
-                    controller: cubit.titleController,
+                    controller: titleController,
                     onSaved: (val) {
                       cubit.title = val;
                     },
@@ -85,7 +100,7 @@ class EditNotesBody extends StatelessWidget {
                   ),
                   verticalHeight(sizeConfig.defaultSize),
                   CustomTextField(
-                    controller: cubit.noteController,
+                    controller: noteController,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'This Field is required';
@@ -177,11 +192,7 @@ class EditNotesBody extends StatelessWidget {
                                       sizeConfig.defaultSize),
                                 ),
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
-                                child: Image.network(
-                                  noteModel.imageUrl,
-                                  fit: BoxFit.fill,
-                                  width: double.infinity,
-                                ),
+                                child: Image.asset('assets/images/addImage.PNG',width: double.infinity,),
                               ),
                             ),
                           ),
@@ -189,18 +200,27 @@ class EditNotesBody extends StatelessWidget {
                       ),
                     ),
                   CustomGeneralButton(
-                    verticalPadding: sizeConfig.height10,
-                    horizontalPadding: sizeConfig.width1,
-                    height: sizeConfig.height50 * 1.13,
+                    verticalPadding: 10,
+                    horizontalPadding: 1,
+                    height: 50 * 1.13,
                     label: 'Edit Note',
                     color: AppColors.blue,
                     onTap: () async {
                       // FocusScope.of(context).requestFocus(FocusNode());
-                      if (formKey.currentState!.validate()) {
+                      // if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
-                        await cubit.updateData(
-                            id: noteModel.id, imageName: noteModel.imageName);
-                      }
+                        if (cubit.file ==null && cubit.title!.isEmpty && cubit.note!.isEmpty) {
+                          AwesomeDialog(
+                                  context: context,
+                                  title: 'error',
+                                  body: const Text('must add Note or Image'),
+                                ).show();
+
+        }else{
+                          await cubit.updateData(
+                              id: widget.noteModel.id, imageName: widget.noteModel.imageName);
+                        }
+                      // }
                     },
                   ),
                 ],

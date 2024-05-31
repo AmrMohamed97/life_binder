@@ -9,8 +9,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
-import 'package:note_app/core/utiles/functions/custom_snack_bar.dart';
-import 'package:note_app/features/personal_page/presentation/manager/personal_page_change_image_cubit/personal_page_change_image_state.dart';
+ import 'package:note_app/features/personal_page/presentation/manager/personal_page_change_image_cubit/personal_page_change_image_state.dart';
 import 'package:note_app/features/personal_page/presentation/pages/personal_page_view.dart';
 
 class PersonalPageChangeImageCubit

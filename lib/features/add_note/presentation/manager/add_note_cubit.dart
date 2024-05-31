@@ -59,8 +59,10 @@ class AddNoteCubit extends Cubit<AddNoteState>{
   Future<void> uploadNote(context)async{
      emit(NoteUploadLoading());
     try {
-      await storageRefer?.putFile(file!);
-      imageUrl = await storageRefer?.getDownloadURL();
+      if (file != null) {
+        await storageRefer?.putFile(file!);
+        imageUrl = await storageRefer?.getDownloadURL();
+      }
       await notesCollection.add({
         'title': title,
         'note': note,
