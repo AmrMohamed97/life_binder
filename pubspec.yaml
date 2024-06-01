@@ -28,28 +28,29 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  animated_snack_bar:
-  awesome_dialog:
-  cloud_firestore: 
-  cupertino_icons:
-  firebase_auth: 
-  firebase_core: 
-  firebase_storage: 
+  animated_snack_bar: null
+  awesome_dialog: null
+  cloud_firestore: null
+  cupertino_icons: null
+  firebase_auth: null
+  firebase_core: null
+  firebase_storage: null
   flutter:
     sdk: flutter
-  flutter_bloc:
-  flutter_svg: 
-  font_awesome_flutter: 
-  google_sign_in:
-  image:
-  image_picker:
-  intl: 
-  jiffy:
-  modal_progress_hud_nsn:
-  pinch_zoom:
+  flutter_bloc: null
+  flutter_local_notifications: ^17.1.2
+  flutter_svg: null
+  font_awesome_flutter: null
+  google_sign_in: null
+  image: null
+  image_picker: null
+  intl: null
+  jiffy: null
+  modal_progress_hud_nsn: null
+  pinch_zoom: null
 
 dev_dependencies:
-  flutter_lints: 
+  flutter_lints: null
   flutter_test:
     sdk: flutter
 
