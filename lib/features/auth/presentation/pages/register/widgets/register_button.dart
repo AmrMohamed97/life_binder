@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/core/widgets/custom_general_button.dart';
+import 'package:note_app/core/widgets/custom_sliding_widget.dart';
 import 'package:note_app/features/auth/presentation/manager/register_cubit.dart';
 
 class RegisterButton extends StatelessWidget {
@@ -14,14 +15,18 @@ class RegisterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomGeneralButton(
-      label: 'Register',
-      onTap: () async {
-        if (formKey.currentState!.validate()) {
-          formKey.currentState!.save();
-          await cubit.register(context);
-        }
-      },
+    return CustomSlidingWidget(
+      x: 6,
+      y: 0,
+      child: CustomGeneralButton(
+        label: 'Register',
+        onTap: () async {
+          if (formKey.currentState!.validate()) {
+            formKey.currentState!.save();
+            await cubit.register(context);
+          }
+        },
+      ),
     );
   }
 }
