@@ -1,13 +1,12 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/core/constants/colors/app_colors.dart';
-import 'package:note_app/core/routes/pages_keys.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_page_loading.dart';
- import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_cubit.dart';
+import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_cubit.dart';
 import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_state.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/custom_drawer.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/custom_personal_app_bar.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_page_body.dart';
+import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_page_operation_button.dart';
 
 class PersonalPageView extends StatefulWidget {
   const PersonalPageView({super.key});
@@ -32,32 +31,24 @@ class _PersonalPageViewState extends State<PersonalPageView> {
           key: scaffoldKey,
           drawer: CustomDrawer(cubit: cubit),
           resizeToAvoidBottomInset: false,
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: AppColors.blue,
-            onPressed: () {
-              Navigator.pushNamed(context, PagesKeys.addNotes);
-            },
-            child: const Icon(
-              Icons.add,
-              color: AppColors.white,
-            ),
-          ),
           body: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
-              if(state is GetPersonalImageLoadingState)
-              const SliverFillRemaining(
-                child: PersonalPageLoading(),
-              ),
-              if(state is! GetPersonalImageLoadingState)
-              CustomPersonalAppBar(
-                cubit: cubit,
-                scaffoldKey: scaffoldKey,
-              ),
-              if(state is! GetPersonalImageLoadingState)
-              PersonalPageBody(
-                personCubit: cubit,
-              ),
+              if (state is GetPersonalImageLoadingState)
+                const SliverFillRemaining(
+                  child: PersonalPageLoading(),
+                ),
+              if (state is! GetPersonalImageLoadingState)
+                CustomPersonalAppBar(
+                  cubit: cubit,
+                  scaffoldKey: scaffoldKey,
+                ),
+              if (state is! GetPersonalImageLoadingState)
+                const PersonalPageOperationButton(),
+              if (state is! GetPersonalImageLoadingState)
+                PersonalPageBody(
+                  personCubit: cubit,
+                ),
             ],
           ),
         );
