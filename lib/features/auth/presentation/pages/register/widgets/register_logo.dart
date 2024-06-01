@@ -10,7 +10,7 @@ class RegisterLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomSlidingWidget(
-      x: 6,
+      x: 5,
       y: 0,
       child: Image.asset(
         GeneratedImages.logoImg,

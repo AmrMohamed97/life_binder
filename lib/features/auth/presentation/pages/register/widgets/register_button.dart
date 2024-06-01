@@ -16,7 +16,7 @@ class RegisterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomSlidingWidget(
-      x: 6,
+      x: 4,
       y: 0,
       child: CustomGeneralButton(
         label: 'Register',
