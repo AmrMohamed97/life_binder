@@ -17,7 +17,7 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomSlidingWidget(
       x: 0,
-      y: 4.5,
+      y: 5.8,
       child: CustomGeneralButton(
         label: 'Login',
         onTap: () async {

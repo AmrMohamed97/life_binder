@@ -22,6 +22,9 @@ class CustomDrawer extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(
             child: UserAccountsDrawerHeader(
+              decoration: const BoxDecoration(
+                color: AppColors.blue,
+              ),
               accountName: Text(
                 '${cubit.userName}',
                 style: const TextStyle(
