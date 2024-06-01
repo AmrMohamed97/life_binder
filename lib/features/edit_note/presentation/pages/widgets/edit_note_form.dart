@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/features/edit_note/data/model/notes_model.dart';
 import 'package:note_app/features/edit_note/presentation/manager/edit_note_cubit.dart';
 import 'package:note_app/features/edit_note/presentation/pages/widgets/edit_note_body.dart';
 import 'package:note_app/features/edit_note/presentation/pages/widgets/edit_note_button.dart';
@@ -14,6 +15,7 @@ class EditNoteForm extends StatelessWidget {
     required this.cubit,
     required this.noteController,
     required this.widget,
+    required this.noteModel,
   });
 
   final GlobalKey<FormState> formKey;
@@ -21,6 +23,7 @@ class EditNoteForm extends StatelessWidget {
   final EditNoteCubit cubit;
   final TextEditingController noteController;
   final EditNotesBody widget;
+  final NotesModel noteModel;
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +39,9 @@ class EditNoteForm extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             EditNoteFormFields(titleController: titleController, cubit: cubit,noteController: noteController),
-            if (cubit.file != null)
-              EditNoteImage(cubit: cubit),
-            if (cubit.file == null)
+            if (noteModel.imageUrl.isNotEmpty)
+              EditNoteImage(cubit: cubit,imageUrl: noteModel.imageUrl),
+            if (noteModel.imageUrl.isEmpty)
               EditNoteDefaultImage(cubit: cubit),
             EditNoteButton(formKey: formKey, cubit: cubit, widget: widget),
           ],

@@ -6,9 +6,11 @@ class EditNoteImage extends StatelessWidget {
   const EditNoteImage({
     super.key,
     required this.cubit,
+    required this.imageUrl,
   });
 
   final EditNoteCubit cubit;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +40,15 @@ class EditNoteImage extends StatelessWidget {
                     10),
               ),
               clipBehavior: Clip.antiAliasWithSaveLayer,
-              child: Image.file(
+              child: cubit.file!=null?Image.file(
                 cubit.file!,
                 fit: BoxFit.fill,
                 width: double.infinity,
-              ),
+              ):Image.network(
+              imageUrl,
+              fit: BoxFit.fill,
+              width: double.infinity,
+            ),
             ),
           ),
         ],

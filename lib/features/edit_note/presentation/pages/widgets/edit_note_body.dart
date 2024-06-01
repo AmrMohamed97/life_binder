@@ -65,7 +65,9 @@ class _EditNotesBodyState extends State<EditNotesBody> {
               titleController: titleController,
               cubit: cubit,
               noteController: noteController,
-              widget: widget),
+              widget: widget,
+              noteModel:widget.noteModel,
+          ),
         );
       },
     );
