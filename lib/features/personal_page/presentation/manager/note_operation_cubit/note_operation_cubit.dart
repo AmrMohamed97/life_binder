@@ -15,7 +15,8 @@ class NoteOperationCubit extends Cubit<NoteOperationState> {
     try {
       FirebaseFirestore.instance
           .collection('notes')
-          .where('userUid', isEqualTo: FirebaseAuth.instance.currentUser!.uid) 
+          .where('userUid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+          .orderBy('date', descending: true)
           .snapshots()
           .listen((event) {
         if (event.docs.isNotEmpty) {
