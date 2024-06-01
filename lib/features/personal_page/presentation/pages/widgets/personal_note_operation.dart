@@ -16,27 +16,27 @@ class PersosnalNoteOperation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          GestureDetector(
-            onTap: () {
-              showBackDialog(
-                  message: 'Are you sure you want to edit this note?',
-                  title: 'Edit Note',
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => EditNotes(noteModel: notes),
-                      ),
-                    );
-                  },
-                  context: context);
-            },
-            child: const Row(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        GestureDetector(
+          onTap: () {
+            showBackDialog(
+                message: 'Are you sure you want to edit this note?',
+                title: 'Edit Note',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditNotes(noteModel: notes),
+                    ),
+                  );
+                },
+                context: context);
+          },
+          child: const Padding(
+            padding: EdgeInsets.symmetric(vertical: 5.0),
+            child: Row(
               children: [
                 Icon(Icons.edit),
                 SizedBox(
@@ -46,20 +46,22 @@ class PersosnalNoteOperation extends StatelessWidget {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              showBackDialog(
-                  message: 'Are you sure you want to delete this note?',
-                  title: 'Delete Note',
-                  onPressed: () async {
-                    await BlocProvider.of<NoteOperationCubit>(context)
-                        .deleteListItem(
-                            id: notes.id, imageName: notes.imageName);
-                    navigatorKey.currentState?.pop();
-                  },
-                  context: context);
-            },
-            child: const Row(
+        ),
+        GestureDetector(
+          onTap: () {
+            showBackDialog(
+                message: 'Are you sure you want to delete this note?',
+                title: 'Delete Note',
+                onPressed: () async {
+                  await BlocProvider.of<NoteOperationCubit>(context)
+                      .deleteListItem(id: notes.id, imageName: notes.imageName);
+                  navigatorKey.currentState?.pop();
+                },
+                context: context);
+          },
+          child: const Padding(
+            padding: EdgeInsets.symmetric(vertical: 5.0),
+            child: Row(
               children: [
                 Icon(
                   Icons.delete,
@@ -72,8 +74,8 @@ class PersosnalNoteOperation extends StatelessWidget {
               ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
