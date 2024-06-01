@@ -5,7 +5,7 @@ import 'package:note_app/features/auth/presentation/pages/login/widgets/login_bo
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
-  @override
+   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => LoginCubit(),

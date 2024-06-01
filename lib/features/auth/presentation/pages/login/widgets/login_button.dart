@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/core/widgets/custom_general_button.dart';
+import 'package:note_app/core/widgets/custom_sliding_widget.dart';
 import 'package:note_app/features/auth/presentation/manager/login_cubit.dart';
 
 class LoginButton extends StatelessWidget {
@@ -14,14 +15,16 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomGeneralButton(
-      label: 'Login',
-      onTap: () async {
-        formKey.currentState!.save();
-        if (formKey.currentState!.validate()) {
-          await cubit.signIn(context);
-        }
-      },
+    return CustomSlidingWidget(
+      child: CustomGeneralButton(
+        label: 'Login',
+        onTap: () async {
+          formKey.currentState!.save();
+          if (formKey.currentState!.validate()) {
+            await cubit.signIn(context);
+          }
+        },
+      ),
     );
   }
 }
