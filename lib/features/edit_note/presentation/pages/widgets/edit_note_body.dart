@@ -61,15 +61,22 @@ class _EditNotesBodyState extends State<EditNotesBody> {
         return ModalProgressHUD(
           inAsyncCall: cubit.isLoading,
           child: EditNoteForm(
-              formKey: formKey,
-              titleController: titleController,
-              cubit: cubit,
-              noteController: noteController,
-              widget: widget,
-              noteModel:widget.noteModel,
+            formKey: formKey,
+            titleController: titleController,
+            cubit: cubit,
+            noteController: noteController,
+            widget: widget,
+            noteModel: widget.noteModel,
           ),
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    titleController.dispose();
+    noteController.dispose();
+    super.dispose();
   }
 }

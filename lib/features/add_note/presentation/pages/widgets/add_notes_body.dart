@@ -6,10 +6,20 @@ import 'package:note_app/features/add_note/presentation/manager/add_note_state.d
 import 'package:note_app/features/add_note/presentation/pages/widgets/add_note_body_form.dart';
  import 'package:note_app/core/routes/pages_keys.dart';
 
-class AddNotesBody extends StatelessWidget {
-    AddNotesBody({super.key});
+class AddNotesBody extends StatefulWidget {
+    const AddNotesBody({super.key});
+
+  @override
+  State<AddNotesBody> createState() => _AddNotesBodyState();
+}
+
+class _AddNotesBodyState extends State<AddNotesBody> {
      final titleController=TextEditingController();
+
     final noteController=TextEditingController();
+
+ 
+
   @override
   Widget build(BuildContext context) {
      var cubit=BlocProvider.of<AddNoteCubit>(context);
@@ -34,6 +44,13 @@ class AddNotesBody extends StatelessWidget {
         );
       },
     );
+  }
+
+   @override
+  void dispose() {
+    titleController.dispose();
+    noteController.dispose();
+    super.dispose();
   }
 }
 
