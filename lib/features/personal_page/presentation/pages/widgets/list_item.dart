@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
- import 'package:note_app/features/edit_note/data/model/notes_model.dart';
+import 'package:note_app/features/edit_note/data/model/notes_model.dart';
 import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_cubit.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_note_header.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_note_image.dart';
-import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_note_operation.dart';
+import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_note_message_operation.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_note_text.dart';
 
 //amr mohamed
@@ -30,7 +30,10 @@ class ListItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                PersonalNoteHeader(cubit: cubit,note: notes,),
+                PersonalNoteHeader(
+                  cubit: cubit,
+                  note: notes,
+                ),
                 const SizedBox(
                   height: 15,
                 ),
@@ -38,8 +41,7 @@ class ListItem extends StatelessWidget {
               ],
             ),
           ),
-          if(notes.imageUrl.isNotEmpty)
-          PersonalNoteImage(notes: notes),
+          if (notes.imageUrl.isNotEmpty) PersonalNoteImage(notes: notes),
           Divider(
             height: 3,
             color: Colors.grey[350],
@@ -47,7 +49,7 @@ class ListItem extends StatelessWidget {
             indent: 12,
             endIndent: 14,
           ),
-          PersosnalNoteOperation(notes: notes),
+          PersosnalNoteMessageOperation(notes: notes),
           Divider(
             height: 3,
             color: Colors.grey[350],
@@ -60,9 +62,3 @@ class ListItem extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-

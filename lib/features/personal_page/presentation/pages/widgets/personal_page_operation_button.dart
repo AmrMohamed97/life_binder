@@ -17,7 +17,7 @@ class PersonalPageOperationButton extends StatelessWidget {
           //   height: 1,
           // ),
           const SizedBox(
-            height: 10,
+            height: 11,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

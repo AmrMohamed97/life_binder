@@ -6,8 +6,8 @@ import 'package:note_app/features/edit_note/data/model/notes_model.dart';
 import 'package:note_app/features/edit_note/presentation/pages/edit_note.dart';
 import 'package:note_app/features/personal_page/presentation/manager/note_operation_cubit/note_operation_cubit.dart';
 
-class PersosnalNoteOperation extends StatelessWidget {
-  const PersosnalNoteOperation({
+class PersosnalNoteMessageOperation extends StatelessWidget {
+  const PersosnalNoteMessageOperation({
     super.key,
     required this.notes,
   });
