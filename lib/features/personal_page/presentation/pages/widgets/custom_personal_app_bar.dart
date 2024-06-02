@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
- import 'package:note_app/core/constants/colors/app_colors.dart';
+import 'package:note_app/core/constants/colors/app_colors.dart';
 import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_cubit.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/background_app_bar_image.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/custom_app_bar_flexible_space_detail.dart';
- import 'package:note_app/features/search/view/search_view.dart';
+import 'package:note_app/features/search/view/search_view.dart';
 
 class CustomPersonalAppBar extends StatelessWidget {
   const CustomPersonalAppBar({
@@ -18,7 +18,7 @@ class CustomPersonalAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: AppColors.appColor,
+      backgroundColor: const Color(0xffFFFFFF),
       actions: [
         IconButton(
           onPressed: () {
@@ -40,7 +40,9 @@ class CustomPersonalAppBar extends StatelessWidget {
       ],
       floating: false,
       pinned: true,
+      elevation: 0,
       primary: true,
+      shadowColor: const Color(0xffFFFFFF),
       snap: false,
       stretch: true,
       toolbarHeight: kToolbarHeight,
@@ -55,7 +57,7 @@ class CustomPersonalAppBar extends StatelessWidget {
           size: 33,
         ),
       ),
-      expandedHeight: MediaQuery.sizeOf(context).height * .23344652,
+      expandedHeight: MediaQuery.sizeOf(context).height * .23344652 + 20,
       flexibleSpace: FlexibleSpaceBar(
         title: SafeArea(
           child: CustomAppBarFlexableSpaceDetail(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/core/widgets/custom_general_button.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_page_menu_item.dart';
- 
+
 class PersonalPageOperationButton extends StatelessWidget {
   const PersonalPageOperationButton({
     super.key,
@@ -13,11 +13,11 @@ class PersonalPageOperationButton extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Divider(
-            height: 1,
-          ),
+          // const Divider(
+          //   height: 1,
+          // ),
           const SizedBox(
-            height: 30,
+            height: 10,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

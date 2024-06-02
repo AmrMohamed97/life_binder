@@ -15,42 +15,45 @@ class BackgroundAppBarImage extends StatelessWidget {
       child: BlocBuilder<BackgroundImageCubit, BackgroundImageState>(
         builder: (context, state) {
           var cubit = BlocProvider.of<BackgroundImageCubit>(context);
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ChangeImagePage(
-                          personalImage: cubit.backgroundImage,
-                          image: 'assets/images/4.png',
-                          folder: 'background')));
-            },
-            child: cubit.backgroundImage.isEmpty
-                ? Stack(
-                    children: [
-                      Center(
-                        child: Image.asset(
-                          'assets/images/4.png',
+          return Padding(
+            padding: const EdgeInsetsDirectional.only(bottom: 60),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ChangeImagePage(
+                            personalImage: cubit.backgroundImage,
+                            image: 'assets/images/4.png',
+                            folder: 'background')));
+              },
+              child: cubit.backgroundImage.isEmpty
+                  ? Stack(
+                      children: [
+                        Center(
+                          child: Image.asset(
+                            'assets/images/4.png',
+                          ),
                         ),
-                      ),
-                      const Positioned(
-                        bottom: 20,
-                        left: 20,
-                        child: CircleAvatar(
-                            radius: 14,
-                            child: Icon(
-                              Icons.camera_alt_rounded,
-                              color: Colors.black,
-                              size: 16,
-                            )),
-                      )
-                    ],
-                  )
-                : Image.network(
-                    cubit.backgroundImage,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                  ),
+                        const Positioned(
+                          bottom: 20,
+                          left: 20,
+                          child: CircleAvatar(
+                              radius: 14,
+                              child: Icon(
+                                Icons.camera_alt_rounded,
+                                color: Colors.black,
+                                size: 16,
+                              )),
+                        )
+                      ],
+                    )
+                  : Image.network(
+                      cubit.backgroundImage,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                    ),
+            ),
           );
         },
       ),
