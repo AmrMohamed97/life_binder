@@ -5,6 +5,7 @@ import 'package:note_app/features/auth/presentation/pages/register/register_view
 import 'package:note_app/features/personal_page/presentation/pages/personal_page_view.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
 import 'package:note_app/core/widgets/no_data_widget.dart';
+import 'package:note_app/features/tasks/add_task.dart';
 
 class AppPages {
   AppPages._();
@@ -15,5 +16,6 @@ class AppPages {
     PagesKeys.addNotes: (context) => const AddNotes(),
     // PagesKeys.searchView:(context)=>const SearchView(),
     PagesKeys.personalPageView: (context) => const PersonalPageView(),
+    PagesKeys.addTask: (context) => const AddTask(),
    };
 }

@@ -44,8 +44,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         navigatorKey: navigatorKey,
         routes: AppPages.routes,
-        initialRoute: 
-        isLogin ? PagesKeys.personalPageView : PagesKeys.loginView,
+        initialRoute: PagesKeys.addTask,
+        // isLogin ? PagesKeys.personalPageView : PagesKeys.loginView,
       ),
     );
   }

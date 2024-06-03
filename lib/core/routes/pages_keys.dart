@@ -7,4 +7,5 @@ class PagesKeys{
   static const String noteView='noteView';
   static const String searchView='searchView';
   static const String personalPageView='personalPageView';
+  static const String addTask='addTask';
 }
