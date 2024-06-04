@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/features/tasks/data/model/menu_item.dart';
+import 'package:note_app/features/tasks/data/model/menu_items.dart';
 import 'package:note_app/features/tasks/home_main_page.dart';
-
-class MenuItems {
-  static const List<MenuItem> taskIconList = [
-    MenuItem(title: 'Add Task', icon: Icons.add),
-    MenuItem(title: 'All Tasks', icon: Icons.all_inbox_sharp),
-    MenuItem(title: 'Finished Tasks', icon: Icons.done_outline),
-  ];
-}
 
 class TaskHomePageMenu extends StatelessWidget {
   const TaskHomePageMenu(
@@ -25,18 +18,50 @@ class TaskHomePageMenu extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // const Spacer(),
+              const SizedBox(height: 50),
+              const Padding(
+                padding: EdgeInsetsDirectional.only(start: 25),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundColor: Colors.white,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    FittedBox(
+                      alignment: Alignment.centerLeft,
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        'Amr elzorkany',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               const Spacer(),
               ...MenuItems.taskIconList.map(buildItem).toList(),
               ListTile(
-                title: Text('personal page'),
-                leading: Icon(Icons.person),
+                title: const FittedBox(
+                    alignment: Alignment.centerLeft,
+                    fit: BoxFit.scaleDown,
+                    child: Text('personal page')),
+                leading: const Icon(Icons.person),
                 onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const HomeMainPage())),
               ),
               const Spacer(
-                flex: 2,
+                flex: 4,
               ),
             ],
           ),
