@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
+import 'package:note_app/features/tasks/navigate_to_menu_widget.dart';
 
 class IgnoreTaskButton extends StatelessWidget {
   const IgnoreTaskButton({
@@ -9,26 +11,26 @@ class IgnoreTaskButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
-      child: const SizedBox(
-        width: 80,
-        child: Row(
-          children: [
-            Icon(
-              Icons.arrow_back_ios_sharp,
+      onTap: () {
+        ZoomDrawer.of(context)!.toggle();
+      },
+      child: const Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.arrow_back_ios_sharp,
+            color: AppColors.red,
+            size: 20,
+          ),
+          Text(
+            'Close',
+            style: TextStyle(
+              fontSize: 16,
+              // fontWeight: ,
               color: AppColors.red,
-              size: 20,
             ),
-            Text(
-              'Close',
-              style: TextStyle(
-                fontSize: 16,
-                // fontWeight: ,
-                color: AppColors.red,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

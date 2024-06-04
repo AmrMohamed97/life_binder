@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class SaveTaskButton extends StatelessWidget {
@@ -9,11 +8,11 @@ class SaveTaskButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){},
+      onTap: () {},
       child: const Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('save',
+          Text('save ',
               style: TextStyle(
                 color: Colors.blue,
                 fontSize: 16,
@@ -22,6 +21,9 @@ class SaveTaskButton extends StatelessWidget {
             Icons.add_task,
             color: Colors.blue,
             size: 20,
+          ),
+          SizedBox(
+            width: 5,
           ),
         ],
       ),

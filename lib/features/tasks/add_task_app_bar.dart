@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
- import 'package:note_app/features/tasks/ignore_task_button.dart';
+import 'package:note_app/features/tasks/ignore_task_button.dart';
 import 'package:note_app/features/tasks/save_task_button.dart';
 
 class AddTaskAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -15,22 +15,19 @@ class AddTaskAppBar extends StatelessWidget implements PreferredSizeWidget {
         AppBar(
           automaticallyImplyLeading: false,
           elevation: 0,
-          title: Row(
+          title: const Row(
             children: [
-              const IgnoreTaskButton(),
-              Flexible(
-                  child: SizedBox(
-                width: MediaQuery.sizeOf(context).width * .41 - 80,
-              )),
-              const Text(
+              IgnoreTaskButton(),
+              Expanded(child: SizedBox()),
+              Text(
                 'Task',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   // fontSize: ,
                 ),
               ),
-              const Expanded(child: SizedBox()),
-              const SaveTaskButton(),
+              Expanded(child: SizedBox()),
+              SaveTaskButton(),
             ],
           ),
         ),
@@ -45,6 +42,3 @@ class AddTaskAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(56);
 }
-
-
-

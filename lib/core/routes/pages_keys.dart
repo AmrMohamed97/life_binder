@@ -8,4 +8,5 @@ class PagesKeys{
   static const String searchView='searchView';
   static const String personalPageView='personalPageView';
   static const String addTask='addTask';
+  static const String taskHomePage='taskHomePage';
 }
