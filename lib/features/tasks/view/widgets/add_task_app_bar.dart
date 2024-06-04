@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/features/tasks/ignore_task_button.dart';
-import 'package:note_app/features/tasks/save_task_button.dart';
+import 'package:note_app/features/tasks/view/widgets/ignore_task_button.dart';
+import 'package:note_app/features/tasks/view/widgets/save_task_button.dart';
 
 class AddTaskAppBar extends StatelessWidget implements PreferredSizeWidget {
   const AddTaskAppBar({

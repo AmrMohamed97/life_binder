@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/features/tasks/data/model/menu_item.dart';
 import 'package:note_app/features/tasks/data/model/menu_items.dart';
-import 'package:note_app/features/tasks/home_main_page.dart';
+import 'package:note_app/features/tasks/view/widgets/home_main_page.dart';
 
 class TaskHomePageMenu extends StatelessWidget {
   const TaskHomePageMenu(
@@ -48,7 +48,6 @@ class TaskHomePageMenu extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              ...MenuItems.taskIconList.map(buildItem).toList(),
               ListTile(
                 title: const FittedBox(
                     alignment: Alignment.centerLeft,
@@ -60,6 +59,8 @@ class TaskHomePageMenu extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => const HomeMainPage())),
               ),
+              ...MenuItems.taskIconList.map(buildItem).toList(),
+
               const Spacer(
                 flex: 4,
               ),

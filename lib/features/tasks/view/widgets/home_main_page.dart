@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/features/tasks/navigate_to_menu_widget.dart';
+import 'package:note_app/features/tasks/view/widgets/navigate_to_menu_widget.dart';
 
 class HomeMainPage extends StatelessWidget {
   const HomeMainPage({super.key});
