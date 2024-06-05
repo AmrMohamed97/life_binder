@@ -34,21 +34,26 @@ dependencies:
   cupertino_icons: null
   firebase_auth: null
   firebase_core: null
+  firebase_messaging: ^15.0.0
   firebase_storage: null
   flutter:
     sdk: flutter
   flutter_bloc: null
   flutter_local_notifications: ^17.1.2
   flutter_svg: null
+  flutter_timezone: ^1.0.8
   flutter_zoom_drawer: ^3.2.0
   font_awesome_flutter: null
+  get_it: ^7.7.0
   google_sign_in: null
   image: null
   image_picker: null
   intl: null
   jiffy: null
   modal_progress_hud_nsn: null
+  permission_handler: ^11.3.1
   pinch_zoom: null
+  timezone: ^0.9.3
 
 dev_dependencies:
   flutter_lints: null

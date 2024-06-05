@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_page_loading.dart';
+import 'package:note_app/core/utiles/functions/set_up.dart';
+import 'package:note_app/core/widgets/local_notification_services.dart';
 import 'package:note_app/features/add_note/presentation/manager/add_note_cubit.dart';
 import 'package:note_app/features/auth/presentation/manager/register_cubit.dart';
 import 'package:note_app/core/routes/app_pages.dart';
@@ -23,6 +25,12 @@ Future<void> main() async {
   } else {
     isLogin = true;
   }
+  setUp();
+  print('================allow notification appear=================');
+  await initNotification();
+  print('===============initialize local notification==============');
+  await getIt.get<LocalNotificationServices>().initialize();
+
   Bloc.observer = MyObserver();
   runApp(const MyApp());
 }
@@ -38,7 +46,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => EditNoteCubit()),
         BlocProvider(create: (context) => RegisterCubit()),
         BlocProvider(create: (context) => PersonInfoCubit()),
-        // BlocProvider(create: (context) => PersonalPageImageCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -49,4 +56,8 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> initNotification() async {
+  await FirebaseMessaging.instance.requestPermission();
 }
