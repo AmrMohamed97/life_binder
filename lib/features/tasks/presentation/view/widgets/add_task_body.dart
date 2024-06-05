@@ -23,7 +23,7 @@ class AddTaskBody extends StatelessWidget {
           const SizedBox(
             height: 39,
           ),
-          const AddTaskFields(),
+          AddTaskFields(cubit: cubit,),
           const SizedBox(
             height: 30,
           ),

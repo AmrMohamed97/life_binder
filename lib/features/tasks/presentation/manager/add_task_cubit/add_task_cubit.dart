@@ -8,6 +8,8 @@ class AddTaskCubit extends Cubit<AddTaskState> {
   TimeOfDay? endTime;
   DateTime? startDate;
   DateTime? endDate;
+  TextEditingController taskNameController = TextEditingController();
+  TextEditingController taskContentController = TextEditingController();
   void assignStartTime({required TimeOfDay? time}) {
     startTime = time;
     emit(AssignStartTimeState());

@@ -1,43 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/widgets/custom_text_field.dart';
+import 'package:note_app/features/tasks/presentation/manager/add_task_cubit/add_task_cubit.dart';
 
 class AddTaskFields extends StatelessWidget {
   const AddTaskFields({
-    super.key,
+    super.key, required this.cubit,
   });
-
+  final AddTaskCubit cubit;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Row(
+          Row(
           crossAxisAlignment: CrossAxisAlignment.baseline,
           textBaseline: TextBaseline.ideographic,
           children: [
-            Text(
+            const Text(
               'Name ',
               style: TextStyle(
                 fontSize: 23,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Expanded(
               child: CustomTextField(
+                controller: cubit.taskNameController,
                 maxLines: 1,
                 textInputType: TextInputType.text,
                 // controller: ,
-                inputDecoration: InputDecoration(hintText: ' task name'),
-                hintStyle: TextStyle(
+                inputDecoration: const InputDecoration(hintText: ' task name'),
+                hintStyle: const TextStyle(
                   color: Colors.red,
                 ),
-                textStyle: TextStyle(color: Colors.deepPurple),
+                textStyle: const TextStyle(color: Colors.deepPurple),
                 maxLengthEnforcement: MaxLengthEnforcement.enforced,
                 maxLength: 30,
-                counter: Text('30'),
+                counter: const Text('30'),
               ),
             ),
           ],
@@ -49,6 +52,7 @@ class AddTaskFields extends StatelessWidget {
           ),
         ),
         CustomTextField(
+          controller:cubit.taskContentController ,
           textInputType: TextInputType.multiline,
           maxLines: 4,
           textStyle: const TextStyle(color: Colors.deepPurple),
