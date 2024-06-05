@@ -73,17 +73,18 @@ class LocalNotificationServices {
   Future<void> cancelNotification(int id) async {
     await flutterLocalNotificationsPlugin.cancel(id);
   }
-
+//--------------------------------------------------------------------------------------
   Future<void> sendScheduledNotification() async {
-    const AndroidNotificationDetails android = AndroidNotificationDetails(
+      AndroidNotificationDetails android = AndroidNotificationDetails(
       '3',
       'Scheduled',
       importance: Importance.max,
       priority: Priority.high,
+      sound: RawResourceAndroidNotificationSound('sound.wav'.split('.').first),
     );
-    NotificationDetails notificationDetails = const NotificationDetails(
+    NotificationDetails notificationDetails =  NotificationDetails(
       android: android,
-      iOS: DarwinNotificationDetails(),
+      iOS:const DarwinNotificationDetails(),
     );
     tz.initializeTimeZones();
     print('==============TZ============');

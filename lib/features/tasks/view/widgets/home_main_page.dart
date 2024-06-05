@@ -17,7 +17,7 @@ class HomeMainPage extends StatelessWidget {
         children: [
           TextButton(
             onPressed: () async {
-              await getIt.get<LocalNotificationServices>().sendBasicNotification();
+              await getIt.get<LocalNotificationServices>().sendScheduledNotification();
             },
             child: const Text('notify'),
           ),
