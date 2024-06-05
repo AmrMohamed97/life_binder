@@ -5,8 +5,8 @@ import 'package:note_app/features/auth/presentation/pages/register/register_view
 import 'package:note_app/features/personal_page/presentation/pages/personal_page_view.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
 import 'package:note_app/core/widgets/no_data_widget.dart';
-import 'package:note_app/features/tasks/view/add_task.dart';
-import 'package:note_app/features/tasks/view/task_home_page.dart';
+import 'package:note_app/features/tasks/presentation/view/add_task.dart';
+import 'package:note_app/features/tasks/presentation/view/task_home_page.dart';
 
 class AppPages {
   AppPages._();

@@ -1,7 +1,7 @@
  import 'package:flutter/material.dart';
-import 'package:note_app/features/tasks/view/widgets/tasks_item_content.dart';
-import 'package:note_app/features/tasks/view/widgets/tasks_item_date.dart';
-import 'package:note_app/features/tasks/view/widgets/tasks_item_header.dart';
+import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_content.dart';
+import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_date.dart';
+import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_header.dart';
 
 class AllTasksItem extends StatelessWidget {
   const AllTasksItem({

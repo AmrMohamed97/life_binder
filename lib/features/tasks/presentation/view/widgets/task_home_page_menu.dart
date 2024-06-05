@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/features/tasks/data/model/menu_item.dart';
 import 'package:note_app/features/tasks/data/model/menu_items.dart';
-import 'package:note_app/features/tasks/view/widgets/home_main_page.dart';
+import 'package:note_app/features/tasks/presentation/view/widgets/home_main_page.dart';
 
 class TaskHomePageMenu extends StatelessWidget {
   const TaskHomePageMenu(

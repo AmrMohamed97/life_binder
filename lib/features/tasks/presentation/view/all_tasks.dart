@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
-import 'package:note_app/features/tasks/view/widgets/all_tasks_app_bar.dart';
-import 'package:note_app/features/tasks/view/widgets/all_tasks_item.dart';
+import 'package:note_app/features/tasks/presentation/view/widgets/all_tasks_app_bar.dart';
+import 'package:note_app/features/tasks/presentation/view/widgets/all_tasks_item.dart';
 
 class AllTasks extends StatelessWidget {
   const AllTasks({super.key});

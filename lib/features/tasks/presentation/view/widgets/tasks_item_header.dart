@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/features/tasks/view/widgets/task_item_delete_button.dart';
-import 'package:note_app/features/tasks/view/widgets/task_item_done_button.dart';
+import 'package:note_app/features/tasks/presentation/view/widgets/task_item_delete_button.dart';
+import 'package:note_app/features/tasks/presentation/view/widgets/task_item_done_button.dart';
 
 class TasksItemHeader extends StatelessWidget {
   const TasksItemHeader({
