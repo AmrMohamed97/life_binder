@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/core/routes/pages_keys.dart';
 import 'package:note_app/features/tasks/data/model/menu_item.dart';
 import 'package:note_app/features/tasks/data/model/menu_items.dart';
  
@@ -47,16 +48,15 @@ class TaskHomePageMenu extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              ListTile(
-                title: const FittedBox(
+                ListTile(
+                title:   const FittedBox(
                     alignment: Alignment.centerLeft,
                     fit: BoxFit.scaleDown,
                     child: Text('personal page')),
-                leading: const Icon(Icons.person),
-                // onTap: () => Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) => const HomeMainPage())),
+                leading:  const Icon(Icons.person),
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, PagesKeys.personalPageView);
+                },
               ),
               ...MenuItems.taskIconList.map(buildItem).toList(),
 
