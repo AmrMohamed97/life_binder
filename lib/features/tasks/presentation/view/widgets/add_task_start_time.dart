@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/features/tasks/presentation/manager/add_task_cubit/add_task_cubit.dart';
+import 'package:note_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 
 class AddTaskStartTime extends StatelessWidget {
   const AddTaskStartTime({
@@ -7,7 +7,7 @@ class AddTaskStartTime extends StatelessWidget {
     required this.cubit,
   });
 
-  final AddTaskCubit cubit;
+  final TaskCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -26,22 +26,21 @@ class AddTaskStartTime extends StatelessWidget {
           GestureDetector(
             onTap: () async {
               FocusScope.of(context).requestFocus(FocusNode());
-                await showTimePicker(
-                  context: context,
-                  initialTime: TimeOfDay.now(),
-                ).then((startTime) {
-                  if(startTime != null){
+              await showTimePicker(
+                context: context,
+                initialTime: TimeOfDay.now(),
+              ).then((startTime) {
+                if (startTime != null) {
+                  cubit.assignStartTime(time: startTime);
+                } else {
+                  if (cubit.startTime == null) {
                     cubit.assignStartTime(time: startTime);
-                  }else{
-                    if(cubit.startTime == null){
-                      cubit.assignStartTime(time: startTime);
-                    }else{
-                      cubit.assignStartTime(time: cubit.startTime);
-                    }
+                  } else {
+                    cubit.assignStartTime(time: cubit.startTime);
                   }
-                  
-                });
-             },
+                }
+              });
+            },
             child: Container(
               height: 40,
               decoration: BoxDecoration(

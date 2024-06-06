@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:note_app/features/tasks/presentation/manager/add_task_cubit/add_task_cubit.dart';
+import 'package:note_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 
 class AddTaskEndDate extends StatelessWidget {
   const AddTaskEndDate({
@@ -8,7 +8,7 @@ class AddTaskEndDate extends StatelessWidget {
     required this.cubit,
   });
 
-  final AddTaskCubit cubit;
+  final TaskCubit cubit;
 
   @override
   Widget build(BuildContext context) {

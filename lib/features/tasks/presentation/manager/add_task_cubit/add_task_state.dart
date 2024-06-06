@@ -1,9 +1,11 @@
-abstract class AddTaskState{}
+abstract class AddTaskState {}
 
-class AddTaskInitialState extends AddTaskState{}
+class AddTaskInitial extends AddTaskState {}
 
-class AssignStartTimeState extends AddTaskState{}
-class AssignEndTimeState extends AddTaskState{}
+class AddTaskLoading extends AddTaskState {}
+class AddTaskSuccess extends AddTaskState {}
+class AddTaskError extends AddTaskState {
+  final  dynamic error;
 
-class AssignEndDateState extends AddTaskState{}
-class AssignStartDateState extends AddTaskState{}
+  AddTaskError({required this.error});
+}

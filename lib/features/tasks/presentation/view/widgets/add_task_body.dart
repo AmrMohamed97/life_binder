@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:note_app/features/tasks/presentation/manager/add_task_cubit/add_task_cubit.dart';
+import 'package:note_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/add_task_end_date_time.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/add_task_start_date_time.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/add_task_fields.dart';
@@ -7,13 +7,14 @@ import 'package:note_app/features/tasks/presentation/view/widgets/add_task_heade
 
 class AddTaskBody extends StatelessWidget {
   const AddTaskBody({
-    super.key, required this.cubit,
+    super.key,
+    required this.cubit,
   });
 
-  final AddTaskCubit cubit;
+  final TaskCubit cubit;
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 29.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,7 +24,9 @@ class AddTaskBody extends StatelessWidget {
           const SizedBox(
             height: 39,
           ),
-          AddTaskFields(cubit: cubit,),
+          AddTaskFields(
+            cubit: cubit,
+          ),
           const SizedBox(
             height: 30,
           ),

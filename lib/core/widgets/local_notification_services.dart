@@ -74,10 +74,10 @@ class LocalNotificationServices {
     await flutterLocalNotificationsPlugin.cancel(id);
   }
 //--------------------------------------------------------------------------------------
-  Future<void> sendScheduledNotification() async {
+  Future<void> sendScheduledNotification(int id ) async {
       AndroidNotificationDetails android = AndroidNotificationDetails(
       '3',
-      'Scheduled',
+      'schedule',
       importance: Importance.max,
       priority: Priority.high,
       sound: RawResourceAndroidNotificationSound('sound.wav'.split('.').first),
@@ -86,15 +86,15 @@ class LocalNotificationServices {
       android: android,
       iOS:const DarwinNotificationDetails(),
     );
-    tz.initializeTimeZones();
-    print('==============TZ============');
-    print(tz.local.toString());
-    print('==============TZ============');
-    final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
-    tz.setLocalLocation(tz.getLocation(currentTimeZone));
+    // tz.initializeTimeZones();
+    // print('==============TZ============');
+    // print(tz.local.toString());
+    // print('==============TZ============');
+    // final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
+    // tz.setLocalLocation(tz.getLocation(currentTimeZone));
     print(tz.local.name);
     await flutterLocalNotificationsPlugin.zonedSchedule(
-      2,
+      id,
       'title',
       'body',
       tz.TZDateTime(
@@ -103,7 +103,7 @@ class LocalNotificationServices {
         DateTime.now().month,
         DateTime.now().day,
         DateTime.now().hour,
-        DateTime.now().minute + 1,
+        DateTime.now().minute + id,
         DateTime.now().second,
         DateTime.now().millisecond,
         DateTime.now().microsecond,

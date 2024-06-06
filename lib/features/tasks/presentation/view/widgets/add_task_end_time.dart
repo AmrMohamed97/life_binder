@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/features/tasks/presentation/manager/add_task_cubit/add_task_cubit.dart';
+import 'package:note_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 
 class AddTaskEndTime extends StatelessWidget {
   const AddTaskEndTime({
@@ -7,7 +7,7 @@ class AddTaskEndTime extends StatelessWidget {
     required this.cubit,
   });
 
-  final AddTaskCubit cubit;
+  final TaskCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -26,21 +26,21 @@ class AddTaskEndTime extends StatelessWidget {
           GestureDetector(
             onTap: () async {
               FocusScope.of(context).requestFocus(FocusNode());
-                 await showTimePicker(
-                  context: context,
-                  initialTime: TimeOfDay.now(),
-                ).then((value) {
-                  if (value != null) {
+              await showTimePicker(
+                context: context,
+                initialTime: TimeOfDay.now(),
+              ).then((value) {
+                if (value != null) {
+                  cubit.assignEndTime(time: value);
+                } else {
+                  if (cubit.endTime == null) {
                     cubit.assignEndTime(time: value);
                   } else {
-                    if (cubit.endTime == null) {
-                      cubit.assignEndTime(time: value);
-                    } else {
-                      cubit.assignEndTime(time: cubit.endTime);
-                    }
+                    cubit.assignEndTime(time: cubit.endTime);
                   }
-                });
-             },
+                }
+              });
+            },
             child: Container(
               height: 40,
               decoration: BoxDecoration(

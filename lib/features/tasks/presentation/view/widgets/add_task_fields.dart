@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/widgets/custom_text_field.dart';
-import 'package:note_app/features/tasks/presentation/manager/add_task_cubit/add_task_cubit.dart';
+import 'package:note_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 
 class AddTaskFields extends StatelessWidget {
   const AddTaskFields({
-    super.key, required this.cubit,
+    super.key,
+    required this.cubit,
   });
-  final AddTaskCubit cubit;
+  final TaskCubit cubit;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-          Row(
+        Row(
           crossAxisAlignment: CrossAxisAlignment.baseline,
           textBaseline: TextBaseline.ideographic,
           children: [
@@ -52,7 +53,7 @@ class AddTaskFields extends StatelessWidget {
           ),
         ),
         CustomTextField(
-          controller:cubit.taskContentController ,
+          controller: cubit.taskContentController,
           textInputType: TextInputType.multiline,
           maxLines: 4,
           textStyle: const TextStyle(color: Colors.deepPurple),
