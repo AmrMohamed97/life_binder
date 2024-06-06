@@ -1,6 +1,7 @@
  import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:note_app/core/constants/constances.dart';
 import 'package:note_app/core/utiles/functions/custom_snack_bar.dart';
 import 'package:note_app/features/tasks/presentation/manager/add_task_cubit/add_task_cubit.dart';
@@ -31,8 +32,9 @@ class SaveTaskButton extends StatelessWidget {
           } else if (state is AddTaskSuccess) {
             BlocProvider.of<TaskCubit>(context)
                 .changeLoadingState(state: false);
-            navigatorKey.currentState
-                ?.push(MaterialPageRoute(builder: (_) => const AllTasks()));
+            // navigatorKey.currentState
+            //     ?.pushReplacement(MaterialPageRoute(builder: (_) => const AllTasks()));
+            ZoomDrawer.of(context)?.toggle();
 //----------------------------------------------------------------------
             assignInitialValues(context);
             id=id + 2;

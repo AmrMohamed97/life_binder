@@ -13,6 +13,8 @@ class AddTaskCubit extends Cubit<AddTaskState> {
     try {
       tasks.add({
         'startDate':task.startDate,
+        'startTime':task.startTime,
+        'endTime':task.endTime,
         'endDate':task.endDate,
         'taskName':task.taskName,
         'taskContent':task.taskContent,

@@ -4,17 +4,20 @@ import 'package:note_app/features/tasks/presentation/view/widgets/task_item_done
 
 class TasksItemHeader extends StatelessWidget {
   const TasksItemHeader({
-    super.key,   this.category='all',
+    super.key,
+    this.category = 'all', required this.taskTitle, required  this.id,
   });
   final String category;
+  final String taskTitle;
+  final String id;
   @override
   Widget build(BuildContext context) {
-    return   Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
-          'Task',
-          style: TextStyle(
+          Text(
+          taskTitle,
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -22,7 +25,7 @@ class TasksItemHeader extends StatelessWidget {
         ),
         Row(
           children: [
-            const TaskItemDeleteButton(),
+            TaskItemDeleteButton(id: id,),
             const VerticalDivider(
               color: Colors.grey,
               width: 10,
@@ -30,8 +33,7 @@ class TasksItemHeader extends StatelessWidget {
               endIndent: 0,
               indent: 0,
             ),
-            if(category=='all')
-            const TaskItemDoneButton(),
+            if (category == 'all')   TaskItemDoneButton(id: id,),
           ],
         ),
       ],

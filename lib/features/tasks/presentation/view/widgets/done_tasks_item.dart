@@ -1,15 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:note_app/features/tasks/data/model/task_model.dart';
- import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_content.dart';
+ import 'package:flutter/material.dart';
+import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_content.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_date.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_header.dart';
 
-class AllTasksItem extends StatelessWidget {
-  const AllTasksItem({
-    super.key, required this.item,
+class DoneTasksItem extends StatelessWidget {
+  const DoneTasksItem({
+    super.key,
+    //  required this.item,   
   });
-  final TaskModel item;
+  // final TaskModel item;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,26 +18,26 @@ class AllTasksItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
         color: const Color(0xffF0D1A8),
       ),
-      child:   Column(
+      child:  const  Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-            TasksItemHeader(taskTitle: item.taskName.isEmpty?'task':item.taskName,id: item.id!,),
-            const SizedBox(
+          TasksItemHeader(category: 'done',taskTitle: 'task',id: '1',),
+            SizedBox(
             height: 8,
           ),
-            TasksItemContent(content:item.taskContent.isEmpty?item.taskName:item.taskContent ,),
-            const SizedBox(
+            TasksItemContent(content: 'content',),
+            SizedBox(
             height: 10,
           ),
             TasksItemDate(
-            date: DateFormat('dd/MM/yyyy').format(item.startDate!),
+            date: 'dd/MM/yyyy',
             dateTitle: 'start date',
-            time: item.startTime,
+            time: '00:00',
           ),
             TasksItemDate(
-            date: DateFormat('dd/MM/yyyy').format(item.endDate!),
+            date: 'dd/MM/yyyy',
             dateTitle: 'end date',
-            time: item.endTime,
+            time: '00:00',
           ),
         ],
       ),

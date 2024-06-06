@@ -4,7 +4,8 @@ import 'package:note_app/core/constants/colors/app_colors.dart';
 
 class AllTasksAppBar extends StatelessWidget implements PreferredSizeWidget {
   const AllTasksAppBar({
-    super.key, required this.title,
+    super.key,
+    required this.title,
   });
   final String title;
   @override
@@ -13,14 +14,14 @@ class AllTasksAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: AppColors.blue,
       leading: IconButton(
         onPressed: () {
-          ZoomDrawer.of(context)?.toggle()??Navigator.pop(context);
+          ZoomDrawer.of(context)?.toggle() ?? Navigator.pop(context);
         },
         icon: const Icon(Icons.menu),
         color: Colors.white,
       ),
-      title:   Text(
+      title: Text(
         title,
-        style:const TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
           // fontSize: ,

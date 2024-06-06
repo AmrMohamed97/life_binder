@@ -6,6 +6,7 @@ import 'package:note_app/features/personal_page/presentation/pages/personal_page
 import 'package:note_app/core/routes/pages_keys.dart';
 import 'package:note_app/core/widgets/no_data_widget.dart';
 import 'package:note_app/features/tasks/presentation/view/add_task.dart';
+import 'package:note_app/features/tasks/presentation/view/all_tasks.dart';
 import 'package:note_app/features/tasks/presentation/view/task_home_page.dart';
 
 class AppPages {
@@ -19,5 +20,6 @@ class AppPages {
     PagesKeys.personalPageView: (context) => const PersonalPageView(),
     PagesKeys.addTask: (context) => const AddTask(),
     PagesKeys.taskHomePage: (context) => const TaskHmoePage(),
+    PagesKeys.allTasks: (context) => const AllTasks(),
    };
 }

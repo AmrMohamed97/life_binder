@@ -17,6 +17,8 @@ Future<void> addTaskMethod(
       startDate: taskCubit.startDate,
       endDate: taskCubit.endDate,
       isDone: false,
+      endTime: taskCubit.endTime!.format(context),
+      startTime: taskCubit.startTime!.format(context),
     );
     var currentDate = tz.TZDateTime(
       tz.local,
