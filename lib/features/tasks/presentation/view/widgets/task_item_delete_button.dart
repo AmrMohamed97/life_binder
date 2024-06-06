@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
-import 'package:note_app/core/constants/constances.dart';
+import 'package:note_app/core/utiles/functions/custom_show_modal_popup.dart';
 import 'package:note_app/features/tasks/presentation/manager/delete_task_cubit.dart/delete_task_cubit.dart';
 import 'package:note_app/features/tasks/presentation/manager/delete_task_cubit.dart/delete_task_state.dart';
-import 'package:note_app/features/tasks/presentation/view/all_tasks.dart';
-
+ 
 class TaskItemDeleteButton extends StatelessWidget {
   const TaskItemDeleteButton({
     super.key,
@@ -20,8 +19,15 @@ class TaskItemDeleteButton extends StatelessWidget {
             builder: (context, state) {
           return GestureDetector(
             onTap: () {
-              BlocProvider.of<DeleteTaskCubit>(context).deleteTask(id: id);
-              
+              showBackDialog(
+                message: 'Are you sure you want to delete this task?',
+                title: 'delete',
+                onPressed: () {
+                  BlocProvider.of<DeleteTaskCubit>(context).deleteTask(id: id);
+                  Navigator.pop(context);
+                },
+                context: context,
+              );
             },
             child: const Card(
               color: Color(0xffF0D1A8),

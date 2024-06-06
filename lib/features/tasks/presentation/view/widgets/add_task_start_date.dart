@@ -58,11 +58,11 @@ class AddTaskStartDate extends StatelessWidget {
                 child: cubit.startDate != null
                     ? Text(
                         DateFormat('dd/MM/yyyy').format(cubit.startDate!),
-                        style: const TextStyle(),
+                        style: const TextStyle(color: Colors.deepPurple),
                       )
-                    : const Text(
+                    : Text(
                         'dd/MM/yyyy',
-                        style: TextStyle(),
+                        style: TextStyle(color: Colors.grey[700]),
                       ),
               ),
             ),

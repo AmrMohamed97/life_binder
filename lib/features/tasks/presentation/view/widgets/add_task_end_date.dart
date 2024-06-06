@@ -58,9 +58,16 @@ class AddTaskEndDate extends StatelessWidget {
                 child: cubit.endDate != null
                     ? Text(
                         DateFormat('dd/MM/yyyy').format(cubit.endDate!),
-                        style: TextStyle(),
+                        style: const TextStyle(
+                          color: Colors.deepPurple,
+                        ),
                       )
-                    : Text('dd/MM/yyyy'),
+                    : Text(
+                        'dd/MM/yyyy',
+                        style: TextStyle(
+                          color: Colors.grey[700],
+                        ),
+                      ),
               ),
             ),
           ),

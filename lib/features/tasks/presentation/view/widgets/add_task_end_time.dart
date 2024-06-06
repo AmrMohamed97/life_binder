@@ -53,7 +53,11 @@ class AddTaskEndTime extends StatelessWidget {
               child: Center(
                 child: Text(
                   cubit.endTime?.format(context) ?? '--:-- AM',
-                  style: const TextStyle(),
+                  style: TextStyle(
+                    color: cubit.endTime?.format(context) == null
+                        ? Colors.grey[700]
+                        : Colors.deepPurple,
+                  ),
                 ),
               ),
             ),

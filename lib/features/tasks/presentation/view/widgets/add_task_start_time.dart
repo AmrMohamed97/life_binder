@@ -53,7 +53,11 @@ class AddTaskStartTime extends StatelessWidget {
               child: Center(
                 child: Text(
                   cubit.startTime?.format(context) ?? '--:-- AM',
-                  style: const TextStyle(),
+                  style: TextStyle(
+                    color: cubit.startTime == null
+                        ? Colors.grey[700]
+                        : Colors.deepPurple,
+                  ),
                 ),
               ),
             ),
