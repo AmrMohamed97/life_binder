@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
  import 'package:note_app/features/tasks/presentation/manager/fetch_tasks_cubit/fetch_tasks_cubit.dart';
 import 'package:note_app/features/tasks/presentation/manager/fetch_tasks_cubit/fetch_tasks_state.dart';
-import 'package:note_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
-import 'package:note_app/features/tasks/presentation/view/widgets/all_tasks_app_bar.dart';
+ import 'package:note_app/features/tasks/presentation/view/widgets/all_tasks_app_bar.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/all_tasks_item.dart';
 
 class AllTasks extends StatelessWidget {

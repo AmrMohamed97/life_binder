@@ -8,8 +8,8 @@ import 'package:note_app/features/tasks/presentation/view/Done_tasks.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/task_home_page_menu.dart';
 
 class TaskHmoePage extends StatefulWidget {
-  const TaskHmoePage({super.key});
-
+  const TaskHmoePage({super.key,   this.page=0});
+  final int page ;
   @override
   State<TaskHmoePage> createState() => _TaskHmoePageState();
 }
@@ -18,7 +18,7 @@ class _TaskHmoePageState extends State<TaskHmoePage> {
   late MenuItem currentItem;
   @override
   void initState() {
-      currentItem = MenuItems.taskIconList[0];
+      currentItem = MenuItems.taskIconList[widget.page];
     super.initState();
   }
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/core/constants/constances.dart';
+import 'package:note_app/core/routes/pages_keys.dart';
 import 'package:note_app/core/widgets/custom_general_button.dart';
 import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_page_menu_item.dart';
 
@@ -13,9 +15,6 @@ class PersonalPageOperationButton extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // const Divider(
-          //   height: 1,
-          // ),
           const SizedBox(
             height: 11,
           ),
@@ -29,7 +28,9 @@ class PersonalPageOperationButton extends StatelessWidget {
                   width: 110,
                   height: 35,
                   radius: 12,
-                  onTap: () {},
+                  onTap: () {
+                    navigatorKey.currentState?.pushNamed(PagesKeys.addNotes);
+                  },
                 ),
               ),
               Flexible(
@@ -39,7 +40,10 @@ class PersonalPageOperationButton extends StatelessWidget {
                   width: 110,
                   height: 35,
                   radius: 12,
-                  onTap: () {},
+                  onTap: () {
+                    navigatorKey.currentState
+                        ?.pushNamed(PagesKeys.taskHomePage);
+                  },
                 ),
               ),
               Flexible(

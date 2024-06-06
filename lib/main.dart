@@ -58,9 +58,8 @@ class MyApp extends StatelessWidget {
         navigatorKey: navigatorKey,
         routes: AppPages.routes,
         initialRoute:
-        // PagesKeys.allTasks ,
-        PagesKeys.taskHomePage,
-        // isLogin ? PagesKeys.personalPageView : PagesKeys.loginView,
+        //  PagesKeys.taskHomePage,
+        isLogin ? PagesKeys.personalPageView : PagesKeys.loginView,
       ),
     );
   }
