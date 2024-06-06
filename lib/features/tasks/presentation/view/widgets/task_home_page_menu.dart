@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/features/tasks/data/model/menu_item.dart';
 import 'package:note_app/features/tasks/data/model/menu_items.dart';
-import 'package:note_app/features/tasks/presentation/view/widgets/home_main_page.dart';
-
+ 
 class TaskHomePageMenu extends StatelessWidget {
   const TaskHomePageMenu(
       {super.key, required this.currentItem, required this.onSelectedItem});
@@ -54,10 +53,10 @@ class TaskHomePageMenu extends StatelessWidget {
                     fit: BoxFit.scaleDown,
                     child: Text('personal page')),
                 leading: const Icon(Icons.person),
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const HomeMainPage())),
+                // onTap: () => Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => const HomeMainPage())),
               ),
               ...MenuItems.taskIconList.map(buildItem).toList(),
 

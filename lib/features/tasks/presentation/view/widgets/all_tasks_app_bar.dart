@@ -13,7 +13,7 @@ class AllTasksAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: AppColors.blue,
       leading: IconButton(
         onPressed: () {
-          ZoomDrawer.of(context)!.toggle();
+          ZoomDrawer.of(context)?.toggle()??Navigator.pop(context);
         },
         icon: const Icon(Icons.menu),
         color: Colors.white,

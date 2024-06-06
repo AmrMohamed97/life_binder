@@ -1,11 +1,14 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
+ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/features/tasks/data/model/task_model.dart';
+import 'package:note_app/core/constants/constances.dart';
+import 'package:note_app/core/utiles/functions/custom_snack_bar.dart';
 import 'package:note_app/features/tasks/presentation/manager/add_task_cubit/add_task_cubit.dart';
 import 'package:note_app/features/tasks/presentation/manager/add_task_cubit/add_task_state.dart';
 import 'package:note_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
-import 'package:timezone/timezone.dart' as tz;
+import 'package:note_app/features/tasks/presentation/view/all_tasks.dart';
+import 'package:note_app/features/tasks/presentation/view/widgets/add_task_method.dart';
+import 'package:note_app/features/tasks/presentation/view/widgets/assign_initial_values.dart';
 
 class SaveTaskButton extends StatelessWidget {
   const SaveTaskButton({
@@ -16,68 +19,35 @@ class SaveTaskButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddTaskCubit(),
-      child: BlocBuilder<AddTaskCubit, AddTaskState>(
+      child: BlocConsumer<AddTaskCubit, AddTaskState>(
+        listener: (context, state) async {
+          if (state is AddTaskError) {
+            AwesomeDialog(
+              context: context,
+              title: 'error',
+              body: const Text(
+                  'oops there was an error check internet connection and try again'),
+            ).show();
+          } else if (state is AddTaskSuccess) {
+            BlocProvider.of<TaskCubit>(context)
+                .changeLoadingState(state: false);
+            navigatorKey.currentState
+                ?.push(MaterialPageRoute(builder: (_) => const AllTasks()));
+//----------------------------------------------------------------------
+            assignInitialValues(context);
+            id=id + 2;
+            debugPrint(
+                '=========================================================');
+            debugPrint(id.toString());
+            showSnakBar(context: context, message: 'Task Added Successfully');
+          }
+        },
         builder: (context, state) {
           var taskCubit = BlocProvider.of<TaskCubit>(context);
           var cubit = BlocProvider.of<AddTaskCubit>(context);
           return GestureDetector(
-            onTap: () {
-              TaskModel task = TaskModel(
-                taskName: taskCubit.taskNameController.text,
-                taskContent: taskCubit.taskContentController.text,
-                startDate: taskCubit.startDate,
-                endDate: taskCubit.endDate,
-                isDone: false,
-              );
-              var currentDate = tz.TZDateTime(
-                tz.local,
-                DateTime.now().year,
-                DateTime.now().month,
-                DateTime.now().day,
-                DateTime.now().hour,
-                DateTime.now().minute,
-                DateTime.now().second,
-                DateTime.now().millisecond,
-                DateTime.now().microsecond,
-              );
-
-              if (taskCubit.taskNameController.text.isNotEmpty ||
-                  taskCubit.taskContentController.text.isNotEmpty) {
-                if (taskCubit.startDate != null &&
-                    taskCubit.endDate != null &&
-                    taskCubit.startTime != null &&
-                    taskCubit.endTime != null) {
-                  var startDate = tz.TZDateTime(
-                    tz.local,
-                    taskCubit.startDate!.year,
-                    taskCubit.startDate!.month,
-                    taskCubit.startDate!.day,
-                    taskCubit.startTime!.hour,
-                    taskCubit.startTime!.minute,
-                  );
-                  var endDate = tz.TZDateTime(
-                    tz.local,
-                    taskCubit.endDate!.year,
-                    taskCubit.endDate!.month,
-                    taskCubit.endDate!.day,
-                    taskCubit.endTime!.hour,
-                    taskCubit.endTime!.minute,
-                  );
-                  if (currentDate.isBefore(startDate) &&
-                      startDate.isBefore(endDate)) {
-                    cubit.addTask(task);
-                  } else {
-                    print('======================');
-                    print('enter correct date');
-                  }
-                } else {
-                  print('==========================');
-                  print('add   date and   time');
-                }
-              } else {
-                print( '==============================');
-                print( 'add task name or content');
-              }
+            onTap: () async {
+              await addTaskMethod(taskCubit, cubit, context);
             },
             child: const Row(
               mainAxisSize: MainAxisSize.min,

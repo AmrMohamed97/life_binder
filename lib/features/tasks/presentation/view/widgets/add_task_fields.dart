@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/core/widgets/custom_text_field.dart';
+ import 'package:note_app/core/widgets/custom_text_field.dart';
 import 'package:note_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 
 class AddTaskFields extends StatelessWidget {

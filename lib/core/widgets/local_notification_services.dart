@@ -1,9 +1,9 @@
-import 'dart:async';
-
+ 
  import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_timezone/flutter_timezone.dart';
-import 'package:timezone/data/latest_all.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
+// import 'package:timezone/browser.dart';
+// import 'package:flutter_timezone/flutter_timezone.dart';
+// import 'package:timezone/data/latest_all.dart' as tz;
+// import 'package:timezone/timezone.dart' as tz;
 
 class LocalNotificationServices {
     FlutterLocalNotificationsPlugin
@@ -74,7 +74,7 @@ class LocalNotificationServices {
     await flutterLocalNotificationsPlugin.cancel(id);
   }
 //--------------------------------------------------------------------------------------
-  Future<void> sendScheduledNotification(int id ) async {
+  Future<void> sendScheduledNotification({required int id,required String title,required String body ,required   scheduledDate,String? data}) async {
       AndroidNotificationDetails android = AndroidNotificationDetails(
       '3',
       'schedule',
@@ -86,32 +86,15 @@ class LocalNotificationServices {
       android: android,
       iOS:const DarwinNotificationDetails(),
     );
-    // tz.initializeTimeZones();
-    // print('==============TZ============');
-    // print(tz.local.toString());
-    // print('==============TZ============');
-    // final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
-    // tz.setLocalLocation(tz.getLocation(currentTimeZone));
-    print(tz.local.name);
     await flutterLocalNotificationsPlugin.zonedSchedule(
       id,
-      'title',
-      'body',
-      tz.TZDateTime(
-        tz.local,
-        DateTime.now().year,
-        DateTime.now().month,
-        DateTime.now().day,
-        DateTime.now().hour,
-        DateTime.now().minute + id,
-        DateTime.now().second,
-        DateTime.now().millisecond,
-        DateTime.now().microsecond,
-      ),
+      title,
+      body,
+      scheduledDate,
       notificationDetails,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
-      payload: 'item x',
+      payload: data,
     );
   }
 }

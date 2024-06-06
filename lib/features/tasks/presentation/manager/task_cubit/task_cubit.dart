@@ -4,6 +4,7 @@ import 'package:note_app/features/tasks/presentation/manager/task_cubit/task_sta
 
 class TaskCubit extends Cubit<TaskState> {
   TaskCubit() : super(TaskInitialState());
+  bool isLoading = false;
   TimeOfDay? startTime;
   TimeOfDay? endTime;
   DateTime? startDate;
@@ -28,5 +29,9 @@ class TaskCubit extends Cubit<TaskState> {
   void assignStartDate({required DateTime? date}) {
     startDate = date;
     emit(AssignStartDateState());
+  }
+  void changeLoadingState({required bool state}) {
+    isLoading = state;
+    emit(ChangeLoadingState());
   }
 }

@@ -5,8 +5,7 @@ import 'package:note_app/features/tasks/presentation/view/all_tasks.dart';
 import 'package:note_app/features/tasks/data/model/menu_item.dart';
 import 'package:note_app/features/tasks/data/model/menu_items.dart';
 import 'package:note_app/features/tasks/presentation/view/Done_tasks.dart';
-import 'package:note_app/features/tasks/presentation/view/widgets/home_main_page.dart';
-import 'package:note_app/features/tasks/presentation/view/widgets/task_home_page_menu.dart';
+ import 'package:note_app/features/tasks/presentation/view/widgets/task_home_page_menu.dart';
 
 class TaskHmoePage extends StatefulWidget {
   const TaskHmoePage({super.key});
@@ -47,6 +46,6 @@ class _TaskHmoePageState extends State<TaskHmoePage> {
             ? const AllTasks()
             : currentItem.title == 'Done Tasks'
                 ? const DoneTasks()
-                : const HomeMainPage();
+                : const DoneTasks();
   }
 }

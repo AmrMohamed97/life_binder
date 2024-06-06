@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:note_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
 import 'package:note_app/features/tasks/presentation/manager/task_cubit/task_state.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/add_task_app_bar.dart';
@@ -18,18 +19,21 @@ class AddTask extends StatelessWidget {
               onTap: () {
                 FocusScope.of(context).requestFocus(FocusNode());
               },
-              child: Scaffold(
-                resizeToAvoidBottomInset: false,
-                body: CustomScrollView(
-                  slivers: [
-                    const SliverToBoxAdapter(child: AddTaskAppBar()),
-                    SliverFillRemaining(
-                      hasScrollBody: false,
-                      child: AddTaskBody(
-                        cubit: BlocProvider.of<TaskCubit>(context),
+              child: ModalProgressHUD(
+                inAsyncCall: BlocProvider.of<TaskCubit>(context).isLoading,
+                child: Scaffold(
+                  resizeToAvoidBottomInset: false,
+                  body: CustomScrollView(
+                    slivers: [
+                      const SliverToBoxAdapter(child: AddTaskAppBar()),
+                      SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: AddTaskBody(
+                          cubit: BlocProvider.of<TaskCubit>(context),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );

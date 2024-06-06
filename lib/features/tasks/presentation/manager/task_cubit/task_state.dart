@@ -9,3 +9,5 @@ class AssignEndTimeState extends TaskState {}
 class AssignEndDateState extends TaskState {}
 
 class AssignStartDateState extends TaskState {}
+
+class ChangeLoadingState extends TaskState {}
