@@ -10,18 +10,24 @@ class FetchTasksCubit extends Cubit<FetchTasksState> {
   Future<void> fetchTasks() async {
     emit(FetchTasksLoadState());
     try {
-      await tasks
+        tasks
           // .where('UserId', isEqualTo: FirebaseAuth.instance.currentUser?.uid)
           .where('isDone', isEqualTo: false)
           .orderBy('startDate', descending: true)
-          .get()
-          .then((value) {
-        for (var element in value.docs) {
-          tasksList.add(TaskModel.fromJson(element));
-        }
+          .snapshots()
+          .listen((value) {
+        if (value.docs.isNotEmpty) {
+          tasksList = [];
+  for (var element in value.docs) {
+    tasksList.add(TaskModel.fromJson(element));
+  }
+emit(FetchTasksSuccessState());
+}else{
+  tasksList = [];
+  emit(FetchTasksEmptySuccessState());
+}
       });
-      emit(FetchTasksSuccessState());
-    } catch (error) {
+     } catch (error) {
       print('===================================================');
       print(error);
       emit(FetchTaskserrorState(error: error));

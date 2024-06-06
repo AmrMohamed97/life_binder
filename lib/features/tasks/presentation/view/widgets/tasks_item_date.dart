@@ -21,21 +21,19 @@ class TasksItemDate extends StatelessWidget {
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
+              color: Colors.indigo,
             ),
           ),
           Card(
             // color: Colors.transparent,
             child: Padding(
               padding: const EdgeInsets.all(3.0),
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  time,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+              child: Text(
+                time,
+                style: const TextStyle(
+                  color: Colors.indigo,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),

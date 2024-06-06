@@ -1,4 +1,6 @@
  import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:note_app/features/tasks/data/model/task_model.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_content.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_date.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_header.dart';
@@ -6,9 +8,9 @@ import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_hea
 class DoneTasksItem extends StatelessWidget {
   const DoneTasksItem({
     super.key,
-    //  required this.item,   
+     required this.item,   
   });
-  // final TaskModel item;
+  final TaskModel item;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,26 +20,26 @@ class DoneTasksItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
         color: const Color(0xffF0D1A8),
       ),
-      child:  const  Column(
+      child:   Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          TasksItemHeader(category: 'done',taskTitle: 'task',id: '1',),
-            SizedBox(
+            TasksItemHeader(category: 'done',taskTitle: item.taskName.isEmpty?'task':item.taskName,id: item.id!,),
+            const SizedBox(
             height: 8,
           ),
-            TasksItemContent(content: 'content',),
-            SizedBox(
+            TasksItemContent(content:item.taskContent.isEmpty?item.taskName:item.taskContent ,),
+            const SizedBox(
             height: 10,
           ),
             TasksItemDate(
-            date: 'dd/MM/yyyy',
+            date: DateFormat('dd/MM/yyyy').format(item.startDate!),
             dateTitle: 'start date',
-            time: '00:00',
+            time: item.startTime,
           ),
             TasksItemDate(
-            date: 'dd/MM/yyyy',
+            date: DateFormat('dd/MM/yyyy').format(item.endDate!),
             dateTitle: 'end date',
-            time: '00:00',
+            time: item.endTime,
           ),
         ],
       ),

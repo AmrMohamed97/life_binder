@@ -21,7 +21,6 @@ class TaskItemDoneButton extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               BlocProvider.of<ChangeTaskStateCubit>(context).changeTaskState(id: id!);
-              navigatorKey.currentState?.pushReplacement(MaterialPageRoute(builder: (context) => const AllTasks()));
             },
             child: const Card(
               color: Color(0xffF0D1A8),

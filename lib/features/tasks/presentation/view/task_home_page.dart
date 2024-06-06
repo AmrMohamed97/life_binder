@@ -5,7 +5,7 @@ import 'package:note_app/features/tasks/presentation/view/all_tasks.dart';
 import 'package:note_app/features/tasks/data/model/menu_item.dart';
 import 'package:note_app/features/tasks/data/model/menu_items.dart';
 import 'package:note_app/features/tasks/presentation/view/Done_tasks.dart';
- import 'package:note_app/features/tasks/presentation/view/widgets/task_home_page_menu.dart';
+import 'package:note_app/features/tasks/presentation/view/widgets/task_home_page_menu.dart';
 
 class TaskHmoePage extends StatefulWidget {
   const TaskHmoePage({super.key});
@@ -15,7 +15,13 @@ class TaskHmoePage extends StatefulWidget {
 }
 
 class _TaskHmoePageState extends State<TaskHmoePage> {
-  MenuItem currentItem = MenuItems.taskIconList[0];
+  late MenuItem currentItem;
+  @override
+  void initState() {
+      currentItem = MenuItems.taskIconList[0];
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ZoomDrawer(
