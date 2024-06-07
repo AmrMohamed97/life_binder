@@ -47,12 +47,11 @@ class PersonalPageChangeImageCubit
         'fileName': fileName,
         'userUid': FirebaseAuth.instance.currentUser!.uid,
       });
-      changeLoadingState(load: false);
-      
+       isLoading = false;
       emit(AddPersonalOrBackgroundImageSuccess());
     } catch (e) {
       changeLoadingState(load: false);
-      AwesomeDialog(
+       AwesomeDialog(
         context: context,
         title: 'error',
         body: Text(e.toString()),
@@ -100,7 +99,7 @@ class PersonalPageChangeImageCubit
           ));
     } catch (e) {
       changeLoadingState(load: false);
-      AwesomeDialog(
+       AwesomeDialog(
         context: context,
         title: 'error',
         body: Text(e.toString()),
@@ -111,16 +110,16 @@ class PersonalPageChangeImageCubit
 
   Future<void> deletePersonalOrBackGroundImage(context,
       {required folder}) async {
+    isLoading = true;
     emit(ImageDeleteLoading());
     try {
-      changeLoadingState(load: true);
       await personalCollection
           .doc('$folder${FirebaseAuth.instance.currentUser!.uid}')
           .delete();
       await FirebaseStorage.instance
           .ref('$folder/$folder${FirebaseAuth.instance.currentUser!.uid}')
           .delete();
-      changeLoadingState(load: false);
+      isLoading = false;
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text(
           'image deleted success',
@@ -136,7 +135,7 @@ class PersonalPageChangeImageCubit
       emit(ImageDeletedSuccess());
     } on Exception catch (e) {
       changeLoadingState(load: false);
-      AwesomeDialog(
+       AwesomeDialog(
         context: context,
         title: 'error',
         body: Text(e.toString()),
