@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,12 +8,13 @@ import 'package:note_app/features/tasks/presentation/manager/fetch_tasks_cubit/f
 
 class FetchTasksCubit extends Cubit<FetchTasksState> {
   FetchTasksCubit() : super(FetchTasksInitialState());
+  StreamSubscription<QuerySnapshot>? subscription;
   CollectionReference tasks = FirebaseFirestore.instance.collection('tasks');
   List<TaskModel> tasksList = [];
   Future<void> fetchTasks() async {
     emit(FetchTasksLoadState());
     try {
-        tasks
+   subscription=tasks
           .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
           .where('isDone', isEqualTo: false)
           .orderBy('startDate', descending: true)
@@ -33,5 +36,10 @@ class FetchTasksCubit extends Cubit<FetchTasksState> {
       print(error);
       emit(FetchTaskserrorState(error: error));
     }
+  }
+  @override
+  Future<void> close() {
+    subscription?.cancel();
+    return super.close();
   }
 }
