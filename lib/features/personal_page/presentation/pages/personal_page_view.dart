@@ -45,7 +45,7 @@ class _PersonalPageViewState extends State<PersonalPageView> {
                   scaffoldKey: scaffoldKey,
                 ),
               if (state is! GetPersonalImageLoadingState)
-                const PersonalPageOperationButton(),
+                PersonalPageOperationButton(cubit: cubit,),
               if (state is! GetPersonalImageLoadingState)
                 PersonalPageBody(
                   personCubit: cubit,

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
+import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_cubit.dart';
 import 'package:note_app/features/tasks/data/model/menu_item.dart';
 import 'package:note_app/features/tasks/data/model/menu_items.dart';
  
 class TaskHomePageMenu extends StatelessWidget {
   const TaskHomePageMenu(
-      {super.key, required this.currentItem, required this.onSelectedItem});
+      {super.key, required this.currentItem, required this.onSelectedItem,required this.personalImage,required this.userName});
   final MenuItem currentItem;
   final ValueChanged<MenuItem> onSelectedItem;
+  final String personalImage, userName;
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -20,25 +23,25 @@ class TaskHomePageMenu extends StatelessWidget {
             children: [
               // const Spacer(),
               const SizedBox(height: 50),
-              const Padding(
-                padding: EdgeInsetsDirectional.only(start: 25),
+                Padding(
+                padding: const EdgeInsetsDirectional.only(start: 25),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CircleAvatar(
                       radius: 50,
-                      backgroundColor: Colors.white,
+                      backgroundImage:personalImage.isEmpty ? const AssetImage('assets/images/3.png') : NetworkImage(personalImage),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     FittedBox(
                       alignment: Alignment.centerLeft,
                       fit: BoxFit.scaleDown,
                       child: Text(
-                        'Amr elzorkany',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        userName,
+                        style: const TextStyle(color: Colors.white, fontSize: 20),
                         textAlign: TextAlign.center,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,

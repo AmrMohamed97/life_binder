@@ -1,16 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
-import 'package:note_app/core/constants/constances.dart';
-import 'package:note_app/core/routes/pages_keys.dart';
+ import 'package:note_app/core/routes/pages_keys.dart';
 import 'package:note_app/core/utiles/functions/sign_out.dart';
 import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_cubit.dart';
 import 'package:note_app/features/tasks/presentation/view/task_home_page.dart';
-import 'package:note_app/features/tasks/presentation/view/widgets/ignore_task_button.dart';
-import 'package:note_app/features/tasks/presentation/view/widgets/task_home_page_menu.dart';
-
+ 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
     super.key,
@@ -58,17 +54,17 @@ class CustomDrawer extends StatelessWidget {
                   title: const Text('add note'),
                 ),
                 ListTile(
-                  onTap: () {
-                    navigatorKey.currentState
-                        ?.pushNamed(PagesKeys.taskHomePage);
+                  onTap: ()  {
+                   Navigator.of(context)
+                        .pushReplacement(MaterialPageRoute(builder: (context) => TaskHmoePage(personalImage: cubit.personalImage,userName: cubit.userName,) ));
                   },
                   leading: const Icon(Icons.add_task),
                   title: const Text('add task'),
                 ),
                 ListTile(
-                  onTap: () async {
-                    await Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) =>const TaskHmoePage(page: 1,) ));
+                  onTap: ()   {
+                    Navigator.of(context)
+                        .pushReplacement(MaterialPageRoute(builder: (context) => TaskHmoePage(page: 1,personalImage: cubit.personalImage,userName: cubit.userName,) ));
                   },
                   leading: const Icon(Icons.task_alt),
                   title: const Text('Tasks Page'),
