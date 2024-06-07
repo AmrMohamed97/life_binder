@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
 import 'package:note_app/core/constants/constances.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
@@ -71,6 +72,10 @@ class CustomDrawer extends StatelessWidget {
                   },
                   leading: const Icon(Icons.task_alt),
                   title: const Text('Tasks Page'),
+                ),
+                const ListTile(
+                  title:   Text('whatsapp'),
+                  leading:  FaIcon(FontAwesomeIcons.whatsapp),
                 ),
                 const Expanded(
                     child: SizedBox(
