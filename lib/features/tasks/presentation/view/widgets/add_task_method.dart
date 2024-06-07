@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
  import 'package:note_app/features/tasks/data/model/task_model.dart';
 import 'package:note_app/features/tasks/presentation/manager/add_task_cubit/add_task_cubit.dart';
@@ -19,6 +21,7 @@ Future<void> addTaskMethod(
       isDone: false,
       endTime: taskCubit.endTime!.format(context),
       startTime: taskCubit.startTime!.format(context),
+      uid: FirebaseAuth.instance.currentUser!.uid,
     );
     var currentDate = tz.TZDateTime(
       tz.local,

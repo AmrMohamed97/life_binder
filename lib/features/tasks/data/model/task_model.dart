@@ -7,8 +7,10 @@ class TaskModel {
   final DateTime? endDate;
   final bool isDone;
   final String? id;
+  final String uid;
 
-  TaskModel(  {
+  TaskModel(   {
+    required this.uid,
     required this.startTime,
     required  this.endTime,
     this.id,
@@ -27,7 +29,8 @@ class TaskModel {
       isDone: json['isDone'],
       id: json.id,
        startTime: json['startTime'], 
-       endTime: json['endTime'],
+       endTime: json['endTime'], 
+       uid: json['uid'],
     );
   }
 }
