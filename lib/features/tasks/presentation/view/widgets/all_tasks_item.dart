@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:note_app/features/tasks/data/model/task_model.dart';
- import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_content.dart';
+import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_content.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_date.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/tasks_item_header.dart';
 
 class AllTasksItem extends StatelessWidget {
   const AllTasksItem({
-    super.key, required this.item,
+    super.key,
+    required this.item,
   });
   final TaskModel item;
   @override
@@ -19,25 +20,31 @@ class AllTasksItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
         color: const Color(0xffF0D1A8),
       ),
-      child:   Column(
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-            TasksItemHeader(taskTitle: item.taskName.isEmpty?'task':item.taskName,id: item.id!,),
-            const SizedBox(
+          TasksItemHeader(
+            taskTitle: item.taskName.isEmpty ? 'task' : item.taskName,
+            id: item.id!,
+          ),
+          const SizedBox(
             height: 8,
           ),
-            TasksItemContent(content:item.taskContent.isEmpty?item.taskName:item.taskContent ,),
-            const SizedBox(
+          TasksItemContent(
+            content:
+                item.taskContent.isEmpty ? item.taskName : item.taskContent,
+          ),
+          const SizedBox(
             height: 10,
           ),
-            TasksItemDate(
+          TasksItemDate(
             date: DateFormat('dd/MM/yyyy').format(item.startDate!),
             dateTitle: 'start date',
             time: item.startTime,
           ),
-            TasksItemDate(
+          TasksItemDate(
             date: DateFormat('dd/MM/yyyy').format(item.endDate!),
-            dateTitle: 'end date',
+            dateTitle: 'end date ',
             time: item.endTime,
           ),
         ],
