@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
 import 'package:note_app/core/utiles/functions/custom_show_modal_popup.dart';
+import 'package:note_app/core/utiles/functions/set_up.dart';
+import 'package:note_app/core/widgets/local_notification_services.dart';
+import 'package:note_app/features/tasks/data/model/task_model.dart';
 import 'package:note_app/features/tasks/presentation/manager/task_operation_cubit.dart/task_operation_cubit.dart';
 import 'package:note_app/features/tasks/presentation/manager/task_operation_cubit.dart/task_operation_state.dart';
 
 class TaskItemDeleteButton extends StatelessWidget {
   const TaskItemDeleteButton({
     super.key,
-    required this.id,
+    required this.item,
   });
-  final String id;
+  final TaskModel item;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TaskOperationCubit, TaskOperationState>(
@@ -20,8 +23,10 @@ class TaskItemDeleteButton extends StatelessWidget {
           showBackDialog(
             message: 'Are you sure you want to delete this task?',
             title: 'delete',
-            onPressed: () {
-              BlocProvider.of<TaskOperationCubit>(context).deleteTask(id: id);
+            onPressed: () async{
+              await getIt.get<LocalNotificationServices>().cancelNotification(id: item.notificationId1!,);
+              await getIt.get<LocalNotificationServices>().cancelNotification(id: item.notificationId2!,);
+              BlocProvider.of<TaskOperationCubit>(context).deleteTask(id: item.id!);
               Navigator.pop(context);
             },
             context: context,

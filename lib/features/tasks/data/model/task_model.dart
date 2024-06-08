@@ -1,3 +1,5 @@
+import 'package:get_it/get_it.dart';
+
 class TaskModel {
    final String taskName;
   final String taskContent;
@@ -8,8 +10,12 @@ class TaskModel {
   final bool isDone;
   final String? id;
   final String uid;
+  final int? notificationId1;
+  final int? notificationId2;
 
-  TaskModel(   {
+  TaskModel(    {
+    this.notificationId1,
+     this.notificationId2,
     required this.uid,
     required this.startTime,
     required  this.endTime,
@@ -31,6 +37,8 @@ class TaskModel {
        startTime: json['startTime'], 
        endTime: json['endTime'], 
        uid: json['uid'],
+       notificationId1: json['notificationId1'],
+       notificationId2: json['notificationId2'],
     );
   }
 }

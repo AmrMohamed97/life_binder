@@ -23,7 +23,7 @@ class DoneTasksItem extends StatelessWidget {
       child:   Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-            TasksItemHeader(category: 'done',taskTitle: item.taskName.isEmpty?'task':item.taskName,id: item.id!,),
+            TasksItemHeader(category: 'done',taskTitle: item.taskName.isEmpty?'task':item.taskName,item: item,),
             const SizedBox(
             height: 8,
           ),

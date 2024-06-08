@@ -1,14 +1,19 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:note_app/core/constants/constances.dart';
+ import 'package:note_app/core/utiles/cache_helper.dart';
 import 'package:note_app/core/utiles/functions/set_up.dart';
 import 'package:note_app/core/widgets/local_notification_services.dart';
 import 'package:note_app/features/tasks/data/model/task_model.dart';
 import 'package:note_app/features/tasks/presentation/manager/add_task_cubit/add_task_cubit.dart';
 import 'package:note_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';
- import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
-Future<void> checkTaskInputValidate(TaskCubit taskCubit, tz.TZDateTime currentDate, AddTaskCubit cubit, TaskModel task, BuildContext context) async {
+Future<void> checkTaskInputValidate(
+    TaskCubit taskCubit,
+    tz.TZDateTime currentDate,
+    AddTaskCubit cubit,
+    TaskModel task,
+    BuildContext context) async {
   if (taskCubit.startDate != null &&
       taskCubit.endDate != null &&
       taskCubit.startTime != null &&
@@ -32,20 +37,22 @@ Future<void> checkTaskInputValidate(TaskCubit taskCubit, tz.TZDateTime currentDa
     if (currentDate.isBefore(startDate) && startDate.isBefore(endDate)) {
       cubit.addTask(task);
       //------add Notifications-------
-         await getIt.get<LocalNotificationServices>().sendScheduledNotification(
-  id: id,
-  title: 'Task start date',
-  body: 'you should start: ${taskCubit.taskNameController.text.isEmpty?taskCubit.taskContentController.text:taskCubit.taskNameController.text}',
-  scheduledDate: startDate,
-      );
       await getIt.get<LocalNotificationServices>().sendScheduledNotification(
-  id: id + 1,
-  title: 'task deadline',
-  body:'You must be finished: ${taskCubit.taskNameController.text.isEmpty?taskCubit.taskContentController.text:taskCubit.taskNameController.text}',
-  scheduledDate: endDate,
-      );
-     
-  
+            id: await getIt.get<CacheHelper>().getData(key: 'notificationId'),
+            title: 'Task start date',
+            body:
+                'you should start: ${taskCubit.taskNameController.text.isEmpty ? taskCubit.taskContentController.text : taskCubit.taskNameController.text}',
+            scheduledDate: startDate,
+          );
+      await getIt.get<LocalNotificationServices>().sendScheduledNotification(
+            id: await getIt.get<CacheHelper>().getData(key: 'notificationId') +
+                1,
+            title: 'task deadline',
+            body:
+                'You must be finished: ${taskCubit.taskNameController.text.isEmpty ? taskCubit.taskContentController.text : taskCubit.taskNameController.text}',
+            scheduledDate: endDate,
+          );
+     await getIt.get<CacheHelper>().saveData(key: 'notificationId', value: await getIt.get<CacheHelper>().getData(key: 'notificationId')+2);
     } else {
       AwesomeDialog(
         context: context,
@@ -53,7 +60,7 @@ Future<void> checkTaskInputValidate(TaskCubit taskCubit, tz.TZDateTime currentDa
         body: const Text('enter correct date'),
       ).show();
       taskCubit.changeLoadingState(state: false);
-     }
+    }
   } else {
     AwesomeDialog(
       context: context,
@@ -61,5 +68,5 @@ Future<void> checkTaskInputValidate(TaskCubit taskCubit, tz.TZDateTime currentDa
       body: const Text('add   date and   time'),
     ).show();
     taskCubit.changeLoadingState(state: false);
-   }
+  }
 }

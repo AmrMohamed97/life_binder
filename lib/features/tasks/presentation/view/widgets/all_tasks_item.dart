@@ -25,7 +25,7 @@ class AllTasksItem extends StatelessWidget {
         children: [
           TasksItemHeader(
             taskTitle: item.taskName.isEmpty ? 'task' : item.taskName,
-            id: item.id!,
+            item: item,
           ),
           const SizedBox(
             height: 8,

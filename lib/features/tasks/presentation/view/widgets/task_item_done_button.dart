@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
+import 'package:note_app/core/utiles/functions/set_up.dart';
+import 'package:note_app/core/widgets/local_notification_services.dart';
+import 'package:note_app/features/tasks/data/model/task_model.dart';
 import 'package:note_app/features/tasks/presentation/manager/task_operation_cubit.dart/task_operation_cubit.dart';
 import 'package:note_app/features/tasks/presentation/manager/task_operation_cubit.dart/task_operation_state.dart';
 
 class TaskItemDoneButton extends StatelessWidget {
   const TaskItemDoneButton({
     super.key,
-    this.id,
+    this.item,
   });
 
-  final String? id;
+  final TaskModel? item;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TaskOperationCubit, TaskOperationState>(
         builder: (context, state) {
       return GestureDetector(
-        onTap: () {
-          BlocProvider.of<TaskOperationCubit>(context).changeTaskState(id: id!);
+        onTap: ()async {
+          await getIt.get<LocalNotificationServices>().cancelNotification(id: item!.notificationId1!,);
+              await getIt.get<LocalNotificationServices>().cancelNotification(id: item!.notificationId2!,);
+          BlocProvider.of<TaskOperationCubit>(context).changeTaskState(id: item!.id!);
         },
         child: const Card(
           color: Color(0xffF0D1A8),

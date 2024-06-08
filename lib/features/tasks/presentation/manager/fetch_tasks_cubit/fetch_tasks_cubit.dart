@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/core/utiles/cache_helper.dart';
+import 'package:note_app/core/utiles/functions/set_up.dart';
 import 'package:note_app/features/tasks/data/model/task_model.dart';
 import 'package:note_app/features/tasks/presentation/manager/fetch_tasks_cubit/fetch_tasks_state.dart';
 
@@ -28,6 +30,7 @@ class FetchTasksCubit extends Cubit<FetchTasksState> {
   emit(FetchTasksSuccessState());
 }else{
   tasksList = [];
+  getIt.get<CacheHelper>().saveData(key: 'notificationId', value: 1);
   emit(FetchTasksEmptySuccessState());
 }
       });
