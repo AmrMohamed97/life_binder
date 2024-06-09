@@ -12,31 +12,64 @@ class CustomAppBarFlexableSpaceDetail extends StatelessWidget {
   final PersonInfoCubit cubit;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ChangeImagePage(
-                  personalImage: cubit.personalImage,
-                  image: cubit.personalImage.isEmpty
-                      ? 'assets/images/3.png'
-                      : cubit.personalImage,
-                  folder: 'personal',
-                ),
+    return LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxHeight > MediaQuery.sizeOf(context).height * .18) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Center(
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ChangeImagePage(
+                        personalImage: cubit.personalImage,
+                        image: cubit.personalImage.isEmpty
+                            ? 'assets/images/3.png'
+                            : cubit.personalImage,
+                        folder: 'personal',
+                      ),
+                    ),
+                  );
+                },
+                child: PersonalImage(cubit: cubit),
               ),
-            );
-          },
-          child: PersonalImage(cubit: cubit),
-        ),
-        UserNameWidget(
-          cubit: cubit,
-        ),
-      ],
-    );
+            ),
+            UserNameWidget(
+              cubit: cubit,
+            ),
+          ],
+        );
+      } else {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChangeImagePage(
+                      personalImage: cubit.personalImage,
+                      image: cubit.personalImage.isEmpty
+                          ? 'assets/images/3.png'
+                          : cubit.personalImage,
+                      folder: 'personal',
+                    ),
+                  ),
+                );
+              },
+              child: PersonalImage(cubit: cubit),
+            ),
+            UserNameWidget(
+              cubit: cubit,
+            ),
+          ],
+        );
+      }
+    });
   }
 }

@@ -16,7 +16,7 @@ class BackgroundAppBarImage extends StatelessWidget {
         builder: (context, state) {
           var cubit = BlocProvider.of<BackgroundImageCubit>(context);
           return Padding(
-            padding: const EdgeInsetsDirectional.only(bottom: 60),
+            padding: const EdgeInsetsDirectional.only(bottom: 100),
             child: GestureDetector(
               onTap: () {
                 Navigator.push(

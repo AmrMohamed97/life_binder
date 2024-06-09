@@ -12,14 +12,14 @@ class UserNameWidget extends StatelessWidget {
     return cubit.userName == null
         ? const Text(' ')
         : FittedBox(
-            alignment: Alignment.centerLeft,
+            alignment: Alignment.center,
             fit: BoxFit.scaleDown,
             child: Text(
               '${cubit.userName}',
-              style: const TextStyle(
-                   fontSize: 18),
+              style: const TextStyle(fontSize: 18),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.left,
             ),
           );
   }
