@@ -58,6 +58,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => PersonInfoCubit()),
       ],
       child: MaterialApp(
+        // theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,
         navigatorKey: navigatorKey,
         routes: AppPages.routes,

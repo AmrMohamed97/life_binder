@@ -28,8 +28,7 @@ class _PersonalPageViewState extends State<PersonalPageView> {
           builder: (context, state) {
         var cubit = BlocProvider.of<PersonInfoCubit>(context);
         return Scaffold(
-          backgroundColor: const Color(0xffFFFFFF),
-          key: scaffoldKey,
+           key: scaffoldKey,
           drawer: CustomDrawer(cubit: cubit),
           resizeToAvoidBottomInset: false,
           body: CustomScrollView(

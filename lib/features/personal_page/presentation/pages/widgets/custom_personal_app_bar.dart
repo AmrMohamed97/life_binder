@@ -18,7 +18,6 @@ class CustomPersonalAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: const Color(0xffFFFFFF),
       actions: [
         IconButton(
           onPressed: () {
@@ -34,8 +33,7 @@ class CustomPersonalAppBar extends StatelessWidget {
           icon: const Icon(
             Icons.search,
             size: 28,
-            color: AppColors.black,
-          ),
+           ),
         ),
       ],
       floating: false,
@@ -55,7 +53,7 @@ class CustomPersonalAppBar extends StatelessWidget {
         icon: const Icon(
           Icons.menu,
           size: 33,
-        ),
+         ),
       ),
       expandedHeight: MediaQuery.sizeOf(context).height * .23344652 + 20,
       flexibleSpace: FlexibleSpaceBar(
