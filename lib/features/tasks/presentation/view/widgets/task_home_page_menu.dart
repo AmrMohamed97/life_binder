@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
- import 'package:note_app/core/routes/pages_keys.dart';
- import 'package:note_app/features/tasks/data/model/menu_item.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/core/routes/pages_keys.dart';
+import 'package:note_app/features/auth/presentation/manager/app_theme_cubit/app_theme_cubit.dart';
+import 'package:note_app/features/tasks/data/model/menu_item.dart';
 import 'package:note_app/features/tasks/data/model/menu_items.dart';
- 
+
 class TaskHomePageMenu extends StatelessWidget {
   const TaskHomePageMenu(
-      {super.key, required this.currentItem, required this.onSelectedItem,required this.personalImage,required this.userName});
+      {super.key,
+      required this.currentItem,
+      required this.onSelectedItem,
+      required this.personalImage,
+      required this.userName});
   final MenuItem currentItem;
   final ValueChanged<MenuItem> onSelectedItem;
   final String personalImage, userName;
@@ -14,14 +20,16 @@ class TaskHomePageMenu extends StatelessWidget {
     return Theme(
       data: ThemeData.dark(),
       child: Scaffold(
-        backgroundColor: Colors.indigo,
+        backgroundColor: BlocProvider.of<AppThemeCubit>(context).isDark
+            ? Colors.black
+            : Colors.indigo,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // const Spacer(),
               const SizedBox(height: 50),
-                Padding(
+              Padding(
                 padding: const EdgeInsetsDirectional.only(start: 25),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -29,7 +37,9 @@ class TaskHomePageMenu extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 50,
-                      backgroundImage:personalImage.isEmpty ? const AssetImage('assets/images/3.png') : NetworkImage(personalImage),
+                      backgroundImage: personalImage.isEmpty
+                          ? const AssetImage('assets/images/3.png')
+                          : NetworkImage(personalImage),
                     ),
                     const SizedBox(
                       height: 10,
@@ -39,7 +49,8 @@ class TaskHomePageMenu extends StatelessWidget {
                       fit: BoxFit.scaleDown,
                       child: Text(
                         userName,
-                        style: const TextStyle(color: Colors.white, fontSize: 20),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 20),
                         textAlign: TextAlign.center,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -49,17 +60,20 @@ class TaskHomePageMenu extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-                ListTile(
-                title:   const FittedBox(
+              ListTile(
+                title: const FittedBox(
                     alignment: Alignment.centerLeft,
                     fit: BoxFit.scaleDown,
                     child: Text('personal page')),
-                leading:  const Icon(Icons.person),
+                leading: const Icon(Icons.person),
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, PagesKeys.personalPageView);
+                  Navigator.pushReplacementNamed(
+                      context, PagesKeys.personalPageView);
                 },
               ),
-              ...MenuItems.taskIconList.map(buildItem).toList(),
+              ...MenuItems.taskIconList
+                  .map((e) => buildItem(e, context: context))
+                  .toList(),
 
               const Spacer(
                 flex: 4,
@@ -71,12 +85,14 @@ class TaskHomePageMenu extends StatelessWidget {
     );
   }
 
-  Widget buildItem(MenuItem menuItem) {
+  Widget buildItem(MenuItem menuItem, {required context}) {
     return ListTileTheme(
       selectedColor: Colors.white,
       child: ListTile(
         selected: menuItem == currentItem,
-        selectedTileColor: Colors.black26,
+        selectedTileColor: BlocProvider.of<AppThemeCubit>(context).isDark
+            ? Colors.grey.withOpacity(.15)
+            : Colors.black26,
         title: FittedBox(
             alignment: Alignment.centerLeft,
             fit: BoxFit.scaleDown,

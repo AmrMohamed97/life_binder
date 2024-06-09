@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:note_app/features/auth/presentation/manager/app_theme_cubit/app_theme_cubit.dart';
 import 'package:note_app/features/tasks/presentation/view/add_task.dart';
 import 'package:note_app/features/tasks/presentation/view/all_tasks.dart';
 import 'package:note_app/features/tasks/data/model/menu_item.dart';
@@ -8,10 +10,11 @@ import 'package:note_app/features/tasks/presentation/view/Done_tasks.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/task_home_page_menu.dart';
 
 class TaskHmoePage extends StatefulWidget {
-  const TaskHmoePage({super.key,   this.page=0, this.personalImage, this.userName});
-  final int page ;
+  const TaskHmoePage(
+      {super.key, this.page = 0, this.personalImage, this.userName});
+  final int page;
   final String? personalImage, userName;
-   @override
+  @override
   State<TaskHmoePage> createState() => _TaskHmoePageState();
 }
 
@@ -19,7 +22,7 @@ class _TaskHmoePageState extends State<TaskHmoePage> {
   late MenuItem currentItem;
   @override
   void initState() {
-      currentItem = MenuItems.taskIconList[widget.page];
+    currentItem = MenuItems.taskIconList[widget.page];
     super.initState();
   }
 
@@ -28,7 +31,9 @@ class _TaskHmoePageState extends State<TaskHmoePage> {
     return ZoomDrawer(
       borderRadius: 40,
       angle: -10,
-      menuBackgroundColor: Colors.indigo,
+      menuBackgroundColor: BlocProvider.of<AppThemeCubit>(context).isDark
+          ? Colors.black
+          : Colors.indigo,
       showShadow: true,
       slideWidth: MediaQuery.of(context).size.width * 0.68,
       shadowLayer2Color: const Color.fromARGB(186, 245, 175, 23),
