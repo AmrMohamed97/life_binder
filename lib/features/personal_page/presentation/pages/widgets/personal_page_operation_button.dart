@@ -56,7 +56,7 @@ class PersonalPageOperationButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     color: Colors.grey,
                   ),
-                  child: const PersonalPageMenuItem(),
+                  child:   PersonalPageMenuItem(cubit:cubit),
                 ),
               )
             ],
