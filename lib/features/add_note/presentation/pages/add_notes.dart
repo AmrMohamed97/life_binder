@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
 import 'package:note_app/features/add_note/presentation/manager/add_note_cubit.dart';
 import 'package:note_app/features/add_note/presentation/pages/widgets/add_notes_body.dart';
+import 'package:note_app/features/auth/presentation/manager/app_theme_cubit/app_theme_cubit.dart';
 
 class AddNotes extends StatelessWidget {
   const AddNotes({super.key});
@@ -17,7 +18,7 @@ class AddNotes extends StatelessWidget {
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            backgroundColor: AppColors.blue,
+            backgroundColor:BlocProvider.of<AppThemeCubit>(context).isDark?null: AppColors.blue,
             title: const Text(
               'Add Notes',
               style: TextStyle(
@@ -34,7 +35,7 @@ class AddNotes extends StatelessWidget {
               },
             ),
           ),
-          body: AddNotesBody(),
+          body: const AddNotesBody(),
         ),
       ),
     );

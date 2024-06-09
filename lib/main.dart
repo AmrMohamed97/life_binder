@@ -9,6 +9,8 @@ import 'package:note_app/core/utiles/functions/set_up.dart';
 import 'package:note_app/core/widgets/local_notification_services.dart';
 import 'package:note_app/core/widgets/work_manager_service.dart';
 import 'package:note_app/features/add_note/presentation/manager/add_note_cubit.dart';
+import 'package:note_app/features/auth/presentation/manager/app_theme_cubit/app_theme_cubit.dart';
+import 'package:note_app/features/auth/presentation/manager/app_theme_cubit/app_theme_state.dart';
 import 'package:note_app/features/auth/presentation/manager/register_cubit.dart';
 import 'package:note_app/core/routes/app_pages.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
@@ -52,19 +54,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => AppThemeCubit()),
         BlocProvider(create: (context) => AddNoteCubit()),
         BlocProvider(create: (context) => EditNoteCubit()),
         BlocProvider(create: (context) => RegisterCubit()),
         BlocProvider(create: (context) => PersonInfoCubit()),
       ],
-      child: MaterialApp(
-        // theme: ThemeData.dark(),
-        debugShowCheckedModeBanner: false,
-        navigatorKey: navigatorKey,
-        routes: AppPages.routes,
-        initialRoute:
-            //  PagesKeys.taskHomePage,
-            isLogin ? PagesKeys.personalPageView : PagesKeys.loginView,
+      child: BlocBuilder<AppThemeCubit, AppThemeState>(
+        builder: (context, state) {
+          return MaterialApp(
+            theme: BlocProvider.of<AppThemeCubit>(context).isDark?ThemeData.dark():ThemeData.light(),
+            debugShowCheckedModeBanner: false,
+            navigatorKey: navigatorKey,
+            routes: AppPages.routes,
+            initialRoute:
+                //  PagesKeys.taskHomePage,
+                isLogin ? PagesKeys.personalPageView : PagesKeys.loginView,
+          );
+        },
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/constants/colors/app_colors.dart';
+import 'package:note_app/features/auth/presentation/manager/app_theme_cubit/app_theme_cubit.dart';
 import 'package:note_app/features/edit_note/data/model/notes_model.dart';
 import 'package:note_app/features/edit_note/presentation/manager/edit_note_cubit.dart';
 import 'package:note_app/features/edit_note/presentation/pages/widgets/edit_note_body.dart';
@@ -28,7 +29,7 @@ class EditNotes extends StatelessWidget {
                 color: AppColors.white,
               ),
             ),
-            backgroundColor: AppColors.blue,
+            backgroundColor:BlocProvider.of<AppThemeCubit>(context).isDark?null: AppColors.blue,
             title: const Text(
               'Edit Note',
               style: TextStyle(

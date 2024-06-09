@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/core/utiles/cache_helper.dart';
+import 'package:note_app/core/utiles/functions/set_up.dart';
 import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_state.dart';
 
 class PersonInfoCubit extends Cubit<PersonInfoState> {
@@ -43,4 +45,6 @@ class PersonInfoCubit extends Cubit<PersonInfoState> {
       emit(GetUserNameErrorState());
     });
   }
+
+  
 }

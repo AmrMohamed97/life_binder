@@ -42,7 +42,10 @@ class AddNoteButton extends StatelessWidget {
               }
             },
           ),
-          const Flexible(child: SizedBox(height: 10,)),
+          const Flexible(
+              child: SizedBox(
+            height: 10,
+          )),
         ],
       ),
     );
