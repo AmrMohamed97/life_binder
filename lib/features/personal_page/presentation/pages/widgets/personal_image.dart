@@ -5,16 +5,18 @@ class PersonalImage extends StatelessWidget {
   const PersonalImage({
     super.key,
     required this.cubit,
+    this.size = 'large',
   });
 
   final PersonInfoCubit cubit;
+  final String? size;
 
   @override
   Widget build(BuildContext context) {
     return cubit.personalImage.isEmpty
-        ? const Stack(
-          children: [
-              CircleAvatar(
+        ? Stack(
+            children: [
+              const CircleAvatar(
                 radius: 38,
                 backgroundColor: Colors.white,
                 child: CircleAvatar(
@@ -22,15 +24,20 @@ class PersonalImage extends StatelessWidget {
                   backgroundImage: AssetImage('assets/images/3.png'),
                 ),
               ),
-                CircleAvatar(
-                  radius: 10,
-                  child: Icon(
-                    Icons.camera_alt_rounded,
-                    color: Colors.black,
-                    size: 13,
-                  )),
-          ],
-        )
+              if (size == 'large')
+                const Positioned(
+                  right: 0,
+                  bottom: 0,
+                  child:   CircleAvatar(
+                      radius: 10,
+                      child: Icon(
+                        Icons.camera_alt_rounded,
+                        color: Colors.black,
+                        size: 13,
+                      )),
+                ),
+            ],
+          )
         : Stack(
             children: [
               CircleAvatar(
@@ -41,13 +48,18 @@ class PersonalImage extends StatelessWidget {
                   backgroundImage: NetworkImage(cubit.personalImage),
                 ),
               ),
-              const CircleAvatar(
-                  radius: 10,
-                  child: Icon(
-                    Icons.camera_alt_rounded,
-                    color: Colors.black,
-                    size: 13,
-                  )),
+              if (size == 'large')
+                const Positioned(
+                  right: 0,
+                  bottom: 0,
+                  child: CircleAvatar(
+                      radius: 10,
+                      child: Icon(
+                        Icons.camera_alt_rounded,
+                        color: Colors.black,
+                        size: 13,
+                      )),
+                ),
             ],
           );
   }

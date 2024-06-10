@@ -16,7 +16,7 @@ class UserNameWidget extends StatelessWidget {
             fit: BoxFit.scaleDown,
             child: Text(
               '${cubit.userName}',
-              style: const TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.left,

@@ -13,7 +13,7 @@ class CustomAppBarFlexableSpaceDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxHeight > MediaQuery.sizeOf(context).height * .18) {
+      if (constraints.maxHeight > MediaQuery.sizeOf(context).height * .17) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -44,25 +44,12 @@ class CustomAppBarFlexableSpaceDetail extends StatelessWidget {
         );
       } else {
         return Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ChangeImagePage(
-                      personalImage: cubit.personalImage,
-                      image: cubit.personalImage.isEmpty
-                          ? 'assets/images/3.png'
-                          : cubit.personalImage,
-                      folder: 'personal',
-                    ),
-                  ),
-                );
-              },
-              child: PersonalImage(cubit: cubit),
+            PersonalImage(
+              cubit: cubit,
+              size: 'small',
             ),
             UserNameWidget(
               cubit: cubit,

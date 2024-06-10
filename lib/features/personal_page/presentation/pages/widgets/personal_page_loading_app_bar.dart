@@ -10,14 +10,14 @@ class PersonalPageLoadingAppBar extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: MediaQuery.sizeOf(context).height * .23344652 ,
+          height: MediaQuery.sizeOf(context).height * .26 ,
           width: MediaQuery.sizeOf(context).width,
           color: const Color(0xffE9E8E4),
         ),
         Positioned(
           bottom: 30,
           left: 50,
-          child: Row(
+          child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               const CircleAvatar(
