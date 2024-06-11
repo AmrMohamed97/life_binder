@@ -1,12 +1,15 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/features/edit_note/data/model/notes_model.dart';
- import 'package:note_app/features/search/manager/search_state.dart';
+import 'package:note_app/features/search/manager/search_state.dart';
 
 class SearchCubit extends Cubit<SearchStates> {
   SearchCubit() : super(InitialSearchState());
+  StreamSubscription<QuerySnapshot>? streamSubscription;
   TextEditingController searchController = TextEditingController();
   void assignControllerValue(value) {
     searchController.text = value;
@@ -16,8 +19,9 @@ class SearchCubit extends Cubit<SearchStates> {
   List<NotesModel> searchNote = [];
   Future<void> searchData({required searchItem}) async {
     emit(SearchLoadingState());
+    streamSubscription?.cancel();
     try {
-      FirebaseFirestore.instance
+      streamSubscription = FirebaseFirestore.instance
           .collection('notes')
           .where('userUid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
           .orderBy('title')
@@ -37,8 +41,15 @@ class SearchCubit extends Cubit<SearchStates> {
             }
           });
     } catch (error) {
-      debugPrint('$error..........................................................');
+      debugPrint(
+          '$error..........................................................');
       emit(SearchErrorState(error: error));
     }
+  }
+
+  @override
+  Future<void> close() {
+    streamSubscription?.cancel();
+    return super.close();
   }
 }

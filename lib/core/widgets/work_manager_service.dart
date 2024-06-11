@@ -6,7 +6,7 @@ class WorkManagerService {
   Future<void> init() async {
     await Workmanager().initialize(
       action,
-      // isInDebugMode: true,
+      isInDebugMode: true,
     ); //Before registering any task, the WorkManager plugin must be initialized.
     //  registerOneTask();
     await registerPeriodicTask();
@@ -16,28 +16,26 @@ class WorkManagerService {
     await Workmanager().registerOneOffTask(
         'task-identifier' /*to be able to do collection of tasks*/,
         'simplePeriodicTask' /*will be sent to dispatcher to  indicating the task's type. */);
-  
   }
 
   Future<void> registerPeriodicTask() async {
-    await  Workmanager().registerPeriodicTask(
+    await Workmanager().registerPeriodicTask(
       'periodicId-cc',
       'periodicTask',
-      frequency: const Duration(days: 1),
+      frequency: const Duration(minutes: 17),
     );
   }
-
-  
 
   void cancleTask(String id) {
     Workmanager().cancelByUniqueName(id);
   }
 }
+
 @pragma('vm:entry-point')
 void action() {
-    //The callbackDispatcher needs to be either a static function or a top level function to be accessible as a Flutter entry point.
-    Workmanager().executeTask((task, inputData) {
-      getIt.get<LocalNotificationServices>().sendDailyNotification();
-      return Future.value(true);
-    });
-  }
+  //The callbackDispatcher needs to be either a static function or a top level function to be accessible as a Flutter entry point.
+  Workmanager().executeTask((task, inputData) {
+    getIt.get<LocalNotificationServices>().sendDailyNotification();
+    return Future.value(true);
+  });
+}

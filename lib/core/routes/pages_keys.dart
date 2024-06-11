@@ -1,5 +1,5 @@
 class PagesKeys{
-   static const String registerView='registerView';
+  static const String registerView='registerView';
   static const String loginView='loginView';
   static const String testView='testView';
   static const String addNotes='addNotes';

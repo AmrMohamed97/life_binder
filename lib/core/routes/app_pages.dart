@@ -16,7 +16,6 @@ class AppPages {
     PagesKeys.registerView: (context) => const RegisterView(),
     PagesKeys.testView: (context) => const NoDataWidget(),
     PagesKeys.addNotes: (context) => const AddNotes(),
-    // PagesKeys.searchView:(context)=>const SearchView(),
     PagesKeys.personalPageView: (context) => const PersonalPageView(),
     PagesKeys.addTask: (context) => const AddTask(),
     PagesKeys.taskHomePage: (context) => const TaskHmoePage(),
