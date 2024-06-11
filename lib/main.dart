@@ -46,11 +46,11 @@ Future<void> main() async {
 
   await WorkManagerService().init();
   Bloc.observer = MyObserver();
-  runApp(const TimeWaver());
+  runApp(const LifeBinder());
 }
 
-class TimeWaver extends StatelessWidget {
-  const TimeWaver({super.key});
+class LifeBinder extends StatelessWidget {
+  const LifeBinder({super.key});
 
   @override
   Widget build(BuildContext context) {
