@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
  import 'package:flutter/material.dart';
-import 'package:note_app/core/utiles/cache_helper.dart';
-import 'package:note_app/core/utiles/functions/set_up.dart';
  import 'package:note_app/features/tasks/data/model/task_model.dart';
 import 'package:note_app/features/tasks/presentation/manager/add_task_cubit/add_task_cubit.dart';
 import 'package:note_app/features/tasks/presentation/manager/task_cubit/task_cubit.dart';

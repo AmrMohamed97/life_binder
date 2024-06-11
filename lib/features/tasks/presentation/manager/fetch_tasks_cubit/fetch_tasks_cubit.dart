@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/utiles/cache_helper.dart';
 import 'package:note_app/core/utiles/functions/set_up.dart';
@@ -35,8 +36,8 @@ class FetchTasksCubit extends Cubit<FetchTasksState> {
 }
       });
      } catch (error) {
-      print('===================================================');
-      print(error);
+      debugPrint('===================================================');
+      debugPrint(error.toString());
       emit(FetchTaskserrorState(error: error));
     }
   }

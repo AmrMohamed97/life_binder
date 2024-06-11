@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/features/tasks/presentation/manager/task_operation_cubit.dart/task_operation_state.dart';
 
@@ -11,8 +12,8 @@ class TaskOperationCubit extends Cubit<TaskOperationState> {
     try {
       emit(DeleteTaskSuccessState());
     } catch (error) {
-      print('===================================================');
-      print(error);
+      debugPrint('===================================================');
+      debugPrint(error.toString());
       emit(DeleteTaskErrorState(error: error));
     }
   }
@@ -24,8 +25,8 @@ class TaskOperationCubit extends Cubit<TaskOperationState> {
     try {
       emit(ChangeTaskStateSuccessState());
     } catch (error) {
-      print('===================================================');
-      print(error);
+      debugPrint('===================================================');
+      debugPrint(error.toString());
       emit(ChangeTaskStateErrorState(error: error));
     }
   }

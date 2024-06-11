@@ -1,10 +1,8 @@
  
  import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_timezone/flutter_timezone.dart';
-// import 'package:timezone/browser.dart';
+ // import 'package:timezone/browser.dart';
 // import 'package:flutter_timezone/flutter_timezone.dart';
-import 'package:timezone/data/latest_all.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
+ import 'package:timezone/timezone.dart' as tz;
 
 class LocalNotificationServices {
     FlutterLocalNotificationsPlugin

@@ -20,7 +20,5 @@ void signInWithGoogle(LoginCubit cubit, BuildContext context) async {
       body: Text(error.code.toString()),
     ).show();
   });
-}   catch (e) {
-  // TODO
-}
+}   catch (e) {debugPrint(e.toString());}
   }

@@ -43,7 +43,7 @@ class AddTaskEndDate extends StatelessWidget {
                     }
                   }
                 });
-              } catch (error) {}
+              } catch (error) {debugPrint(error.toString());}
             },
             child: Container(
               height: 40,

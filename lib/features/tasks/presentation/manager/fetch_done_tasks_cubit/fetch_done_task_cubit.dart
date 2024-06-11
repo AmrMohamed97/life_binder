@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/features/tasks/data/model/task_model.dart';
 import 'package:note_app/features/tasks/presentation/manager/fetch_done_tasks_cubit/fetch_done_task_state.dart';
@@ -32,8 +33,8 @@ class FetchDoneTasksCubit extends Cubit<FetchDoneTasksState> {
         }
       });
     } catch (error) {
-      print('===================================================');
-      print(error);
+      debugPrint('===================================================');
+      debugPrint(error.toString());
       emit(FetchDoneTaskserrorState(error: error));
     }
   }

@@ -1,5 +1,4 @@
-import 'package:get_it/get_it.dart';
-
+ 
 class TaskModel {
    final String taskName;
   final String taskContent;

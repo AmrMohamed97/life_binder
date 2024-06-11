@@ -33,9 +33,9 @@ Future<void> main() async {
     isLogin = true;
   }
   setUp();
-  print('================allow notification appear=================');
+  debugPrint('================allow notification appear=================');
   await initNotification();
-  print('===============initialize local notification==============');
+  debugPrint('===============initialize local notification==============');
   await getIt.get<LocalNotificationServices>().initialize();
   tz.initializeTimeZones();
   final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
