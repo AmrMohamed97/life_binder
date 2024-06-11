@@ -44,7 +44,7 @@ class PersonalPageOperationButton extends StatelessWidget {
                     radius: 12,
                     onTap: ()  {
                         Navigator.of(context)
-                        .pushReplacement(MaterialPageRoute(builder: (context) => TaskHmoePage(personalImage: cubit.personalImage,userName: cubit.userName,) ));
+                        .pushReplacement(MaterialPageRoute(builder: (context) => TaskHmoePage(personalImage: cubit.personalImage,userName: cubit.userName!,) ));
 
                     }),
               ),

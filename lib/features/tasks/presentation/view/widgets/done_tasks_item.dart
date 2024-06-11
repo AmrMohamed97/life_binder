@@ -34,12 +34,12 @@ class DoneTasksItem extends StatelessWidget {
             TasksItemDate(
             date: DateFormat('dd/MM/yyyy').format(item.startDate!),
             dateTitle: 'start date',
-            time: item.startTime,
+            time: item.startTime!,
           ),
             TasksItemDate(
             date: DateFormat('dd/MM/yyyy').format(item.endDate!),
             dateTitle: 'end date',
-            time: item.endTime,
+            time: item.endTime!,
           ),
         ],
       ),

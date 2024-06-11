@@ -11,9 +11,9 @@ import 'package:note_app/features/tasks/presentation/view/widgets/task_home_page
 
 class TaskHmoePage extends StatefulWidget {
   const TaskHmoePage(
-      {super.key, this.page = 0, this.personalImage, this.userName});
+      {super.key, this.page = 0,required this.personalImage,required this.userName});
   final int page;
-  final String? personalImage, userName;
+  final String personalImage, userName;
   @override
   State<TaskHmoePage> createState() => _TaskHmoePageState();
 }
@@ -41,8 +41,8 @@ class _TaskHmoePageState extends State<TaskHmoePage> {
       mainScreen: getScreen(),
       menuScreen: Builder(builder: (context) {
         return TaskHomePageMenu(
-          personalImage: widget.personalImage!,
-          userName: widget.userName!,
+          personalImage: widget.personalImage,
+          userName: widget.userName ,
           currentItem: currentItem,
           onSelectedItem: (menuItem) {
             setState(() => currentItem = menuItem);

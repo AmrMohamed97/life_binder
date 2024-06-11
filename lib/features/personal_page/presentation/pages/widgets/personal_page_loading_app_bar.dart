@@ -8,15 +8,15 @@ class PersonalPageLoadingAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.center,
       children: [
         Container(
-          height: MediaQuery.sizeOf(context).height * .26 ,
+          height: MediaQuery.sizeOf(context).height * .26,
           width: MediaQuery.sizeOf(context).width,
           color: const Color(0xffE9E8E4),
         ),
         Positioned(
-          bottom: 30,
-          left: 50,
+          bottom: 0,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

@@ -1,13 +1,17 @@
  
- import 'package:flutter_local_notifications/flutter_local_notifications.dart';
- // import 'package:timezone/browser.dart';
+ 
+  import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+    // import 'package:timezone/browser.dart';
 // import 'package:flutter_timezone/flutter_timezone.dart';
- import 'package:timezone/timezone.dart' as tz;
-
+//  import 'package:timezone/timezone.dart' as tz;
+//  void onTap(NotificationResponse notifyResponse) {
+ 
+// }
 class LocalNotificationServices {
     FlutterLocalNotificationsPlugin
       flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
+
        
   Future<void> initialize() async {
     AndroidInitializationSettings androidInitializationSettings =
@@ -20,7 +24,7 @@ class LocalNotificationServices {
     );
     await flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
-      // onDidReceiveBackgroundNotificationResponse: (){},
+      // onDidReceiveBackgroundNotificationResponse:onTap,
       // onDidReceiveNotificationResponse: onTap,
     );
   }
@@ -74,7 +78,7 @@ class LocalNotificationServices {
   }
   
 //--------------------------------------------------------------------------------------
-  Future<void> sendScheduledNotification({required int id,required String title,required String body ,required   scheduledDate}) async {
+  Future<void> sendScheduledNotification({required int id,required String title,required String body ,required   scheduledDate,String? payload}) async {
       AndroidNotificationDetails android = AndroidNotificationDetails(
       '3',
       'schedule',
@@ -94,38 +98,38 @@ class LocalNotificationServices {
       notificationDetails,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
-      payload: 'task',
+      payload: payload,
     );
   }
     //---------------------
-  Future<void> sendDailyNotification() async {
-    const AndroidNotificationDetails android = AndroidNotificationDetails(
-      '0',
-      'daily',
-      importance: Importance.max,
-      priority: Priority.high,
-    );
-    NotificationDetails notificationDetails = const NotificationDetails(
-      android: android,
-      iOS: DarwinNotificationDetails(),
-    );
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-      0,
-      'Time_Waver',
-      'You can use the app to schedule your day to make the most of it',
-      tz.TZDateTime(
-        tz.local,
-        DateTime.now().year,
-        DateTime.now().month,
-        DateTime.now().day,
-        9,
+//   Future<void> sendDailyNotification() async {
+//     const AndroidNotificationDetails android = AndroidNotificationDetails(
+//       '0',
+//       'daily',
+//       importance: Importance.max,
+//       priority: Priority.high,
+//     );
+//     NotificationDetails notificationDetails = const NotificationDetails(
+//       android: android,
+//       iOS: DarwinNotificationDetails(),
+//     );
+//     await flutterLocalNotificationsPlugin.zonedSchedule(
+//       0,
+//       'Time_Waver',
+//       'You can use the app to schedule your day to make the most of it',
+//       tz.TZDateTime(
+//         tz.local,
+//         DateTime.now().year,
+//         DateTime.now().month,
+//         DateTime.now().day,
+//         9,
         
-      ),
-      notificationDetails,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
-      payload: 'daily',
-    );
-  }
+//       ),
+//       notificationDetails,
+//       uiLocalNotificationDateInterpretation:
+//           UILocalNotificationDateInterpretation.absoluteTime,
+//       payload: 'daily',
+//     );
+//   }
 }
  

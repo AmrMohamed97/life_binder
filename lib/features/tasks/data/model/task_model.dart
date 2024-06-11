@@ -2,8 +2,8 @@
 class TaskModel {
    final String taskName;
   final String taskContent;
-  final String startTime;
-  final String endTime;
+  final String? startTime;
+  final String? endTime;
   final DateTime? startDate;
   final DateTime? endDate;
   final bool isDone;

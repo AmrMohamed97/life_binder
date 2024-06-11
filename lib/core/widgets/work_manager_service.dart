@@ -1,6 +1,7 @@
 import 'package:note_app/core/utiles/functions/set_up.dart';
 import 'package:note_app/core/widgets/local_notification_services.dart';
 import 'package:workmanager/workmanager.dart';
+ import 'package:timezone/timezone.dart' as tz;
 
 class WorkManagerService {
   Future<void> init() async {
@@ -35,7 +36,19 @@ class WorkManagerService {
 void action() {
   //The callbackDispatcher needs to be either a static function or a top level function to be accessible as a Flutter entry point.
   Workmanager().executeTask((task, inputData) {
-    getIt.get<LocalNotificationServices>().sendDailyNotification();
+    getIt.get<LocalNotificationServices>().sendScheduledNotification(
+      id: 0,
+      title: 'Time_waver',
+      body: 'You can use the app to schedule your day to make the most of it',
+      payload: 'daily',
+      scheduledDate: tz.TZDateTime(
+      tz.local,
+      DateTime.now().year,
+      DateTime.now().month,
+      DateTime.now().day,
+      9,
+    ),
+    );
     return Future.value(true);
   });
 }

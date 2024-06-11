@@ -26,7 +26,7 @@ final PersonInfoCubit cubit;
                 .pushReplacement(MaterialPageRoute(
                     builder: (context) => TaskHmoePage(
                           personalImage: cubit.personalImage,
-                          userName: cubit.userName,
+                          userName: cubit.userName!,
                         )));
               break;  //add task
 
@@ -36,7 +36,7 @@ final PersonInfoCubit cubit;
                     builder: (context) => TaskHmoePage(
                           page: 1,
                           personalImage: cubit.personalImage,
-                          userName: cubit.userName,
+                          userName: cubit.userName!,
                         )));
               break;  //task page
 

@@ -18,8 +18,8 @@ Future<void> addTaskMethod(
       startDate: taskCubit.startDate,
       endDate: taskCubit.endDate,
       isDone: false,
-      endTime: taskCubit.endTime!.format(context),
-      startTime: taskCubit.startTime!.format(context),
+      endTime: taskCubit.endTime?.format(context),
+      startTime: taskCubit.startTime?.format(context),
       uid: FirebaseAuth.instance.currentUser!.uid,
     );
     var currentDate = tz.TZDateTime(

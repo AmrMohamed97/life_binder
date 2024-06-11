@@ -33,22 +33,24 @@ Future<void> main() async {
     isLogin = true;
   }
   setUp();
-  debugPrint('================allow notification appear=================');
-  await initNotification();
-  debugPrint('===============initialize local notification==============');
-  await getIt.get<LocalNotificationServices>().initialize();
+  await getIt.get<CacheHelper>().init();
+
   tz.initializeTimeZones();
   final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
   tz.setLocalLocation(tz.getLocation(currentTimeZone));
-  await getIt.get<CacheHelper>().init();
+  debugPrint('================allow notification appear=================');
+  await FirebaseMessaging.instance.requestPermission();
+  debugPrint('===============initialize local notification==============');
+  await getIt.get<LocalNotificationServices>().initialize();
   getIt.get<CacheHelper>().saveData(key: 'notificationId', value: 1);
+
   await WorkManagerService().init();
   Bloc.observer = MyObserver();
-  runApp(const MyApp());
+  runApp(const TimeWaver());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TimeWaver extends StatelessWidget {
+  const TimeWaver({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,9 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<AppThemeCubit, AppThemeState>(
         builder: (context, state) {
           return MaterialApp(
-            theme: BlocProvider.of<AppThemeCubit>(context).isDark?ThemeData.dark():ThemeData.light(),
+            theme: BlocProvider.of<AppThemeCubit>(context).isDark
+                ? ThemeData.dark()
+                : ThemeData.light(),
             debugShowCheckedModeBanner: false,
             navigatorKey: navigatorKey,
             routes: AppPages.routes,
@@ -75,8 +79,4 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}
-
-Future<void> initNotification() async {
-  await FirebaseMessaging.instance.requestPermission();
 }

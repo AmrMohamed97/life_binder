@@ -32,7 +32,7 @@ class DrawerBody extends StatelessWidget {
                 .pushReplacement(MaterialPageRoute(
                     builder: (context) => TaskHmoePage(
                           personalImage: cubit.personalImage,
-                          userName: cubit.userName,
+                          userName: cubit.userName!,
                         )));
           },
           leading: const Icon(Icons.add_task),
@@ -45,7 +45,7 @@ class DrawerBody extends StatelessWidget {
                     builder: (context) => TaskHmoePage(
                           page: 1,
                           personalImage: cubit.personalImage,
-                          userName: cubit.userName,
+                          userName: cubit.userName!,
                         )));
           },
           leading: const Icon(Icons.task_alt),

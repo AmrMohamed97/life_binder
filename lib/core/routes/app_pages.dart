@@ -18,7 +18,7 @@ class AppPages {
     PagesKeys.addNotes: (context) => const AddNotes(),
     PagesKeys.personalPageView: (context) => const PersonalPageView(),
     PagesKeys.addTask: (context) => const AddTask(),
-    PagesKeys.taskHomePage: (context) => const TaskHmoePage(),
+    // PagesKeys.taskHomePage: (context) => const TaskHmoePage(),
     PagesKeys.allTasks: (context) => const AllTasks(),
    };
 }
