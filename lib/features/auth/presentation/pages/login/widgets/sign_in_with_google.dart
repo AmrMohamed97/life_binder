@@ -1,4 +1,3 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/core/constants/constances.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
@@ -14,11 +13,8 @@ void signInWithGoogle(LoginCubit cubit, BuildContext context) async {
       navigatorKey.currentState?.pushReplacementNamed( PagesKeys.personalPageView);
   }).catchError((error) {
     cubit.changeLoadingState(state: false);
-      AwesomeDialog(
-      context: context,
-      title: 'error',
-      body: Text(error.code.toString()),
-    ).show();
+     
   });
-}   catch (e) {debugPrint(e.toString());}
+}   catch (e) {cubit.changeLoadingState(state: false);
+debugPrint(e.toString());}
   }

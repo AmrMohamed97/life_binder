@@ -18,11 +18,12 @@ class TaskItemDoneButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TaskOperationCubit, TaskOperationState>(
         builder: (context, state) {
+          var cubit = BlocProvider.of<TaskOperationCubit>(context);
       return GestureDetector(
         onTap: ()async {
           await getIt.get<LocalNotificationServices>().cancelNotification(id: item!.notificationId1!,);
               await getIt.get<LocalNotificationServices>().cancelNotification(id: item!.notificationId2!,);
-          BlocProvider.of<TaskOperationCubit>(context).changeTaskState(id: item!.id!);
+          cubit.changeTaskState(id: item!.id!);
         },
         child: const Card(
           color: Color(0xffF0D1A8),

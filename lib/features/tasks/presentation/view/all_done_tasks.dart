@@ -6,8 +6,8 @@ import 'package:note_app/features/tasks/presentation/manager/fetch_done_tasks_cu
 import 'package:note_app/features/tasks/presentation/view/widgets/all_tasks_app_bar.dart';
 import 'package:note_app/features/tasks/presentation/view/widgets/done_tasks_list_view.dart';
 
-class DoneTasks extends StatelessWidget {
-  const DoneTasks({super.key});
+class AllDoneTasks extends StatelessWidget {
+  const AllDoneTasks({super.key});
 
   @override
   Widget build(BuildContext context) {

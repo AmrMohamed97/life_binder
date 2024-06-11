@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -23,6 +24,11 @@ class LoginBody extends StatelessWidget {
           Navigator.pushReplacementNamed(context, PagesKeys.personalPageView);
         } else if (state is SignInErrorState) {
           BlocProvider.of<LoginCubit>(context).isLoading = false;
+           AwesomeDialog(
+      context: context,
+      title: 'error',
+      body: const Text('oops there was an error check internet connection and try again'),
+    ).show();
         }
       },
       builder: (context, state) {
