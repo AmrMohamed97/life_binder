@@ -22,7 +22,7 @@ class WorkManagerService {
     await Workmanager().registerPeriodicTask(
       'periodicId-cc',
       'periodicTask',
-      frequency: const Duration(minutes: 17),
+      frequency: const Duration(hours: 24),
     );
   }
 
