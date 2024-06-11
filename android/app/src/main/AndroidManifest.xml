@@ -21,9 +21,9 @@
   </intent>
 </queries>
     <application
-        android:label="note_app"
+        android:label="Life Binder"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/launcher_icon"
         android:usesCleartextTraffic="true">
         
         <activity
