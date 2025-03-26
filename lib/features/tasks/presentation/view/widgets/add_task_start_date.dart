@@ -29,8 +29,8 @@ class AddTaskStartDate extends StatelessWidget {
             onTap: () {
               showDatePicker(
                 context: context,
-                firstDate: DateTime.now(),
-                lastDate: DateTime.parse('2030-12-30'),
+                firstDate: DateTime.parse('2010-12-30'),
+                lastDate: DateTime.parse('2040-12-30'),
               ).then(
                 (startDate) {
                   if (startDate != null) {

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
- import 'package:note_app/core/constants/constances.dart';
+import 'package:note_app/core/constants/constances.dart';
 import 'package:note_app/core/routes/pages_keys.dart';
 import 'package:note_app/core/widgets/custom_general_button.dart';
 import 'package:note_app/features/personal_page/presentation/manager/person_info_cubit/person_info_cubit.dart';
- import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_page_menu_item.dart';
+import 'package:note_app/features/personal_page/presentation/pages/widgets/personal_page_menu_item.dart';
 import 'package:note_app/features/tasks/presentation/view/task_home_page.dart';
 
 class PersonalPageOperationButton extends StatelessWidget {
   const PersonalPageOperationButton({
-    super.key, required this.cubit,
+    super.key,
+    required this.cubit,
   });
   final PersonInfoCubit cubit;
   @override
@@ -42,10 +43,12 @@ class PersonalPageOperationButton extends StatelessWidget {
                     width: 110,
                     height: 35,
                     radius: 12,
-                    onTap: ()  {
-                        Navigator.of(context)
-                        .pushReplacement(MaterialPageRoute(builder: (context) => TaskHmoePage(personalImage: cubit.personalImage,userName: cubit.userName!,) ));
-
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => TaskHmoePage(
+                                personalImage: cubit.personalImage,
+                                userName: cubit.userName!,
+                              )));
                     }),
               ),
               Flexible(
@@ -56,7 +59,7 @@ class PersonalPageOperationButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     color: Colors.grey,
                   ),
-                  child:   PersonalPageMenuItem(cubit:cubit),
+                  child: PersonalPageMenuItem(cubit: cubit),
                 ),
               )
             ],

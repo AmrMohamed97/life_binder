@@ -72,8 +72,7 @@ class TaskHomePageMenu extends StatelessWidget {
                 },
               ),
               ...MenuItems.taskIconList
-                  .map((e) => buildItem(e, context: context))
-                  .toList(),
+                  .map((e) => buildItem(e, context: context)),
 
               const Spacer(
                 flex: 4,
@@ -91,7 +90,7 @@ class TaskHomePageMenu extends StatelessWidget {
       child: ListTile(
         selected: menuItem == currentItem,
         selectedTileColor: BlocProvider.of<AppThemeCubit>(context).isDark
-            ? Colors.grey.withOpacity(.15)
+            ? Colors.grey.withValues(alpha:.15)
             : Colors.black26,
         title: FittedBox(
             alignment: Alignment.centerLeft,

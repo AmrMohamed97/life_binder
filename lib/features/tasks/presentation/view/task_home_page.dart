@@ -37,7 +37,7 @@ class _TaskHmoePageState extends State<TaskHmoePage> {
       showShadow: true,
       slideWidth: MediaQuery.of(context).size.width * 0.68,
       shadowLayer2Color: const Color.fromARGB(186, 245, 175, 23),
-      shadowLayer1Color: const Color.fromARGB(240, 71, 77, 75).withOpacity(.4),
+      shadowLayer1Color: const Color.fromARGB(240, 71, 77, 75).withValues(alpha:  .4),
       mainScreen: getScreen(),
       menuScreen: Builder(builder: (context) {
         return TaskHomePageMenu(

@@ -9,7 +9,7 @@ class ChangeImagePageBody extends StatelessWidget {
   final String image, folder, personalImage;
   @override
   Widget build(BuildContext context) {
-    return personalImage.isEmpty //-------------------------------------------
+    return personalImage.isEmpty 
         ? Center(
             child: InteractiveViewer(
               child: Image.asset(
