@@ -387,14 +387,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_timezone:
-    dependency: "direct main"
-    description:
-      name: flutter_timezone
-      sha256: "06b35132c98fa188db3c4b654b7e1af7ccd01dfe12a004d58be423357605fb24"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.8"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -584,14 +576,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.3.1"
-  js:
-    dependency: transitive
-    description:
-      name: js
-      sha256: c1b2e9b5ea78c45e1a0788d29606ba27dc5f71f019f32ca5140f61ef071838cf
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.7.1"
   json_annotation:
     dependency: transitive
     description:
@@ -1061,14 +1045,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.1"
-  workmanager:
-    dependency: "direct main"
-    description:
-      name: workmanager
-      sha256: ed13530cccd28c5c9959ad42d657cd0666274ca74c56dea0ca183ddd527d3a00
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.5.2"
   xdg_directories:
     dependency: transitive
     description:

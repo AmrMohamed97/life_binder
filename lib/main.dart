@@ -3,11 +3,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_timezone/flutter_timezone.dart';
+// import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:note_app/core/utiles/cache_helper.dart';
 import 'package:note_app/core/utiles/functions/set_up.dart';
 import 'package:note_app/core/widgets/local_notification_services.dart';
-import 'package:note_app/core/widgets/work_manager_service.dart';
+// import 'package:note_app/core/widgets/work_manager_service.dart';
 import 'package:note_app/features/add_note/presentation/manager/add_note_cubit.dart';
 import 'package:note_app/features/auth/presentation/manager/app_theme_cubit/app_theme_cubit.dart';
 import 'package:note_app/features/auth/presentation/manager/app_theme_cubit/app_theme_state.dart';
@@ -20,7 +20,7 @@ import 'core/constants/constances.dart';
 import 'core/utiles/my_observer/my_observer.dart';
 import 'features/edit_note/presentation/manager/edit_note_cubit.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
+// import 'package:timezone/timezone.dart' as tz;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,15 +36,15 @@ Future<void> main() async {
   await getIt.get<CacheHelper>().init();
 
   tz.initializeTimeZones();
-  final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
-  tz.setLocalLocation(tz.getLocation(currentTimeZone));
+  // final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
+  // tz.setLocalLocation(tz.getLocation(currentTimeZone));
   debugPrint('================allow notification appear=================');
   await FirebaseMessaging.instance.requestPermission();
   debugPrint('===============initialize local notification==============');
   await getIt.get<LocalNotificationServices>().initialize();
   getIt.get<CacheHelper>().saveData(key: 'notificationId', value: 1);
 
-  await WorkManagerService().init();
+  // await WorkManagerService().init();
   Bloc.observer = MyObserver();
   runApp(const LifeBinder());
 }
